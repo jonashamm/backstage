@@ -1,0 +1,19 @@
+// List of breakpoints in px
+$breakpoints: 480 640 800 960 1200 1840 2080;
+
+@mixin brp($name) {
+	@for $i from 1 through length($breakpoints) {
+		$px_value: nth($breakpoints, $i);
+
+		@if $name == b#{$i} {
+			@media all and (min-width: #{$px_value/16}em) {
+				@content;
+			}
+		}
+		@if $name == b#{$i}max {
+			@media all and (max-width: #{$px_value/16 - 0.063}em) {
+				@content;
+			}
+		}
+	}
+}
