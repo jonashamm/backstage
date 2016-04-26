@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/songs', function () {
+Route::get('/songs/', function () {
     return view('songs');
 });
