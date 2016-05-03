@@ -34,7 +34,7 @@ gulp.task('svgmin', function () {
 		.pipe(rename(function(path) {
 			path.extname = ".blade.php"
 		}))
-		.pipe(gulp.dest('resources/views/assets/'))
+		.pipe(gulp.dest('resources/views/icons/'))
 });
 
 gulp.task('watch', function() {

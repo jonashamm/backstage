@@ -15,30 +15,16 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td>John</td>
-                <td><strong>Conteo Regresivo</strong> (Santa Rosa)</td>
-                <td>E-Dur</td>
-                <td><a href="test">Noten</a></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Jane</td>
-                <td><strong>Raining Blood</strong> (Slayer)</td>
-                <td>E-Moll</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Jamie</td>
-                <td><strong>Schön ist es auf der Welt zu sein</strong> (Roy Black & Anita)</td>
-                <td>C-Dur</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            @foreach($songs as $song)
+                <tr>
+                    <td>-</td>
+                    <td><strong>{{$song->name}}</strong> (-)</td>
+                    <td>-</td>
+                    <td><a href="test">-</a></td>
+                    <td></td>
+                    <td>@include('icons.delete')</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

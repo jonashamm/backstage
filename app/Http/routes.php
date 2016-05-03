@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/songs/', function () {
-    return view('songs');
-});
+Route::get('/songs/', 'SongsController@index');
+Route::get('/song/{song_id}', 'SongsController@show');
