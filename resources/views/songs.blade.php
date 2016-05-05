@@ -8,7 +8,7 @@
                 <th>Sänger/in</th>
                 <th>Song</th>
                 <th>Tonart</th>
-                <th>Noten</th>
+                <th>Noten Test</th>
                 <th></th>
                 <th></th>
             </tr>
