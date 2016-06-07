@@ -11,9 +11,13 @@
 |
 */
 
+View::share('baseurl',URL::to('/'));
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/songs/', 'SongsController@index');
 Route::get('/song/{song_id}', 'SongsController@show');
+Route::post('/song/create', 'SongsController@create');
+Route::post('/song/delete/{song_id}', 'SongsController@destroy');

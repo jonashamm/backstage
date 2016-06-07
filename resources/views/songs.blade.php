@@ -1,7 +1,12 @@
 @extends('app')
 
 @section('content')
-    <h2>Our songs</h2>
+    <h2>Unsere songs</h2>
+
+    @if (Session::get('song_name'))
+        Der Song {{Session::get('song_name')}} wurde erfolgreich gelöscht!
+    @endif
+
     <table class="songs">
         <thead>
             <tr class="head">
@@ -22,9 +27,21 @@
                     <td>-</td>
                     <td><a href="test">-</a></td>
                     <td></td>
-                    <td>@include('icons.delete')</td>
+                    <td>
+                        <form action="{{$baseurl}}/song/delete/{{$song->id}}" method="post">
+                            {{csrf_field()}}
+                            <button type="submit">@include('icons.delete')</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <form action="{{$baseurl}}/song/create" method="post">
+        {{csrf_field()}}
+        <input name="name" type="text">
+        <button type="submit">Speichern</button>
+    </form>
+
 @endsection
