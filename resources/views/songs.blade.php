@@ -33,6 +33,9 @@
                             <button type="submit">@include('icons.delete')</button>
                         </form>
                     </td>
+                    <td>
+                        <a href="{{$baseurl}}/song/{{$song->id}}"><button>@include('icons.mode_edit')</button></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
