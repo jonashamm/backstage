@@ -23,10 +23,15 @@ class SongsController extends Controller
     }
     public function show($song_id) {
         $song = Song::find($song_id);
+        return view('song', compact('song'));
     }
 
-    public function update() {
+    public function update(Request $request, $song_id) {
+        $song = Song::find($song_id);
+        $song->name = $request->input('name');
+        $song->save();
 
+        return redirect('/songs');
     }
 
     public function destroy($song_id) {
