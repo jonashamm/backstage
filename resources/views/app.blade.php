@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>backstage</title>
     <link href="{{ asset('bower_components/normalize-css/normalize.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="dist/frontend-global.css">
+    <link rel="stylesheet" href="{{ asset('dist/frontend-global.css') }}">
 </head>
 <body>
 
