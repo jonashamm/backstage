@@ -46,7 +46,7 @@ button {
 	border:0;
 	background: $c-main; //linear-gradient(lighten($c-main,5),darken($c-main,5));
 	color:$c-negative;
-	padding:.3em 1em;
+	padding:.5em 1em;
 	box-sizing: border-box;
 	line-height:1.45em;
 	cursor: pointer;
@@ -71,6 +71,12 @@ button {
 	path {
 		fill:$c-negative;
 	}
+}
+input {
+	border:0;
+	padding:.4em .7em;
+	border-radius:.2em;
+	box-shadow: 1px 1px 3px rgba($c-darkest,.4) inset;
 }
 .info {
 	display: block;
