@@ -4,7 +4,9 @@
     <h2>Unsere songs</h2>
 
     @if (Session::get('song_name'))
-        Der Song {{Session::get('song_name')}} wurde erfolgreich gelöscht!
+        <em class="info success">
+            Der Song {{Session::get('song_name')}} wurde erfolgreich gelöscht!
+        </em>
     @endif
 
     <table class="songs">

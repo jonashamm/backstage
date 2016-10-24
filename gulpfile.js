@@ -10,10 +10,10 @@ var concat = require('gulp-concat'),
 	svgmin = require('gulp-svgmin'),
 	autoprefixer = require('gulp-autoprefixer'),
 	shell = require('gulp-shell'),
-	livereload = require('gulp-livereload');
+	browserSync = require('browser-sync').create();
 
 gulp.task('sass', function() {
-	return gulp.src('public/src/styles/frontend-global.scss')
+	return gulp.src('public/src/styles/custom.scss')
 		.pipe(sass({style: 'compressed'}).on('error', sass.logError))
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions'],
@@ -21,7 +21,7 @@ gulp.task('sass', function() {
 		}))
 		.pipe(cssnano())
 		.pipe(gulp.dest('public/dist/'))
-		.pipe(livereload());
+		.pipe(browserSync.stream());
 });
 
 gulp.task('startArtisanServer', shell.task([
@@ -37,11 +37,18 @@ gulp.task('svgmin', function () {
 		.pipe(gulp.dest('resources/views/icons/'))
 });
 
+// Static server
+gulp.task('browser-sync', function() {
+	browserSync.init({
+		proxy: "0.0.0.0:8000"
+	});
+});
+
 gulp.task('watch', function() {
-	livereload.listen();
 	gulp.watch('public/src/styles/**', ['sass']);
 	gulp.watch('public/src/img/ui/**', ['svgmin']);
+	gulp.watch("*.html").on('change', browserSync.reload);
 });
 
 // Default Task
-gulp.task('default', ['startArtisanServer','sass','svgmin','watch']);
+gulp.task('default', ['startArtisanServer','browser-sync','sass','svgmin','watch']);

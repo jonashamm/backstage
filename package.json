@@ -2,15 +2,15 @@
   "name": "backstage",
   "version": "0.1.0",
   "dependencies": {
+    "browser-sync": "*",
     "gulp": "*",
     "gulp-autoprefixer": "*",
     "gulp-concat": "*",
-    "gulp-livereload": "*",
     "gulp-cssnano": "*",
     "gulp-rename": "*",
     "gulp-sass": "*",
     "gulp-shell": "*",
-    "gulp-uglify": "*",
-    "gulp-svgmin": "*"
+    "gulp-svgmin": "*",
+    "gulp-uglify": "*"
   }
 }

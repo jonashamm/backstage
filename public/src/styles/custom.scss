@@ -1,0 +1,87 @@
+@import "colors";
+@import "mixins";
+@import "breakpoints";
+
+body {
+	background-color: $c-fond;
+	color:$c-copy;
+	font-family: Catamaran;
+	min-width:320px;
+}
+.page-wrapper {
+	max-width:90em;
+	margin-left:auto;
+	margin-right:auto;
+	padding:2em 5%;
+}
+
+svg,
+img {
+	max-width: 100%;
+	height:auto;
+}
+
+table {
+	text-align: left;
+
+	tr,
+	th,
+	td {
+		padding:.5em;
+	}
+}
+h1,
+h2,
+h3,
+h4 {
+	color:$c-main;
+}
+a {
+	color:$c-main;
+}
+button {
+	border-radius: .3em;
+	transition: background-color .5s;
+	outline: none;
+	border:0;
+	background: $c-main; //linear-gradient(lighten($c-main,5),darken($c-main,5));
+	color:$c-negative;
+	padding:.3em 1em;
+	box-sizing: border-box;
+	line-height:1.45em;
+	cursor: pointer;
+	box-shadow:1px 1px 5px rgba($c-darkest,.3);
+
+	.songs & {
+		height:2.3em;
+		width:2.3em;
+		border-radius:50%;
+		padding: .5em;
+	}
+
+	&:hover,
+	&:focus {
+		background: lighten($c-main,5);
+	}
+	&:active {
+		background: linear-gradient(darken($c-main,1),lighten($c-main,2));
+		box-shadow:none;
+	}
+
+	path {
+		fill:$c-negative;
+	}
+}
+.info {
+	display: block;
+	padding:.5em 1em;
+	color: $c-negative;
+
+	&.success {
+		background: $c-go;
+		font-style: normal;
+		font-weight: bold;
+		font-size:1.15em;
+		line-height:1.4em;
+	}
+}
