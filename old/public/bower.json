@@ -1,0 +1,22 @@
+{
+  "name": "backstage",
+  "homepage": "https://github.com/jonaspas/backstage",
+  "authors": [
+    "Jonas Hamm <contact@jonashamm.de>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#~4.1.1",
+    "jquery": "~2.2.3"
+  }
+}

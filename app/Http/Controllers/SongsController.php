@@ -7,8 +7,10 @@ use App\Http\Requests;
 use App\Song;
 use Session;
 
-class SongsController extends Controller
+class SongsController extends ControllersController
 {
+    protected $dates = ['deleted_at'];
+
     public function create(Request $request) {
         $song = new Song();
         $song->name = $request->input('name');

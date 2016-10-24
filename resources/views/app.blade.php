@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>backstage</title>
     <link href="{{ asset('bower_components/normalize-css/normalize.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('dist/frontend-global.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/custom.css') }}">
 </head>
 <body>
 
 <div class="page-wrapper">
     @yield('content')
 </div>
-
-<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('src/scripts/custom.js') }}"></script>
 </body>
 </html>
