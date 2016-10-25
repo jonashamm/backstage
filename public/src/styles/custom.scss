@@ -23,11 +23,22 @@ img {
 
 table {
 	text-align: left;
-
-	tr,
-	th,
-	td {
-		padding:.5em;
+	min-width:100%;
+	border-collapse: collapse;
+}
+tr,
+th,
+td {
+	padding:.5em;
+}
+td {
+	border-top:1px solid lighten($c-darkest,80);
+}
+tr {
+	&:first-child {
+		td {
+			border-top:0;
+		}
 	}
 }
 h1,
@@ -41,7 +52,7 @@ a {
 }
 button {
 	border-radius: .3em;
-	transition: background-color .5s;
+	transition: background-color .2s, color .2s;
 	outline: none;
 	border:0;
 	background: $c-main; //linear-gradient(lighten($c-main,5),darken($c-main,5));
@@ -51,6 +62,20 @@ button {
 	line-height:1.45em;
 	cursor: pointer;
 	box-shadow:1px 1px 5px rgba($c-darkest,.3);
+
+	.user-actions &,
+	&.cancel {
+		background: transparent;
+		color:$c-main;
+		box-shadow: none;
+		padding:.1em;
+
+		&:hover,
+		&:focus {
+			background: transparent;
+			color:darken($c-main,10);
+		}
+	}
 
 	.songs & {
 		height:2.3em;
@@ -72,6 +97,13 @@ button {
 		fill:$c-negative;
 	}
 }
+.song-add-toggler {
+	border-radius:50%;
+	font-size:1.3em;
+	position: fixed;
+	bottom:5%;
+	left:5%;
+}
 input {
 	border:0;
 	padding:.4em .7em;
@@ -91,3 +123,7 @@ input {
 		line-height:1.4em;
 	}
 }
+.user-actions {
+	float:right;
+}
+

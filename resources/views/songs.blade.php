@@ -15,7 +15,7 @@
                 <th>Sänger/in</th>
                 <th>Song</th>
                 <th>Tonart</th>
-                <th>Noten Test</th>
+                <th>Noten</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -25,28 +25,30 @@
             @foreach($songs as $song)
                 <tr>
                     <td>-</td>
-                    <td><strong>{{$song->name}}</strong> (-)</td>
+                    <td><strong>
+                            <a href="{{$baseurl}}/songs/{{$song->id}}">{{$song->name}}</a></strong> (-)</td>
                     <td>-</td>
                     <td><a href="test">-</a></td>
                     <td></td>
                     <td>
-                        <form action="{{$baseurl}}/song/delete/{{$song->id}}" method="post">
+                        <form action="{{$baseurl}}/songs/{{$song->id}}" method="post">
                             {{csrf_field()}}
+                            {{ method_field('delete') }}
                             <button type="submit">@include('icons.delete')</button>
                         </form>
                     </td>
                     <td>
-                        <a href="{{$baseurl}}/song/{{$song->id}}"><button>@include('icons.mode_edit')</button></a>
+                        <a href="{{$baseurl}}/songs/{{$song->id}}"><button>@include('icons.mode_edit')</button></a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
-    <form action="{{$baseurl}}/song/create" method="post">
-        {{csrf_field()}}
-        <input name="name" type="text">
-        <button type="submit">Speichern</button>
-    </form>
+    @include('partials.song-add')
+
+    <button class="song-add-toggler" v-show="!songForm" v-on:click="songForm = !songForm">
+        +
+    </button>
 
 @endsection

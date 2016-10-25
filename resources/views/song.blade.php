@@ -7,8 +7,9 @@
         Den Song {{Session::get('song_name')}} bearbeiten:
     @endif
 
-    <form action="{{$baseurl}}/song/update/{{$song->id}}" method="post">
-        {{csrf_field()}}
+    <form action="{{$baseurl}}/songs/{{$song->id}}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('patch') }}
         <input name="name" type="text" value="{{$song->name}}">
         <button type="submit">Update</button>
     </form>

@@ -1,3 +1,8 @@
-$(document).ready(function(){
-	console.log('jquery running');
-});
+var app = new Vue({
+	el: '#backstage',
+	delimiters: ['[[', ']]'],
+	data: {
+		songForm: false,
+		message: 'Hello Vue!'
+	}
+})

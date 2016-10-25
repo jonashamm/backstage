@@ -7,11 +7,11 @@ use App\Http\Requests;
 use App\Song;
 use Session;
 
-class SongsController extends ControllersController
+class SongsController extends GlobalController
 {
     protected $dates = ['deleted_at'];
 
-    public function create(Request $request) {
+    public function store(Request $request) {
         $song = new Song();
         $song->name = $request->input('name');
         $song->save();
