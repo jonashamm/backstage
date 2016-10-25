@@ -8,3 +8,9 @@ Route::get('/song/{song_id}', 'SongsController@show');
 Route::post('/song/create', 'SongsController@create');
 Route::post('/song/update/{song_id}', 'SongsController@update');
 Route::post('/song/delete/{song_id}', 'SongsController@destroy');
+
+Route::resource('instruments','InstrumentsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
