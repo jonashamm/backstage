@@ -29,7 +29,11 @@ class SongsController extends GlobalController
     }
 
     public function update(Request $request, $song_id) {
+        $attachmentshandler = new AttachmentsController();
         $song = Song::find($song_id);
+        if($request->file('file')) {
+            $attachmentshandler->store($request);
+        }
         $song->name = $request->input('name');
         $song->save();
 

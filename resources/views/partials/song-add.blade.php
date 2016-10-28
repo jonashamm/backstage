@@ -1,4 +1,5 @@
-<div class="song-add-wrapper" v-show="songForm">
+<div class="add-wrapper" v-show="songForm">
+    Bitte gib den Songnamen ein:
     <form action="{{$baseurl}}/songs" method="post">
         {{csrf_field()}}
         <input name="name" type="text">

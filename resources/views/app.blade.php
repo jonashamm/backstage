@@ -13,11 +13,20 @@
 <div class="page-wrapper" id="backstage">
     <div class="user-actions">
         @if(!empty($currentUser))
+            <div class="greeting">
+                Hi {{$currentUser->name}}!
+            </div>
+
+        @endif
+
+        <a href="{{$baseurl}}/instruments">Instrumente</a>
+
+        <a href="{{$baseurl}}/users">Mitglieder</a>
+
+        @if(!empty($currentUser))
             <form action="{{$baseurl}}/logout" method="post">
                 {{csrf_field()}}
-                Hi {{$currentUser->name}}!
                 <button type="submit">Logout</button>
-
             </form>
         @endif
     </div>

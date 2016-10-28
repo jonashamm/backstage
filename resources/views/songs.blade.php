@@ -31,11 +31,7 @@
                     <td><a href="test">-</a></td>
                     <td></td>
                     <td>
-                        <form action="{{$baseurl}}/songs/{{$song->id}}" method="post">
-                            {{csrf_field()}}
-                            {{ method_field('delete') }}
-                            <button type="submit">@include('icons.delete')</button>
-                        </form>
+                        @include('partials.delete-button',['object' => 'song'])
                     </td>
                     <td>
                         <a href="{{$baseurl}}/songs/{{$song->id}}"><button>@include('icons.mode_edit')</button></a>
