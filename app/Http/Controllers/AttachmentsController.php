@@ -12,16 +12,14 @@ class AttachmentsController extends Controller
     public function index() {
         return;
     }
-    public function store(Request $request) {
+    public function store(Request $request, $song_id) {
         $file = $request->file('file');
         $data = $this->getData($file);
-        $this->saveToDB($data);
-
+        $this->handleFile($request,$data);
+        $this->saveToDB($song_id,$data);
         return back();
     }
-    public function update() {
 
-    }
     public function destroy($attachment_id) {
         $attachment = Attachment::find($attachment_id);
         $attachment->delete();
@@ -46,10 +44,15 @@ class AttachmentsController extends Controller
         return $data = array('filename' => $filename,'mime' => $mime);
     }
 
-    public function saveToDB($data) {
+    public function handleFile(Request $request, $data, $path = 'uploads') {
+        $request->file('file')->move($path,$data['filename']);
+    }
+
+    public function saveToDB($song_id = null, $data) {
         $file_in_db = new Attachment();
         $file_in_db->name = $data['filename'];
         $file_in_db->mime = $data['mime'];
+        $file_in_db->song_id = $song_id;
         $file_in_db->save();
         return $file_in_db;
     }

@@ -3,6 +3,15 @@ var app = new Vue({
 	delimiters: ['[[', ']]'],
 	data: {
 		songForm: false,
-		message: 'Hello Vue!'
+		message: 'Hello Vue!',
+		instruments: 0
+	},
+	methods: {
+		instrumentAdd: function() {
+			this.instruments += 1;
+		},
+		instrumentRemove: function(instrument) {
+			this.instruments += 1;
+		}
 	}
 })
