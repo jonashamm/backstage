@@ -1,0 +1,41 @@
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .8s
+}
+.fade-enter, .fade-leave-active {
+	opacity: 0
+}
+
+.bounce-enter-active {
+	animation: bounce-in .5s;
+}
+.bounce-leave-active {
+	animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+	0% {
+		transform: scale(.1);
+		overflow: hidden;
+	}
+	50% {
+		transform: scale(1.05);
+		overflow: hidden;
+	}
+	100% {
+		transform: scale(1);
+		overflow: hidden;
+	}
+}
+@keyframes bounce-out {
+	0% {
+		transform: scale(1);
+		overflow: hidden;
+	}
+	50% {
+		transform: scale(1.05);
+		overflow: hidden;
+	}
+	100% {
+		transform: scale(.1);
+		overflow: hidden;
+	}
+}

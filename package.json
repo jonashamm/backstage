@@ -2,6 +2,7 @@
   "name": "backstage",
   "version": "0.1.0",
   "dependencies": {
+    "axios": "^0.15.3",
     "browser-sync": "*",
     "gulp": "*",
     "gulp-autoprefixer": "*",
@@ -11,6 +12,9 @@
     "gulp-sass": "*",
     "gulp-shell": "*",
     "gulp-svgmin": "*",
-    "gulp-uglify": "*"
+    "gulp-uglify": "^2.0.0",
+    "normalize.css": "^5.0.0",
+    "uglify": "^0.1.5",
+    "vue": "^2.1.4"
   }
 }

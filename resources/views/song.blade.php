@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('content')
-    <h2>Update Song {{$song->name}}</h2>
+    <strong>Song</strong>
+    <h2>{{$song->name}}</h2>
 
     @if (Session::get('song_name'))
         Den Song {{Session::get('song_name')}} bearbeiten:
@@ -13,27 +14,43 @@
         <input name="name" type="text" value="{{$song->name}}">
         <input type="file" multiple name="file"><br>
 
-        {{--<select>
-            @foreach($users as $user)
-                <option value="{{$user->id}}">{{$user->name}}</option>
-            @endforeach
-        </select>--}}
-        <div v-for="(instrument,index) in instruments" >
-            <select name="instruments[]" >
-                @foreach($instruments as $instrument)
-                    <option value="{{$instrument->id}}">{{$instrument->name}}</option>
-                @endforeach
-            </select>
-            <select name="instrument_user">
+        <div v-for="(instrumentInSong,index) in instrumentsInSong">
 
-            </select>
-            <span @click="instrumentRemove(index)">wech</span>
+            <div v-for="instrument in instruments" :class="{'selected': selectedInstrument == instrument}" v-show="selectedInstrument == instrument || !selectedInstrument" class="instrument">
+                <div class="instrument-name" v-on:click="instrumentSelectToggle(instrument)">[[ instrument.name ]]</div>
+                <div class="instrument-user"
+                     v-show="selectedInstrument == instrument"
+                     v-for="instrumentUser in instrument.users"
+                     v-on:click="instrumentUserSelectToggle(instrumentUser)"
+                     :class="{'selected': selectedInstrumentUser == instrumentUser}">
+                    [[ instrumentUser.name ]]
+                </div>
+            </div>
+            <br>
+            <div class="songcast-save"
+                 v-if="selectedInstrumentUser && selectedInstrument"
+                 v-on:click="songcastSave('{{$song->id}}',selectedInstrument, selectedInstrumentUser)">
+                Ok
+            </div>
         </div>
     </form>
-    <button @click="instrumentAdd">Intrument hinzufügen</button><br>
+
+    <div v-for="songcast in song.songcasts">
+        [[ songcast.instrument_user.instrument.name ]] /
+        [[ songcast.instrument_user.user.name ]]
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <transition name="fade">
+        <div v-if="info">Bereits hinzugefügt</div>
+    </transition>
+
+    <button v-on:click="instrumentAdd" v-show="!justAddingInstrument">Intrument hinzufügen</button><br>
     <button type="submit" form="song-update">Update</button>
 
-    [[ instruments.length ]]
 
     <h3>Dateien zum Song:</h3>
     @if(!empty($song->attachments))

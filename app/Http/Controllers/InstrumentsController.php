@@ -12,6 +12,9 @@ class InstrumentsController extends GlobalController
         $instruments = Instrument::all();
         return view('instruments',compact('instruments'));
     }
+    public function indexAPI() {
+        return Instrument::with('users')->orderBy('name')->get();
+    }
     public function store(Request $request) {
         $instrument = new Instrument();
         saverLoop($request,$instrument,['name']);

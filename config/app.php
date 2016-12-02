@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         //
 
         /*

@@ -1,5 +1,6 @@
 @import "colors";
 @import "mixins";
+@import "animations";
 @import "breakpoints";
 
 body {
@@ -173,4 +174,34 @@ header {
 	overflow: hidden;
 	margin-bottom:5em;
 }
+.instrument {
+	cursor: pointer;
+	display: inline-block;
+	padding:.2em .5em;
+	border:1px solid $c-main;
+	border-radius:.2em;
 
+	&.selected {
+		padding:0;
+
+		.instrument-name {
+			padding:.2em .5em;
+			background:$c-main;
+			border-color:transparent;
+			color:$c-negative;
+		}
+	}
+	.instrument-user {
+		padding:.2em .5em;
+		&.selected {
+			background:lighten($c-main,8);
+			color:$c-negative;
+		}
+	}
+}
+.songcast-save {
+	padding:.5em 1em;
+	background:red;
+	cursor: pointer;
+	display: inline-block;
+}

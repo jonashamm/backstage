@@ -13,4 +13,7 @@ class Song extends GlobalModel
     public function attachments() {
         return $this->hasMany('App\Attachment');
     }
+    public function songcasts() {
+        return $this->hasMany('App\Songcast');
+    }
 }

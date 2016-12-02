@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>backstage</title>
-    <link href="{{ asset('bower_components/normalize-css/normalize.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('dist/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css') }}">
 </head>
 <body>
 <div class="page-wrapper" id="backstage">
@@ -38,12 +37,9 @@
             @endif
         </div>
     </header>
-
-
     @yield('content')
 </div>
 
-<script src="{{ asset('bower_components/vue/dist/vue.js') }}"></script>
-<script src="{{ asset('src/scripts/custom.js') }}"></script>
+<script src="{{ asset('dist/all-scripts.min.js') }}"></script>
 </body>
 </html>
