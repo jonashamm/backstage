@@ -11,25 +11,35 @@
 </head>
 <body>
 <div class="page-wrapper" id="backstage">
-    <div class="user-actions">
-        @if(!empty($currentUser))
-            <div class="greeting">
-                Hi {{$currentUser->name}}!
-            </div>
+    <header>
+        <a href="{{url('/')}}" class="logo">
+            @include('icons.backstagepass')
+            <span class="text">
+            backstage
+        </span>
+        </a>
+        <div class="user-actions">
+            @if(!empty($currentUser))
+                <div class="greeting">
+                    Hi {{$currentUser->name}}!
+                </div>
 
-        @endif
+            @endif
 
-        <a href="{{$baseurl}}/instruments">Instrumente</a>
+            <a href="{{$baseurl}}/instruments">Instrumente</a>
 
-        <a href="{{$baseurl}}/users">Mitglieder</a>
+            <a href="{{$baseurl}}/users">Mitglieder</a>
 
-        @if(!empty($currentUser))
-            <form action="{{$baseurl}}/logout" method="post">
-                {{csrf_field()}}
-                <button type="submit">Logout</button>
-            </form>
-        @endif
-    </div>
+            @if(!empty($currentUser))
+                <form action="{{$baseurl}}/logout" method="post">
+                    {{csrf_field()}}
+                    <button type="submit">Logout</button>
+                </form>
+            @endif
+        </div>
+    </header>
+
+
     @yield('content')
 </div>
 

@@ -4,14 +4,15 @@ var app = new Vue({
 	data: {
 		songForm: false,
 		message: 'Hello Vue!',
-		instruments: 0
+		instruments: []
 	},
 	methods: {
 		instrumentAdd: function() {
-			this.instruments += 1;
+			this.instruments.push(this.instruments[this.instruments.length - 1]);
 		},
-		instrumentRemove: function(instrument) {
-			this.instruments += 1;
+		instrumentRemove: function(index) {
+			alert(index);
+			this.instruments.splice(index,1);
 		}
 	}
 })

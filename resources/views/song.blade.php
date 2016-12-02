@@ -18,14 +18,22 @@
                 <option value="{{$user->id}}">{{$user->name}}</option>
             @endforeach
         </select>--}}
-        <select v-for="instrument in instruments" name="instruments[]">
-            @foreach($instruments as $instrument)
-                <option value="{{$instrument->id}}">{{$instrument->name}}</option>
-            @endforeach
-        </select>
+        <div v-for="(instrument,index) in instruments" >
+            <select name="instruments[]" >
+                @foreach($instruments as $instrument)
+                    <option value="{{$instrument->id}}">{{$instrument->name}}</option>
+                @endforeach
+            </select>
+            <select name="instrument_user">
+
+            </select>
+            <span @click="instrumentRemove(index)">wech</span>
+        </div>
     </form>
     <button @click="instrumentAdd">Intrument hinzufügen</button><br>
     <button type="submit" form="song-update">Update</button>
+
+    [[ instruments.length ]]
 
     <h3>Dateien zum Song:</h3>
     @if(!empty($song->attachments))

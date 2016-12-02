@@ -53,6 +53,26 @@ h4 {
 a {
 	color:$c-main;
 }
+.logo {
+	border:3px solid $c-darkest;
+	border-top:0;
+	padding:0 .5em 0 .2em;
+	border-bottom-right-radius:1.2em;
+	opacity:.3;
+
+	svg {
+		max-width:2em;
+		position: relative;
+		top:.3em;
+	}
+	.text {
+		font-weight: bold;
+		font-size:1.2em;
+		position: relative;
+		top:.1em;
+		color:$c-darkest;
+	}
+}
 button {
 	border-radius: .3em;
 	transition: background-color .2s, color .2s;
@@ -148,5 +168,9 @@ input {
 
 h3 {
 	margin-top:3em;
+}
+header {
+	overflow: hidden;
+	margin-bottom:5em;
 }
 

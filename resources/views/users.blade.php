@@ -5,7 +5,7 @@
     <ul class="instruments">
         @foreach($users as $user)
             <li>
-                {{$user->name}}
+                <a href="{{url('/')}}/users/{{$user->id}}">{{$user->name}}</a>
                 @include('partials.delete-button',['object' => 'user'])
             </li>
         @endforeach

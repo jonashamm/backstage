@@ -21,6 +21,6 @@ class User extends Authenticatable
 
     public function instruments()
     {
-        return $this->hasMany('App\Instrument');
+        return $this->belongsToMany('App\Instrument');
     }
 }
