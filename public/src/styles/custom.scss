@@ -1,4 +1,5 @@
 @import "colors";
+@import "shadows";
 @import "mixins";
 @import "animations";
 @import "breakpoints";
@@ -204,4 +205,24 @@ header {
 	background:red;
 	cursor: pointer;
 	display: inline-block;
+}
+.info {
+	color:$c-negative;
+	font-weight: bold;
+	border-radius:.2em;
+	box-shadow:$shadow-material;
+}
+.info-warn {
+	background: $c-warn;
+}
+.songcasts {
+	display: flex;
+	.instrument {
+		min-width:6em;
+		background: $c-main;
+		color:$c-negative;
+		float:left;
+		clear: both;
+		margin-bottom:.5em;
+	}
 }

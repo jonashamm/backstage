@@ -83,7 +83,7 @@ class SongsController extends GlobalController
             $newSongcast = Songcast::with('instrument_user.instrument', 'instrument_user.user')->find($songcast->id);
             return $newSongcast;
         }
-
+        return false;
 
     }
 }

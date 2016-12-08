@@ -76,7 +76,6 @@ class SongcastsController extends Controller
     public function edit($id)
     {
         $songcast = Songcast::findOrFail($id);
-
         return view('songcasts.edit', compact('songcast'));
     }
 
