@@ -28,7 +28,7 @@ gulp.task('sass', function() {
 			browsers: ['last 2 versions'],
 			cascade: false
 		}))
-		.pipe(cssnano())
+		// .pipe(cssnano())
 		.pipe(rename({
 			suffix: ".min"
 		}))
@@ -43,7 +43,7 @@ gulp.task('compileJS',function() {
 		folderSrc + 'js/custom.js'
 	])
 		.pipe(concat('all-scripts.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(rename({
 			suffix: '.min'
 		}))

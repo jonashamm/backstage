@@ -16,10 +16,14 @@
     </form>
 
     <h3>Besetzung:</h3>
-    <div v-for="songcast in song.songcasts" class="songcasts">
-        <div class="instrument">[[ songcast.instrument_user.instrument.name ]]</div>
-        <div class="user">[[ songcast.instrument_user.user.name ]]</div>
-    </div>
+    <transition-group name="list">
+        <div v-for="(songcast, index) in song.songcasts" class="songcasts" v-bind:key="songcast">
+            <div class="instrument">[[ songcast.instrument_user.instrument.name ]]</div>
+            <div class="user">[[ songcast.instrument_user.user.name ]]</div>
+            <button v-on:click="songcastDelete(songcast, index)">x</button>
+        </div>
+    </transition-group>
+
 <br><br>
     <div v-for="(instrumentInSong,index) in instrumentsInSong">
 

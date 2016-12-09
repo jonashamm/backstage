@@ -54,7 +54,7 @@ var app = new Vue({
 		},
 		songcastSave: function(song_id,instrument,user) {
 			var _this = this;
-			axios.get(baseurl + 'song-cast-add/' + song_id + '/' + instrument.id + '/' + user.id)
+			axios.get(baseurl + 'songcast/add/' + song_id + '/' + instrument.id + '/' + user.id)
 				.then(function (response) {
 					if(response.data) {
 						_this.song.songcasts.push(response.data);
@@ -71,6 +71,19 @@ var app = new Vue({
 						_this.info = false;
 					}, 3000);
 				});
+		},
+		songcastDelete: function(songcast, index) {
+			var _this = this;
+			if(songcast.id) {
+				axios.delete(baseurl + 'songcasts/' + songcast.id)
+					.then(function (response) {
+						_this.song.songcasts.splice(index,1);
+					})
+					.catch(function (error) {
+						_this.song.songcasts.splice(index,1);
+					});
+			}
+
 		}
 	}
 })

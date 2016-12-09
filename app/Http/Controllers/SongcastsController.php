@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Songcast;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class SongcastsController extends Controller
 {
@@ -32,6 +33,26 @@ class SongcastsController extends Controller
     {
         return view('songcasts.create');
     }
+
+	public function add($song_id,$instrument_id,$user_id) {
+		$instrument_user = DB::table('instrument_user')
+		                     ->where('instrument_id',$instrument_id)
+		                     ->where('user_id',$user_id)
+		                     ->first();
+
+		$existing_songcast = Songcast::where('song_id',$song_id)->where('instrument_user_id',$instrument_user->id)->first();
+
+		if(empty($existing_songcast)) {
+			$songcast = new Songcast();
+			$songcast->song_id = $song_id;
+			$songcast->instrument_user_id = $instrument_user->id;
+			$songcast->save();
+
+			$newSongcast = Songcast::with('instrument_user.instrument', 'instrument_user.user')->find($songcast->id);
+			return $newSongcast;
+		}
+		return false;
+	}
 
     /**
      * Store a newly created resource in storage.
