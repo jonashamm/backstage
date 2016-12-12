@@ -11,6 +11,7 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -21,6 +22,6 @@ class User extends Authenticatable
 
     public function instruments()
     {
-        return $this->belongsToMany('App\Instrument');
+        return $this->belongsToMany('App\Instrument', 'casts');
     }
 }

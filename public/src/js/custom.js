@@ -28,6 +28,12 @@ var app = new Vue({
 			_this.song = response.data;
 		});
 	},
+	computed: {
+		/*orderx: function () {
+			return this.song.songcasts;
+			console.log(this.song.songcasts)
+		}*/
+	},
 	methods: {
 		test: function(input) {
 			alert(input)

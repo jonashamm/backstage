@@ -30,16 +30,15 @@ class SongsController extends GlobalController
     public function show($song_id) {
         $users = User::all();
         $instruments = Instrument::with('users')->get();
-        $song = Song::with('attachments')
-            ->with('songcasts.instrument_user.instrument', 'songcasts.instrument_user.user')
-            ->find($song_id);
+	    $song = Song::with('attachments')
+	                ->with('songcasts.cast.instrument','songcasts.cast.user')
+	                ->find($song_id);
 
-//        return $song;
         return view('song', compact('song','users','instruments'));
     }
     public function showAPI($song_id) {
         $song = Song::with('attachments')
-            ->with('songcasts.instrument_user.instrument', 'songcasts.instrument_user.user')
+            ->with('songcasts.cast.instrument', 'songcasts.cast.user')
             ->find($song_id);
 
         return $song;

@@ -35,20 +35,20 @@ class SongcastsController extends Controller
     }
 
 	public function add($song_id,$instrument_id,$user_id) {
-		$instrument_user = DB::table('instrument_user')
+		$cast = DB::table('casts')
 		                     ->where('instrument_id',$instrument_id)
 		                     ->where('user_id',$user_id)
 		                     ->first();
 
-		$existing_songcast = Songcast::where('song_id',$song_id)->where('instrument_user_id',$instrument_user->id)->first();
+		$existing_songcast = Songcast::where('song_id',$song_id)->where('cast_id',$cast->id)->first();
 
 		if(empty($existing_songcast)) {
 			$songcast = new Songcast();
 			$songcast->song_id = $song_id;
-			$songcast->instrument_user_id = $instrument_user->id;
+			$songcast->cast_id = $cast->id;
 			$songcast->save();
 
-			$newSongcast = Songcast::with('instrument_user.instrument', 'instrument_user.user')->find($songcast->id);
+			$newSongcast = Songcast::with('cast.instrument', 'cast.user')->find($songcast->id);
 			return $newSongcast;
 		}
 		return false;

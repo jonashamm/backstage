@@ -8,8 +8,8 @@ class Songcast extends Model
 {
     protected $table = 'songcasts';
 
-    public function instrument_user()
+    public function cast()
     {
-        return $this->belongsTo('App\InstrumentUserPivot');
+        return $this->belongsTo('App\Cast');
     }
 }

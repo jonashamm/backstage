@@ -18,8 +18,8 @@
     <h3>Besetzung:</h3>
     <transition-group name="list">
         <div v-for="(songcast, index) in song.songcasts" class="songcasts" v-bind:key="songcast">
-            <div class="instrument">[[ songcast.instrument_user.instrument.name ]]</div>
-            <div class="user">[[ songcast.instrument_user.user.name ]]</div>
+            <div class="instrument">[[ songcast.cast.instrument.name ]]</div>
+            <div class="user">[[ songcast.cast.user.name ]]</div>
             <button v-on:click="songcastDelete(songcast, index)">x</button>
         </div>
     </transition-group>
