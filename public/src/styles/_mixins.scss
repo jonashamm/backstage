@@ -1,11 +1,17 @@
+@mixin buttonColor($color:$c-main) {
+	background: $color; //linear-gradient(lighten($c-main,5),darken($c-main,5));
+
+	&:hover,
+	&:focus {
+		background: lighten($color,15);
+	}
+}
 @mixin ghostbutton() {
 	display: inline-block;
-	color: $c-accent;
-	text-transform: uppercase;
-	font-weight:700;
+	color: $c-main;
 	padding:.5em;
 	font-size:.8em;
-	border:2px solid $c-accent;
+	border:1px solid $c-main;
 	background-color: transparent;
 }
 
@@ -14,4 +20,13 @@
 	background: $color1; /* Old browsers */
 	background: -webkit-linear-gradient(top,  $color1 0%,$color2 100%); /* Chrome10+,Safari5.1+ */
 	background: linear-gradient(to bottom,  $color1 0%,$color2 100%); /* W3C */
+}
+
+$shadow-standard: 1px 1px 5px rgba($c-darkest,.25);
+$shadow-material: 2px 3px 15px rgba($c-darkest,.3);
+
+@mixin nobutton() {
+	background:none;
+	box-shadow:none;
+	border-radius:0;
 }

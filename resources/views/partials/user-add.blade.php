@@ -1,4 +1,4 @@
-<div class="add-wrapper" {{--v-show="songForm"--}}>
+<div class="add-wrapper" v-show="userForm">
     Bitte gib den Usernamen ein:
     <form action="{{$baseurl}}/users" method="post">
         {{csrf_field()}}
@@ -6,7 +6,7 @@
         <input name="email" type="email">
         <button type="submit">Speichern</button>
     </form>
-    <button class="cancel"{{-- v-on:click="songForm = false"--}}>
+    <button class="cancel" v-on:click="userForm = false">
         Abbrechen
     </button>
 </div>

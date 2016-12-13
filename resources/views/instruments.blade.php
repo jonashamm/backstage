@@ -1,27 +1,33 @@
 @extends('app')
 
 @section('content')
-    <h2>Unsere Instrumente</h2>
+    <div class="instruments-list">
+        <div class="inner">
+            <h2>Unsere Instrumente</h2>
 
-    @if (Session::get('instrument_name'))
-        <em class="info success">
-            Das Instrument {{Session::get('instrument_name')}} wurde erfolgreich gelöscht!
-        </em>
-    @endif
+            @if (Session::get('instrument_name'))
+                <em class="info success">
+                    Das Instrument {{Session::get('instrument_name')}} wurde erfolgreich gelöscht!
+                </em>
+            @endif
 
-    <ul class="instruments">
-        @foreach($instruments as $instrument)
-            <li>
-                {{$instrument->name}}
-                @include('partials.delete-button',['object' => 'instrument'])
-            </li>
-        @endforeach
-    </ul>
+            <ul class="instruments">
+                @foreach($instruments as $instrument)
+                    <li>
+                        <div class="name">
+                            {{$instrument->name}}
+                        </div>
 
-    @include('partials.instrument-add')
+                        @include('partials.delete-button',['object' => 'instrument'])
+                    </li>
+                @endforeach
+            </ul>
 
-    <button class="song-add-toggler" v-show="!songForm" v-on:click="songForm = !songForm">
-        +
-    </button>
+            @include('partials.instrument-add')
 
+            <button class="song-add-toggler" v-show="!instrumentForm" v-on:click="instrumentForm = !instrumentForm">
+                +
+            </button>
+        </div>
+    </div>
 @endsection

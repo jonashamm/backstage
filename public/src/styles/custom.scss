@@ -1,5 +1,4 @@
 @import "colors";
-@import "shadows";
 @import "mixins";
 @import "animations";
 @import "breakpoints";
@@ -14,9 +13,10 @@ body {
 	max-width:90em;
 	margin-left:auto;
 	margin-right:auto;
-	padding:2em 5%;
 }
-
+.inner {
+	padding:0 5%;
+}
 svg,
 img {
 	max-width: 100%;
@@ -37,7 +37,7 @@ td {
 	padding:.5em;
 }
 td {
-	border-top:1px solid lighten($c-darkest,80);
+	border-top:1px solid $c-border;
 }
 tr {
 	&:first-child {
@@ -76,11 +76,11 @@ a {
 	}
 }
 button {
+	@include buttonColor;
 	border-radius: .3em;
 	transition: background-color .2s, color .2s;
 	outline: none;
 	border:0;
-	background: $c-main; //linear-gradient(lighten($c-main,5),darken($c-main,5));
 	color:$c-negative;
 	padding:.5em 1em;
 	box-sizing: border-box;
@@ -112,10 +112,7 @@ button {
 		padding: .5em;
 	}
 
-	&:hover,
-	&:focus {
-		background: lighten($c-main,5);
-	}
+
 	&:active {
 		background: linear-gradient(darken($c-main,1),lighten($c-main,2));
 		box-shadow:none;
@@ -123,6 +120,31 @@ button {
 
 	path {
 		fill:$c-negative;
+	}
+}
+ul {
+	&.instruments,
+	&.users {
+		list-style-type: none;
+		margin:0;
+		padding:0;
+
+		li {
+			border-bottom:1px solid $c-border;
+			clear:both;
+			overflow: hidden;
+			padding:.2em 0;
+
+			form {
+				float:right;
+				margin-right:.2em;
+			}
+		}
+		.name {
+			position: relative;
+			top:.75em;
+			float:left;
+		}
 	}
 }
 .song-add-toggler {
@@ -134,7 +156,7 @@ button {
 }
 input {
 	border:0;
-	padding:.4em .7em;
+	padding:.65em .7em;
 	border-radius:.2em;
 	box-shadow: 1px 1px 3px rgba($c-darkest,.4) inset;
 }
@@ -168,17 +190,18 @@ input {
 	margin:2em 0;
 }
 
-h3 {
-	margin-top:3em;
-}
 header {
 	overflow: hidden;
 	margin-bottom:5em;
+
+	.inner {
+		padding-top:1em;
+	}
 }
 .instrument {
 	cursor: pointer;
 	display: inline-block;
-	padding:.2em .5em;
+	padding:.4em .5em .2em .5em;
 	border:1px solid $c-main;
 	border-radius:.2em;
 
@@ -202,27 +225,88 @@ header {
 }
 .songcast-save {
 	padding:.5em 1em;
-	background:red;
 	cursor: pointer;
 	display: inline-block;
+	color:$c-negative;
+	@include buttonColor($c-action);
+
 }
 .info {
 	color:$c-negative;
 	font-weight: bold;
 	border-radius:.2em;
+	margin:.5em 0;
 	box-shadow:$shadow-material;
 }
 .info-warn {
 	background: $c-warn;
 }
 .songcasts {
-	display: flex;
+	display: inline-block;
+
+	position: relative;
+	border-radius:.2em;
+	margin:0em .5em .6em 0;
+	font-size:1.1em;
+	box-shadow: 2px 3px 15px rgba($c-darkest,.1);
+
 	.instrument {
-		min-width:6em;
+		min-width:7em;
 		background: $c-main;
 		color:$c-negative;
 		float:left;
 		clear: both;
-		margin-bottom:.5em;
+		border-radius:0;
+		font-weight: bold;
 	}
+	.user {
+		clear: both;
+		padding:.2em .5em;
+		background: rgba($c-main,.3);
+	}
+	.delete {
+		display: none;
+		position: absolute;
+		top:0;
+		right:0;
+		padding:0;
+		margin-top:.2em;
+		width:1em;
+		height:1em;
+		@include nobutton;
+
+		path {
+			fill:$c-negative;
+		}
+	}
+
+	&:hover {
+		.delete {
+			display: block;
+		}
+	}
+}
+.songcast {
+	padding:1em 0 2em;
+	background:rgba($c-negative,.5);
+	margin:2em 0 0;
+
+	.cancel {
+		@include ghostbutton();
+		padding:.2em .5em;
+		font-size:.8em;
+		margin-top:1em;
+	}
+
+	.add {
+		margin-top:2em;
+		.instrument {
+			margin:.2em .5em .5em 0;
+			min-width:7em;
+		}
+		strong {
+			color:$c-main;
+		}
+	}
+
 }

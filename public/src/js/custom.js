@@ -8,6 +8,8 @@ var app = new Vue({
 	delimiters: ['[[', ']]'],
 	data: {
 		songForm: false,
+		userForm: false,
+		instrumentForm: false,
 		message: 'Hello Vue!',
 		instrumentsInSong: [],
 		instrumentUser: '',
@@ -16,7 +18,9 @@ var app = new Vue({
 		selectedInstrument: '',
 		selectedInstrumentUser: '',
 		justAddingInstrument: false,
-		info: ''
+		info: '',
+		sortedSongcasts: ''
+
 	},
 	mounted: function() {
 		var _this = this;
@@ -28,15 +32,21 @@ var app = new Vue({
 			_this.song = response.data;
 		});
 	},
-	computed: {
-		/*orderx: function () {
-			return this.song.songcasts;
-			console.log(this.song.songcasts)
-		}*/
-	},
+/*	computed: {
+		sortSongcastsComputed: function () {
+			this.song.songcasts.sort(this.sortSongcasts);
+		}
+	},*/
 	methods: {
+		sortSongcasts: function (a,b) {
+			if (a.cast.instrument.name < b.cast.instrument.name)
+				return -1;
+			if (a.cast.instrument.name > b.cast.instrument.name)
+				return 1;
+			return 0;
+		},
 		test: function(input) {
-			alert(input)
+			console.log(this.sortSongcastsComputed);
 		},
 		instrumentAdd: function() {
 			this.instrumentsInSong.push('asd');
@@ -57,6 +67,12 @@ var app = new Vue({
 		instrumentUserSelectToggle: function(user) {
 			this.selectedInstrumentUser = '';
 			this.selectedInstrumentUser = user;
+		},
+		instrumentAddCancel: function() {
+			this.justAddingInstrument = false;
+			this.instrumentsInSong = [];
+			this.selectedInstrument = '';
+			this.selectedInstrumentUser = '';
 		},
 		songcastSave: function(song_id,instrument,user) {
 			var _this = this;
