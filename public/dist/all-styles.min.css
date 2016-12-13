@@ -543,19 +543,19 @@ button {
   button path {
     fill: #fff; }
 
-ul.instruments, ul.users {
+ul.instruments, ul.users, ul.instruments-linked {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-  ul.instruments li, ul.users li {
+  ul.instruments li, ul.users li, ul.instruments-linked li {
     border-bottom: 1px solid #cccccc;
     clear: both;
     overflow: hidden;
     padding: .2em 0; }
-    ul.instruments li form, ul.users li form {
+    ul.instruments li form, ul.users li form, ul.instruments-linked li form {
       float: right;
       margin-right: .2em; }
-  ul.instruments .name, ul.users .name {
+  ul.instruments .name, ul.users .name, ul.instruments-linked .name {
     position: relative;
     top: .75em;
     float: left; }
@@ -698,3 +698,13 @@ header {
       min-width: 7em; }
     .songcast .add strong {
       color: #009999; }
+
+.user h1 {
+  margin-bottom: 0; }
+
+.user .instruments-linked {
+  padding: 1em 0; }
+  .user .instruments-linked .unlink {
+    font-size: 1.2em;
+    padding: .2em .35em 0;
+    width: 1.5em; }

@@ -3,12 +3,24 @@
 @section('content')
     <div class="user">
         <div class="inner">
-            <h2> {{$user->name}}</h2>
+            <h1 class="username">{{$user->name}}</h1>
+            <strong>spielt folgende Instrumente:</strong><br>
 
-            <h3>User spielt folgende Instrumente:</h3>
-            @foreach($user->instruments as $instrument)
-                {{$instrument->name}}<br>
-            @endforeach
+            <ul class="instruments-linked">
+                @foreach($user->instruments as $instrument)
+                    <li>
+                        <div class="name">
+                            {{$instrument->name}}
+                        </div>
+                        <form method="post" action="{{url('/')}}/casts/{{$user->id}}/{{$instrument->id}}" {{--v-on:click="instrumentUserUnlink()"--}}>
+                            {{ csrf_field() }}
+                            {{ method_field('delete') }}
+                            <button type="submit" class="unlink">@include('icons.chain-broken')</button>
+                        </form>
+                    </li>
+                @endforeach
+            </ul>
+
 
             <h3>Instrument hinzufügen</h3>
 

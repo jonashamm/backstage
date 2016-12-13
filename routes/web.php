@@ -17,3 +17,5 @@ Route::get('api/song/{song_id}','SongsController@showAPI');
 
 Route::get('songcast/add/{song_id}/{instrument_id}/{user_id}','SongcastsController@add');
 Route::resource('songcasts', 'SongcastsController');
+
+Route::delete('casts/{user_id}/{instrument_id}','CastsController@destroy');
