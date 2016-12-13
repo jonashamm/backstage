@@ -17,6 +17,8 @@
                         <div class="name">
                             {{$instrument->name}}
                         </div>
+                        <div class="icon">
+                        </div>
 
                         @include('partials.delete-button',['object' => 'instrument'])
                     </li>

@@ -186,6 +186,9 @@ input {
 	a {
 		text-decoration: none;
 	}
+	.greeting {
+		color:lighten($c-copy,35);
+	}
 }
 .add-wrapper {
 	margin:2em 0;
@@ -324,5 +327,17 @@ header {
 
 			width:1.5em;
 		}
+	}
+}
+
+.instruments-list {
+	.icon {
+		width:2em;
+		float:left;
+		position: relative;
+		left:.5em;
+		top:.25em;
+
+
 	}
 }

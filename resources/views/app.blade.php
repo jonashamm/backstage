@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css') }}">
 </head>
 <body>
-<div class="page-wrapper" id="backstage">
+<div class="page-wrapper page-{{alphanumeric(Route::getCurrentRoute()->getPath())}}" id="backstage">
     <header>
         <div class="inner">
             <a href="{{url('/')}}" class="logo">

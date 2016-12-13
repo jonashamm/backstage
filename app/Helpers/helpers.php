@@ -27,3 +27,6 @@ function generateRandomString($length = 15) {
     }
     return $randomString;
 }
+function alphanumeric($input) {
+	return preg_replace("/[^a-zA-Z0-9]+/", "", $input);
+}

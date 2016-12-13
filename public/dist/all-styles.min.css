@@ -593,6 +593,8 @@ input {
     padding: .5em; }
   .user-actions a {
     text-decoration: none; }
+  .user-actions .greeting {
+    color: #818181; }
 
 .add-wrapper {
   margin: 2em 0; }
@@ -708,3 +710,10 @@ header {
     font-size: 1.2em;
     padding: .2em .35em 0;
     width: 1.5em; }
+
+.instruments-list .icon {
+  width: 2em;
+  float: left;
+  position: relative;
+  left: .5em;
+  top: .25em; }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Cast;
-use Illuminate\Http\Request;
 
 class CastsController extends Controller
 {
