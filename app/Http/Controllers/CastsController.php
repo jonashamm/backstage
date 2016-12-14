@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cast;
 
-class CastsController extends Controller
+class CastsController extends GlobalController
 {
 	public function destroy($user_id, $instrument_id) {
 		$cast = Cast

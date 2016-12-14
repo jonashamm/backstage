@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 
-class SongcastsController extends Controller
+class SongcastsController extends GlobalController
 {
     /**
      * Display a listing of the resource.

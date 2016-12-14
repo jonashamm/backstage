@@ -7,7 +7,7 @@ use App\Http\Requests;
 use Carbon\Carbon;
 use App\Attachment;
 
-class AttachmentsController extends Controller
+class AttachmentsController extends GlobalController
 {
     public function index() {
         return;
