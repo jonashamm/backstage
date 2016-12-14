@@ -26,7 +26,17 @@
                 <tbody>
                 @foreach($songs as $song)
                     <tr>
-                        <td>-</td>
+                        <td>
+                            @if(!empty($song->songcasts))
+                                @foreach($song->songcasts as $songcast)
+                                    @if($songcast->cast->instrument->name == "Gesang")
+                                        {{$songcast->cast->user->name}}<br>
+                                    @endif
+                                @endforeach
+                            @else
+                                -
+                            @endif
+                        </td>
                         <td><strong>
                                 <a href="{{$baseurl}}/songs/{{$song->id}}">{{$song->name}}</a></strong> (-)</td>
                         <td>-</td>

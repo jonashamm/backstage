@@ -24,7 +24,8 @@ class SongsController extends GlobalController
     }
 
     public function index() {
-        $songs = Song::all();
+        $songs = Song::with('songcasts.cast.user','songcasts.cast.instrument')->get();
+
         return view('songs', compact('songs'));
     }
     public function show($song_id) {
