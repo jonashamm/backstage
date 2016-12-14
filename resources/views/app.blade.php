@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-    <link href='https://fonts.googleapis.com/css?family=Catamaran:400,700|Cambay:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Catamaran:400,700' rel='stylesheet' type='text/css'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,7 +23,6 @@
                     <div class="greeting">
                         Hi {{$currentUser->name}}!
                     </div>
-
                 @endif
 
                 <a href="{{$baseurl}}/instruments">Instrumente</a>

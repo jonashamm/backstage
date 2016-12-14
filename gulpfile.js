@@ -38,7 +38,7 @@ gulp.task('sass', function() {
 
 gulp.task('compileJS',function() {
 	return gulp.src( [
-		'node_modules/vue/dist/vue.js',
+		'node_modules/vue/dist/vue.min.js',
 		'node_modules/axios/dist/axios.js',
 		folderSrc + 'js/custom.js'
 	])
