@@ -22,7 +22,7 @@
         <div class="inner">
             <h3>Besetzung:</h3>
             <transition-group name="list">
-                <div v-for="(songcast, index) in sortedSongcasts" class="songcasts" v-bind:key="songcast">
+                <div v-for="(songcast, index) in song.songcasts" class="songcasts" v-bind:key="songcast">
                     <div class="instrument">[[ songcast.cast.instrument.name ]]</div>
                     <div class="user">[[ songcast.cast.user.name ]]</div>
                     <button v-on:click="songcastDelete(songcast, index)" class="delete">@include('icons.bin')</button>
