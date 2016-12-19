@@ -35,7 +35,6 @@ class SongsController extends GlobalController
 	                ->with('songcasts.cast.instrument','songcasts.cast.user')
 	                ->find($song_id);
 
-
         return view('song', compact('song','users','instruments'));
     }
     public function showAPI($song_id) {

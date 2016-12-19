@@ -197,6 +197,7 @@ input {
 header {
 	overflow: hidden;
 	margin-bottom:5em;
+	padding-bottom:.5em;
 
 	.inner {
 		padding-top:1em;
@@ -340,4 +341,28 @@ header {
 
 
 	}
+}
+
+.login,
+.register {
+
+	label {
+		display: block;
+		margin-top:1em;
+	}
+	.password-forgotten {
+		display: block;
+		margin-top:.5em;
+		font-size:.9em;
+	}
+}
+button[type=submit] {
+	margin-top:1em;
+}
+
+#__bs_notify__ {
+	font-size:.5em !important;
+	opacity:.2;
+	height:1em;
+	overflow: hidden;
 }

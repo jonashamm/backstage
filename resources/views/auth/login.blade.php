@@ -33,9 +33,11 @@
                     Login
                 </button>
 
-                <a href="{{ url('/password/reset') }}">
+                <a class="password-forgotten" href="{{ url('/password/reset') }}">
                     Forgot Your Password?
                 </a>
+                <br>
+                <a href="{{ url('/register') }}">Not registered yet?</a>
             </form>
         </div>
     </div>
