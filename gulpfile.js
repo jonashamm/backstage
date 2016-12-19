@@ -56,12 +56,20 @@ gulp.task('startArtisanServer', shell.task([
 ]));
 
 gulp.task('svgmin', function () {
-	return gulp.src('public/src/img/ui/**')
+	return gulp.src('public/src/img/ui/*.*')
 		.pipe(svgmin())
 		.pipe(rename(function(path) {
 			path.extname = ".blade.php"
 		}))
 		.pipe(gulp.dest('resources/views/icons/'))
+});
+
+gulp.task('renameSVGs', function () {
+	return gulp.src('public/src/img/ui/instruments/*.*')
+		.pipe(rename(function(path) {
+			path.extname = ".blade.php"
+		}))
+		.pipe(gulp.dest('resources/views/icons/instruments/'))
 });
 
 // Static server

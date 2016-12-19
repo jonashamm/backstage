@@ -18,8 +18,8 @@
                             {{$instrument->name}}
                         </div>
                         <div class="icon">
+                 {{--           @include('icon-files.instruments.acoustic-guitar')--}}
                         </div>
-
                         @include('partials.delete-button',['object' => 'instrument'])
                     </li>
                 @endforeach

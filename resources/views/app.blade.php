@@ -13,7 +13,7 @@
     <header>
         <div class="inner">
             <a href="{{url('/')}}" class="logo">
-                @include('icons.backstagepass')
+                @include('icon-files.backstagepass')
                 <span class="text">
             backstage
         </span>

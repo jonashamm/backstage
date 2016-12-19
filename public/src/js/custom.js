@@ -105,7 +105,16 @@ var app = new Vue({
 						_this.song.songcasts.splice(index,1);
 					});
 			}
-
+		},
+		attachmentDelete: function(attachment, index) {
+			var _this = this;
+			axios.delete(baseurl + 'attachments/' + attachment.id)
+				.then(function (response) {
+					_this.song.attachments.splice(index,1);
+				})
+				.catch(function (error) {
+					_this.song.attachments.splice(index,1);
+				});
 		}
 	}
 })

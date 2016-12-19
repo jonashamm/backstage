@@ -6,24 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
 use App\Attachment;
+use File;
 
 class AttachmentsController extends GlobalController
 {
     public function index() {
         return;
     }
-    public function store(Request $request, $song_id) {
-        $file = $request->file('file');
+    public function store(Request $request, $song_id, $file) {
         $data = $this->getData($file);
-        $this->handleFile($request,$data);
+        $this->handleFile($request,$data,$file);
         $this->saveToDB($song_id,$data);
         return back();
     }
 
     public function destroy($attachment_id) {
         $attachment = Attachment::find($attachment_id);
+	    File::delete(url('/uploads/'.$attachment->name));
         $attachment->delete();
-        return back();
     }
 
     // Custom helper functions
@@ -44,8 +44,8 @@ class AttachmentsController extends GlobalController
         return $data = array('filename' => $filename,'mime' => $mime);
     }
 
-    public function handleFile(Request $request, $data, $path = 'uploads') {
-        $request->file('file')->move($path,$data['filename']);
+    public function handleFile(Request $request, $data, $file, $path = 'uploads') {
+	    $file->move($path,$data['filename']);
     }
 
     public function saveToDB($song_id = null, $data) {
@@ -56,4 +56,5 @@ class AttachmentsController extends GlobalController
         $file_in_db->save();
         return $file_in_db;
     }
+
 }

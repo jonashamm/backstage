@@ -6,7 +6,7 @@
 body {
 	background-color: $c-fond;
 	color:$c-copy;
-	font-family: Catamaran;
+	font-family: Arial;
 	min-width:320px;
 }
 .page-wrapper {
@@ -34,7 +34,7 @@ a {
 tr,
 th,
 td {
-	padding:.5em;
+	padding:0;
 }
 td {
 	border-top:1px solid $c-border;
@@ -338,8 +338,6 @@ header {
 		position: relative;
 		left:.5em;
 		top:.25em;
-
-
 	}
 }
 
@@ -365,4 +363,31 @@ button[type=submit] {
 	opacity:.2;
 	height:1em;
 	overflow: hidden;
+}
+.instruments {
+	.icon {
+		width:1.75em;
+		height:1.75em;
+		path {
+			fill:$c-main;
+		}
+	}
+}
+.songs {
+	.sheet {
+
+
+		a {
+			display: inline-block;
+			width: 220px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+.song {
+	label {
+		display: block;
+	}
 }

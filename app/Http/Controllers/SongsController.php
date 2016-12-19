@@ -48,10 +48,22 @@ class SongsController extends GlobalController
     public function update(Request $request, $song_id) {
         $attachmentshandler = new AttachmentsController();
         $song = Song::find($song_id);
-        if($request->file('file')) {
-            $attachmentshandler->store($request, $song_id);
+        $sheets = $request->file('sheet');
+	    $soundfiles = $request->file('soundfile');
+
+        if ( $sheets ) {
+        	foreach($sheets as $file) {
+		        $attachmentshandler->store($request, $song_id, $file);
+	        }
         }
-        $song->name = $request->input('name');
+	    if ( $soundfiles ) {
+		    foreach($soundfiles as $file) {
+			    $attachmentshandler->store($request, $song_id, $file);
+		    }
+	    }
+
+	    saverLoop($request,$song,
+		    ['name','key','duration','link_to_original','original_performer','extrainfo']);
         $song->save();
 
         return back();
@@ -65,6 +77,4 @@ class SongsController extends GlobalController
         Session::flash('song_name', $song_name);
         return back();
     }
-
-
 }
