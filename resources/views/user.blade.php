@@ -15,7 +15,7 @@
                         <form method="post" action="{{url('/')}}/casts/{{$user->id}}/{{$instrument->id}}" {{--v-on:click="instrumentUserUnlink()"--}}>
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
-                            <button type="submit" class="unlink">@include('icons.chain-broken')</button>
+                            <button type="submit" class="unlink">@include('icon-files.chain-broken')</button>
                         </form>
                     </li>
                 @endforeach
