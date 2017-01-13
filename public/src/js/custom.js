@@ -20,7 +20,6 @@ var app = new Vue({
 		justAddingInstrument: false,
 		info: '',
 		sortedSongcasts: ''
-
 	},
 	mounted: function() {
 		var _this = this;

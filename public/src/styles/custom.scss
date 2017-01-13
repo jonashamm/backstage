@@ -9,10 +9,12 @@ body {
 	font-family: Arial;
 	min-width:320px;
 }
-.page-wrapper {
+.inner {
 	max-width:90em;
 	margin-left:auto;
 	margin-right:auto;
+	padding-left:5%;
+	padding-right:5%;
 }
 .inner {
 	padding:0 5%;
@@ -51,6 +53,7 @@ h2,
 h3,
 h4 {
 	color:$c-main;
+	margin-top:0;
 }
 a {
 	color:$c-main;
@@ -292,9 +295,9 @@ header {
 	}
 }
 .songcast {
-	padding:1em 0 2em;
 	background:rgba($c-negative,.5);
 	margin:2em 0 0;
+	padding:2em 0;
 
 	.cancel {
 		@include ghostbutton();

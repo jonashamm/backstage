@@ -16,12 +16,9 @@
                 <input name="name" type="text" v-model="song.name"><br>
                 <label>
                     <span class="label-text">Noten</span>
-                    <input type="file" multiple name="sheet[]">
+                    <input type="file" name="one_file">
                 </label>
-                <label>
-                    <span class="label-text">Mp3</span>
-                    <input type="file" multiple name="soundfile[]">
-                </label>
+                <input type="file" name="hubsi">
                 <label>
                     <span class="label-text">Tonart</span>
                     <input type="text" name="key" v-model="song.key">
