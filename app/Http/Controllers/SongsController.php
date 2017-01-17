@@ -15,7 +15,13 @@ class SongsController extends GlobalController
 {
     protected $dates = ['deleted_at'];
 
-    public function store(Request $request) {
+    protected $filehandler;
+
+    public function __construct() {
+	    $this->filehandler = new AttachmentsController();
+    }
+
+	public function store(Request $request) {
         $song = new Song();
         $song->name = $request->input('name');
         $song->save();
@@ -45,17 +51,19 @@ class SongsController extends GlobalController
         return $song;
     }
 
-    public function update(Request $request, $song_id) {
-        $attachmentshandler = new AttachmentsController();
-        $song = Song::find($song_id);
+	public function update(Request $request, $song_id) {
+		$song = Song::find($song_id);
 
-	    saverLoop($request,$song,
-		    ['name','key','duration','link_to_original','original_performer','extrainfo']);
-        $song->save();
+		$file = $request->file('file');
+		$stored_file = $file->store('uploads');
+		$this->filehandler->store($file, $stored_file, $song_id);
 
-        return back();
-    }
+		saverLoop($request,$song,
+			['name','key','duration','link_to_original','original_performer','extrainfo']);
+		$song->save();
 
+		return back();
+	}
     public function destroy($song_id) {
         $song = Song::find($song_id);
         $song_name = (string)$song->name;

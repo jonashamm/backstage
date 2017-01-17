@@ -449,10 +449,12 @@ body {
   font-family: Arial;
   min-width: 320px; }
 
-.page-wrapper {
+.inner {
   max-width: 90em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%; }
 
 .inner {
   padding: 0 5%; }
@@ -485,7 +487,8 @@ h1,
 h2,
 h3,
 h4 {
-  color: #009999; }
+  color: #009999;
+  margin-top: 0; }
 
 a {
   color: #009999; }
@@ -567,11 +570,17 @@ ul.instruments, ul.users, ul.instruments-linked {
   bottom: 5%;
   left: 5%; }
 
-input {
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=search],
+textarea {
   border: 0;
   padding: .65em .7em;
   border-radius: .2em;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) inset; }
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) inset;
+  box-sizing: border-box; }
 
 .info {
   display: block;
@@ -681,9 +690,9 @@ header {
     display: block; }
 
 .songcast {
-  padding: 1em 0 2em;
   background: rgba(255, 255, 255, 0.5);
-  margin: 2em 0 0; }
+  margin: 2em 0 0;
+  padding: 2em 0; }
   .songcast .cancel {
     display: inline-block;
     color: #009999;
@@ -754,3 +763,10 @@ button[type=submit] {
 
 .song label {
   display: block; }
+
+label {
+  padding-bottom: .5em; }
+
+.label-text {
+  display: inline-block;
+  min-width: 9em; }

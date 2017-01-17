@@ -13,12 +13,14 @@
             <div class="inner">
                 {{ csrf_field() }}
                 {{ method_field('patch') }}
-                <input name="name" type="text" v-model="song.name"><br>
+                <label>
+                    <span class="label-text">Titel</span>
+                    <input name="name" type="text" v-model="song.name"><br>
+                </label>
                 <label>
                     <span class="label-text">Noten</span>
-                    <input type="file" name="one_file">
+                    <input type="file" name="file">
                 </label>
-                <input type="file" name="hubsi">
                 <label>
                     <span class="label-text">Tonart</span>
                     <input type="text" name="key" v-model="song.key">
@@ -35,7 +37,10 @@
                     <span class="label-text">Original-Interpret</span>
                     <input type="text" v-model="song.original_performer" name="original_performer">
                 </label>
-                <textarea name="extrainfo" v-model="song.extrainfo" placeholder="Trage hier weitere Infos ein"></textarea>
+                <label>
+                    <span class="label-text">Weitere Infos</span>
+                    <textarea name="extrainfo" v-model="song.extrainfo" placeholder="Trage hier weitere Infos ein"></textarea>
+                </label>
             </div>
         </form>
 
@@ -91,7 +96,7 @@
                     <h3>Dateien zum Song:</h3>
                     <ul class="attachments">
                         <li v-for="(attachment, index) in song.attachments">
-                            <a :href="'{{url('/')}}/uploads/' + attachment.name"> [[ attachment.name ]] </a>
+                            <a :href="'{{url('/')}}/uploads/' + attachment.physical_name"> [[ attachment.name ]] </a>
                             <button v-on:click="attachmentDelete(attachment, index)" class="delete">@include('icon-files.bin')</button>
                         </li>
                     </ul>

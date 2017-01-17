@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AttachmentTypes' => $baseDir . '/database/migrations/2016_12_19_151443_attachment_types.php',
+    'AttachmentUploadname' => $baseDir . '/database/migrations/2017_01_17_185533_attachment_uploadname.php',
     'Attachments' => $baseDir . '/database/migrations/2016_10_28_175549_attachments.php',
     'CreateAttachmenttypesTable' => $baseDir . '/database/migrations/2016_12_19_151617_create_attachmenttypes_table.php',
     'CreateIconsTable' => $baseDir . '/database/migrations/2016_12_19_150429_create_icons_table.php',
@@ -89,7 +90,10 @@ return array(
     'InstrumentUser' => $baseDir . '/database/migrations/2016_10_24_184520_instrument_user.php',
     'InstrumentUserTableEnhancements' => $baseDir . '/database/migrations/2016_12_02_132456_instrument_user_table_enhancements.php',
     'Instruments' => $baseDir . '/database/migrations/2016_10_24_183211_instruments.php',
+    'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
+    'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
     'PHPUnit\\Framework\\TestCase' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
+    'PHPUnit\\Framework\\TestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/TestListener.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',

@@ -158,11 +158,17 @@ ul {
 	bottom:5%;
 	left:5%;
 }
-input {
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=search],
+textarea {
 	border:0;
 	padding:.65em .7em;
 	border-radius:.2em;
 	box-shadow: 1px 1px 3px rgba($c-darkest,.4) inset;
+	box-sizing:border-box;
 }
 .info {
 	display: block;
@@ -393,4 +399,11 @@ button[type=submit] {
 	label {
 		display: block;
 	}
+}
+label {
+	padding-bottom:.5em;
+}
+.label-text {
+	display: inline-block;
+	min-width:9em;
 }

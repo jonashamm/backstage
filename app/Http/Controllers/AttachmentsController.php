@@ -13,12 +13,6 @@ class AttachmentsController extends GlobalController
     public function index() {
         return;
     }
-    public function store(Request $request, $song_id, $file) {
-        $data = $this->getData($file);
-        $this->handleFile($request,$data,$file);
-        $this->saveToDB($song_id,$data);
-        return back();
-    }
 
     public function destroy($attachment_id) {
         $attachment = Attachment::find($attachment_id);
@@ -44,14 +38,11 @@ class AttachmentsController extends GlobalController
         return $data = array('filename' => $filename,'mime' => $mime);
     }
 
-    public function handleFile(Request $request, $data, $file, $path = 'uploads') {
-	    $file->move($path,$data['filename']);
-    }
-
-    public function saveToDB($song_id = null, $data) {
+    public function store($file, $stored_file, $song_id = null) {
         $file_in_db = new Attachment();
-        $file_in_db->name = $data['filename'];
-        $file_in_db->mime = $data['mime'];
+        $file_in_db->name = $file->getClientOriginalName();
+	    $file_in_db->physical_name = str_replace('uploads/','',$stored_file);
+        $file_in_db->mime = $file->getMimeType();
         $file_in_db->song_id = $song_id;
         $file_in_db->save();
         return $file_in_db;
