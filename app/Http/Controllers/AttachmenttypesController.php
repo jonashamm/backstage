@@ -116,4 +116,8 @@ class AttachmenttypesController extends Controller
 
         return redirect('attachmenttypes');
     }
+
+    public function indexAPI() {
+	    return Attachmenttype::orderBy('name')->get();
+    }
 }

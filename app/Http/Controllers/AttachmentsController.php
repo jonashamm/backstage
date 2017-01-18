@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Attachment;
 use File;
 
+
 class AttachmentsController extends GlobalController
 {
     public function index() {
@@ -38,14 +39,19 @@ class AttachmentsController extends GlobalController
         return $data = array('filename' => $filename,'mime' => $mime);
     }
 
-    public function store($file, $stored_file, $song_id = null) {
-        $file_in_db = new Attachment();
-        $file_in_db->name = $file->getClientOriginalName();
-	    $file_in_db->physical_name = str_replace('uploads/','',$stored_file);
-        $file_in_db->mime = $file->getMimeType();
-        $file_in_db->song_id = $song_id;
-        $file_in_db->save();
-        return $file_in_db;
-    }
+
+	public function store(Request $request, $path = "uploads") {
+		$file = $request->file('file');
+		$stored_file = $request->file('file')->store($path);
+
+		$file_in_db = new Attachment();
+		$file_in_db->type = $request->input('type');
+		$file_in_db->name = $file->getClientOriginalName();
+		$file_in_db->physical_name = str_replace($path.'/','',$stored_file);
+		$file_in_db->mime = $file->getMimeType();
+		$file_in_db->song_id = $request->input('song_id');
+		$file_in_db->save();
+		return $file_in_db;
+	}
 
 }

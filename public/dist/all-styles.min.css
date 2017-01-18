@@ -454,7 +454,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 5%;
-  padding-right: 5%; }
+  padding-right: 5%;
+  overflow: hidden; }
 
 .inner {
   padding: 0 5%; }
@@ -690,9 +691,7 @@ header {
     display: block; }
 
 .songcast {
-  background: rgba(255, 255, 255, 0.5);
-  margin: 2em 0 0;
-  padding: 2em 0; }
+  background: rgba(255, 255, 255, 0.5); }
   .songcast .cancel {
     display: inline-block;
     color: #009999;
@@ -764,9 +763,212 @@ button[type=submit] {
 .song label {
   display: block; }
 
-label {
-  padding-bottom: .5em; }
+.song h1 {
+  font-size: 3em; }
 
-.label-text {
-  display: inline-block;
-  min-width: 9em; }
+.meta-infos {
+  overflow: hidden;
+  background: #009999;
+  color: #fff; }
+  .meta-infos h2 {
+    color: rgba(255, 255, 255, 0.7); }
+
+.formfield {
+  padding-bottom: 1em;
+  box-sizing: border-box; }
+  @media all and (min-width: 30em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 29.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 40em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 39.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 50em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 49.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 60em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 59.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 75em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 74.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 115em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 114.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 130em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (max-width: 129.937em) {
+    .formfield {
+      width: 30%;
+      float: left; } }
+  @media all and (min-width: 30em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 29.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 40em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 39.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 50em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 49.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 60em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 59.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 75em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 74.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 115em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 114.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 130em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (max-width: 129.937em) {
+    .formfield {
+      width: 19%;
+      float: left;
+      margin-right: 1%; } }
+  .formfield input {
+    max-width: 100%; }
+
+label {
+  display: block;
+  width: 9em;
+  float: left; }
+  @media all and (min-width: 30em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 29.937em) {
+    label {
+      width: auto; } }
+  @media all and (min-width: 40em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 39.937em) {
+    label {
+      width: auto; } }
+  @media all and (min-width: 50em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 49.937em) {
+    label {
+      width: auto; } }
+  @media all and (min-width: 60em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 59.937em) {
+    label {
+      width: auto; } }
+  @media all and (min-width: 75em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 74.937em) {
+    label {
+      width: auto; } }
+  @media all and (min-width: 115em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 114.937em) {
+    label {
+      width: auto; } }
+  @media all and (min-width: 130em) {
+    label {
+      width: auto; } }
+  @media all and (max-width: 129.937em) {
+    label {
+      width: auto; } }
+
+.extra-infos {
+  clear: both;
+  float: none;
+  width: 100%; }
+  .extra-infos textarea {
+    width: 99%; }
+
+.meta-infos,
+.songcast,
+.songfiles {
+  padding: 2em 0; }
+
+.songfiles {
+  padding-bottom: 5em; }
+
+ul.attachments {
+  clear: both; }
+
+.meta-infos button {
+  clear: both; }

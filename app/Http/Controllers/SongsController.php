@@ -31,7 +31,7 @@ class SongsController extends GlobalController
 
     public function index() {
         $songs = Song::with('songcasts.cast.user','songcasts.cast.instrument')->get();
-
+	    $this->filehandler = new AttachmentsController();
         return view('songs', compact('songs'));
     }
     public function show($song_id) {
@@ -55,8 +55,9 @@ class SongsController extends GlobalController
 		$song = Song::find($song_id);
 
 		$file = $request->file('file');
-		$stored_file = $file->store('uploads');
-		$this->filehandler->store($file, $stored_file, $song_id);
+		if ($file) {
+			$this->filehandler->store($file, 'uploads', $song_id);
+		}
 
 		saverLoop($request,$song,
 			['name','key','duration','link_to_original','original_performer','extrainfo']);

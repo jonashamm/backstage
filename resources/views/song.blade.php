@@ -5,48 +5,47 @@
         <div class="meta">
             <div class="inner">
                 <strong>Song</strong>
-                <h2>[[song.name]]</h2>
+                <h1>[[song.name]]</h1>
             </div>
         </div>
 
-        <form action="{{$baseurl}}/songs/{{$song->id}}" method="post" id="song-update" enctype="multipart/form-data">
+        <form action="{{$baseurl}}/songs/{{$song->id}}" method="post" class="meta-infos" id="song-update" enctype="multipart/form-data">
             <div class="inner">
+                <h2>Infos</h2>
                 {{ csrf_field() }}
                 {{ method_field('patch') }}
-                <label>
-                    <span class="label-text">Titel</span>
+                <div class="formfield">
+                    <label>Titel</label>
                     <input name="name" type="text" v-model="song.name"><br>
-                </label>
-                <label>
-                    <span class="label-text">Noten</span>
-                    <input type="file" name="file">
-                </label>
-                <label>
-                    <span class="label-text">Tonart</span>
+                </div>
+                <div class="formfield">
+                    <label>Tonart</label>
                     <input type="text" name="key" v-model="song.key">
-                </label>
-                <label>
-                    <span class="label-text">Dauer</span>
+                </div>
+                <div class="formfield">
+                    <label>Dauer</label>
                     <input type="text" v-model="song.duration" name="duration">
-                </label>
-                <label>
-                    <span class="label-text">Link zur Vorlage</span>
+                </div>
+                <div class="formfield">
+                    <label>Link zur Vorlage</label>
                     <input type="text" v-model="song.link_to_original" name="link_to_original">
-                </label>
-                <label>
-                    <span class="label-text">Original-Interpret</span>
+                </div>
+                <div class="formfield">
+                    <label>Original-Interpret</label>
                     <input type="text" v-model="song.original_performer" name="original_performer">
-                </label>
-                <label>
-                    <span class="label-text">Weitere Infos</span>
+                </div>
+                <div class="formfield extra-infos">
+                    <label>Weitere Infos</label>
                     <textarea name="extrainfo" v-model="song.extrainfo" placeholder="Trage hier weitere Infos ein"></textarea>
-                </label>
+                </div>
+                <button type="submit" v-show="!justAddingInstrument">Songänderungen speichern</button>
             </div>
+
         </form>
 
         <div class="songcast">
             <div class="inner">
-                <h3>Besetzung:</h3>
+                <h2>Besetzung:</h2>
                 <transition-group name="list">
                     <div v-for="(songcast, index) in song.songcasts" class="songcasts" v-bind:key="songcast">
                         <div class="instrument">[[ songcast.cast.instrument.name ]]</div>
@@ -90,19 +89,39 @@
         </div>
 
 
-        <div class="appendix">
+        <div class="songfiles">
             <div class="inner">
+                <h2>Dateien</h2>
+
                 @if($song->attachments != [])
-                    <h3>Dateien zum Song:</h3>
                     <ul class="attachments">
-                        <li v-for="(attachment, index) in song.attachments">
-                            <a :href="'{{url('/')}}/uploads/' + attachment.physical_name"> [[ attachment.name ]] </a>
-                            <button v-on:click="attachmentDelete(attachment, index)" class="delete">@include('icon-files.bin')</button>
-                        </li>
+                        <transition-group name="list">
+                            <li v-for="(attachment, index) in song.attachments" v-bind:key="attachment">
+                                <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank"> [[ attachment.name ]] </a>
+                                <button v-on:click="attachmentDelete(attachment, index)" class="delete">@include('icon-files.bin')</button>
+                            </li>
+                        </transition-group>
                     </ul>
                 @endif
 
-                <button type="submit" form="song-update" v-show="!justAddingInstrument">Songänderungen speichern</button>
+                <form>
+                    <div class="formfield">
+                        <label>Noten</label>
+                        <input type="file" name="file" v-on:change="fileExistCheck" id="file">
+                        <div v-show="fileChosen">
+                            als
+                            <select v-model="attachmenttypeChosen" name="type">
+                                <option>-</option>
+                                <option v-bind:value="type.id" v-for="type in attachmenttypes"> [[ type.name ]]</option>
+                            </select>
+                        </div>
+                        <input type="hidden" v-model="song.id" name="song_id">
+                        <div v-show="attachmenttypeChosen">
+                            <button type="submit" v-on:click.prevent="attachmentAdd($event)">Hinzufügen</button>
+                        </div>
+                    </div>
+                    <div id="output" class="container"></div>
+                </form>
             </div>
         </div>
     </div>

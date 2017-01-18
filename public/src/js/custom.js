@@ -19,7 +19,12 @@ var app = new Vue({
 		selectedInstrumentUser: '',
 		justAddingInstrument: false,
 		info: '',
-		sortedSongcasts: ''
+		sortedSongcasts: '',
+		fileChosen: false,
+		attachmenttypes: [],
+		someValue: false,
+		attachmenttypeChosen: false,
+		fileupload: ''
 	},
 	mounted: function() {
 		var _this = this;
@@ -30,13 +35,22 @@ var app = new Vue({
 		axios.get(baseurl + 'api/song/' + pathArray[4]).then(function (response) {
 			_this.song = response.data;
 		});
+
+		axios.get(baseurl + 'api/attachmenttypes').then(function (response) {
+			_this.attachmenttypes = response.data;
+		});
 	},
-/*	computed: {
-		sortSongcastsComputed: function () {
-			this.song.songcasts.sort(this.sortSongcasts);
-		}
-	},*/
+	computed: {
+
+	},
 	methods: {
+		contains: function(needle, haystack) {
+			if (haystack) {
+				if (haystack.includes(needle)) {
+					this.someValue = true;
+				}
+			}
+		},
 		sortSongcasts: function (a,b) {
 			if (a.cast.instrument.name < b.cast.instrument.name)
 				return -1;
@@ -45,7 +59,7 @@ var app = new Vue({
 			return 0;
 		},
 		test: function(input) {
-			console.log(this.sortSongcastsComputed);
+			console.log(input);
 		},
 		instrumentAdd: function() {
 			this.instrumentsInSong.push('asd');
@@ -105,6 +119,25 @@ var app = new Vue({
 					});
 			}
 		},
+
+		attachmentAdd: function() {
+			var _this = this;
+
+			var output = document.getElementById('output');
+			var data = new FormData();
+			data.append('file', document.getElementById('file').files[0]);
+			data.append('type', this.attachmenttypeChosen);
+			data.append('song_id', this.song.id);
+
+			axios.post(baseurl + 'attachments', data)
+				.then(function (response) {
+					_this.song.attachments.push(response.data);
+				})
+				.catch(function (err) {
+					console.log(err.message);
+				});
+		},
+
 		attachmentDelete: function(attachment, index) {
 			var _this = this;
 			axios.delete(baseurl + 'attachments/' + attachment.id)
@@ -114,6 +147,10 @@ var app = new Vue({
 				.catch(function (error) {
 					_this.song.attachments.splice(index,1);
 				});
+		},
+
+		fileExistCheck: function(event) {
+			this.fileChosen = event.target.files[0];
 		}
 	}
-})
+});

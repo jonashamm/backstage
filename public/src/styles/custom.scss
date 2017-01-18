@@ -15,6 +15,7 @@ body {
 	margin-right:auto;
 	padding-left:5%;
 	padding-right:5%;
+	overflow: hidden;
 }
 .inner {
 	padding:0 5%;
@@ -302,8 +303,6 @@ header {
 }
 .songcast {
 	background:rgba($c-negative,.5);
-	margin:2em 0 0;
-	padding:2em 0;
 
 	.cancel {
 		@include ghostbutton();
@@ -385,7 +384,6 @@ button[type=submit] {
 .songs {
 	.sheet {
 
-
 		a {
 			display: inline-block;
 			width: 220px;
@@ -399,11 +397,70 @@ button[type=submit] {
 	label {
 		display: block;
 	}
+	h1 {
+		font-size:3em;
+	}
+}
+.meta-infos {
+	overflow: hidden;
+	background: $c-main;
+	color:$c-negative;
+
+	h2 {
+		color:rgba($c-negative,.7);
+	}
+}
+.formfield {
+	padding-bottom:1em;
+	box-sizing: border-box;
+
+	@include brp(b2) {
+		width:30%;
+		float:left;
+	}
+	@include brp(b3) {
+		width:19%;
+		float:left;
+		margin-right:1%;
+	}
+
+	input {
+		max-width:100%;
+	}
+
 }
 label {
-	padding-bottom:.5em;
+	display: block;
+	width:9em;
+	float:left;
+
+	@include brp(b2) {
+		width:auto;
+	}
 }
-.label-text {
-	display: inline-block;
-	min-width:9em;
+.extra-infos {
+	clear: both;
+	float: none;
+	width:100%;
+
+	textarea {
+		width:99%;
+	}
+}
+
+.meta-infos,
+.songcast,
+.songfiles {
+	padding: 2em 0;
+}
+.songfiles {
+	padding-bottom:5em;
+}
+ul.attachments {
+	clear: both;
+}
+.meta-infos {
+	button {
+		clear: both;
+	}
 }

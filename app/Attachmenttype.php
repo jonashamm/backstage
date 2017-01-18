@@ -25,7 +25,7 @@ class Attachmenttype extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name','typical_extension'];
 
     
 }

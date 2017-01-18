@@ -552,4 +552,5 @@ return array(
     'Songstable' => $baseDir . '/database/migrations/2016_04_26_132931_Songstable.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'TypicalExtensionAttachmenttype' => $baseDir . '/database/migrations/2017_01_18_164111_typical_extension_attachmenttype.php',
 );
