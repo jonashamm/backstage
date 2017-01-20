@@ -94,14 +94,22 @@
                 <h2>Dateien</h2>
 
                 @if($song->attachments != [])
-                    <div v-for="attachmenttype in songattachments">
+                    <div v-for="attachmenttype in songattachments" class="attachment-type">
                         <transition name="list">
                             <div v-if="attachmenttype.attachments != 0">
                                 <h3>[[ attachmenttype.name ]]</h3>
                                 <ul class="attachments">
                                     <transition-group name="list">
                                         <li v-for="(attachment, index) in attachmenttype.attachments" v-bind:key="attachment">
-                                            <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank"> [[ attachment.name ]] </a>
+                                            <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
+                                                <audio controls preload="none">
+                                                    <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
+                                                <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
+                                            </div>
+
+                                            <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank">xxxx [[ attachment.name ]] </a>
                                             <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
                                         </li>
                                     </transition-group>
@@ -113,7 +121,6 @@
 
                 <form>
                     <div class="formfield">
-                        <label>Noten</label>
                         <input type="file" name="file" v-on:change="fileExistCheck" id="file">
                         <div v-show="fileChosen">
                             als

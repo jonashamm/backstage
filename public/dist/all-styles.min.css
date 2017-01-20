@@ -778,179 +778,23 @@ button[type=submit] {
 .formfield {
   padding-bottom: 1em;
   box-sizing: border-box; }
-  @media all and (min-width: 30em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 29.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
   @media all and (min-width: 40em) {
     .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 39.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (min-width: 50em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 49.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (min-width: 60em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 59.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (min-width: 75em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 74.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (min-width: 115em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 114.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (min-width: 130em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (max-width: 129.937em) {
-    .formfield {
-      width: 30%;
-      float: left; } }
-  @media all and (min-width: 30em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 29.937em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (min-width: 40em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 39.937em) {
-    .formfield {
-      width: 19%;
+      width: 32.333%;
       float: left;
       margin-right: 1%; } }
   @media all and (min-width: 50em) {
     .formfield {
       width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 49.937em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (min-width: 60em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 59.937em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (min-width: 75em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 74.937em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (min-width: 115em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 114.937em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (min-width: 130em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (max-width: 129.937em) {
-    .formfield {
-      width: 19%;
-      float: left;
-      margin-right: 1%; } }
+      float: left; } }
   .formfield input {
-    max-width: 100%; }
+    width: 100%; }
 
 label {
   display: block;
   width: 9em;
   float: left; }
-  @media all and (min-width: 30em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 29.937em) {
-    label {
-      width: auto; } }
   @media all and (min-width: 40em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 39.937em) {
-    label {
-      width: auto; } }
-  @media all and (min-width: 50em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 49.937em) {
-    label {
-      width: auto; } }
-  @media all and (min-width: 60em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 59.937em) {
-    label {
-      width: auto; } }
-  @media all and (min-width: 75em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 74.937em) {
-    label {
-      width: auto; } }
-  @media all and (min-width: 115em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 114.937em) {
-    label {
-      width: auto; } }
-  @media all and (min-width: 130em) {
-    label {
-      width: auto; } }
-  @media all and (max-width: 129.937em) {
     label {
       width: auto; } }
 
@@ -968,9 +812,22 @@ label {
 
 .songfiles {
   padding-bottom: 5em; }
+  .songfiles h3 {
+    margin-bottom: .5em; }
+  .songfiles ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 1.25em; }
 
 ul.attachments {
   clear: both; }
 
 .meta-infos button {
   clear: both; }
+
+.audio-container {
+  display: inline-block; }
+
+.attachment-type {
+  margin-top: 2em; }
