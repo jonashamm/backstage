@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attachmenttype;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -54,4 +55,9 @@ class AttachmentsController extends GlobalController
 		return $file_in_db;
 	}
 
+	public function indexByTypeAPI($song_id) {
+    	return Attachmenttype::with(array('attachments' => function($query) use ($song_id) {
+		    $query->where('song_id',$song_id)->get();
+	    }))->get();
+	}
 }

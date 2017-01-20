@@ -18,6 +18,7 @@ class SongsController extends GlobalController
     protected $filehandler;
 
     public function __construct() {
+    	$this->middleware('auth');
 	    $this->filehandler = new AttachmentsController();
     }
 
@@ -40,6 +41,8 @@ class SongsController extends GlobalController
 	    $song = Song::with('attachments')
 	                ->with('songcasts.cast.instrument','songcasts.cast.user')
 	                ->find($song_id);
+
+
 
         return view('song', compact('song','users','instruments'));
     }

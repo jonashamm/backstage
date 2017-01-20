@@ -1,8 +1,10 @@
 .fade-enter-active, .fade-leave-active {
-	transition: opacity .2s
+	transition: opacity .2s;
+
 }
 .fade-enter, .fade-leave-active {
-	opacity: 0
+	opacity: 0;
+	transform: scale(.5);
 }
 
 .bounce-enter-active {
@@ -41,9 +43,10 @@
 }
 
 .list-enter-active, .list-leave-active {
-	transition: all .2s;
+	transition: all .75s;
 }
 .list-enter, .list-leave-active {
 	opacity: 0;
-	transform: translateY(30px);
+	transform: translateY(30px) rotate(5deg) scale(2);
+
 }

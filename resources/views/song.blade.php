@@ -94,14 +94,21 @@
                 <h2>Dateien</h2>
 
                 @if($song->attachments != [])
-                    <ul class="attachments">
-                        <transition-group name="list">
-                            <li v-for="(attachment, index) in song.attachments" v-bind:key="attachment">
-                                <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank"> [[ attachment.name ]] </a>
-                                <button v-on:click="attachmentDelete(attachment, index)" class="delete">@include('icon-files.bin')</button>
-                            </li>
-                        </transition-group>
-                    </ul>
+                    <div v-for="attachmenttype in songattachments">
+                        <transition name="list">
+                            <div v-if="attachmenttype.attachments != 0">
+                                <h3>[[ attachmenttype.name ]]</h3>
+                                <ul class="attachments">
+                                    <transition-group name="list">
+                                        <li v-for="(attachment, index) in attachmenttype.attachments" v-bind:key="attachment">
+                                            <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank"> [[ attachment.name ]] </a>
+                                            <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
+                                        </li>
+                                    </transition-group>
+                                </ul>
+                            </div>
+                        </transition>
+                    </div>
                 @endif
 
                 <form>
