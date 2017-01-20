@@ -411,25 +411,46 @@ button[type=submit] {
 		color:rgba($c-negative,.7);
 	}
 }
-.formfield {
-	padding-bottom:1em;
-	box-sizing: border-box;
+.meta-infos {
+	.formfield {
+		padding-bottom:1em;
+		box-sizing: border-box;
 
-	@include brp(b2) {
-		width:32.333%;
-		float:left;
-		margin-right:1%;
-	}
-	@include brp(b3) {
-		width:19%;
-		float:left;
+		@include brp(b2) {
+			width:32.333%;
+			float:left;
+			margin-right:1%;
+		}
+		@include brp(b3) {
+			width:19%;
+			float:left;
+
+		}
+
+		input {
+			width:100%;
+		}
+		&.extra-infos {
+			clear: both;
+			float: none;
+
+			@include brp(b2) {
+				width:100%;
+			}
+			@include brp(b3) {
+				width:100%;
+			}
+
+
+			textarea {
+				width:99%;
+			}
+		}
 
 	}
 
-	input {
-		width:100%;
-	}
 }
+
 label {
 	display: block;
 	width:9em;
@@ -439,15 +460,7 @@ label {
 		width:auto;
 	}
 }
-.extra-infos {
-	clear: both;
-	float: none;
-	width:100%;
 
-	textarea {
-		width:99%;
-	}
-}
 
 .meta-infos,
 .songcast,

@@ -775,20 +775,31 @@ button[type=submit] {
   .meta-infos h2 {
     color: rgba(255, 255, 255, 0.7); }
 
-.formfield {
+.meta-infos .formfield {
   padding-bottom: 1em;
   box-sizing: border-box; }
   @media all and (min-width: 40em) {
-    .formfield {
+    .meta-infos .formfield {
       width: 32.333%;
       float: left;
       margin-right: 1%; } }
   @media all and (min-width: 50em) {
-    .formfield {
+    .meta-infos .formfield {
       width: 19%;
       float: left; } }
-  .formfield input {
+  .meta-infos .formfield input {
     width: 100%; }
+  .meta-infos .formfield.extra-infos {
+    clear: both;
+    float: none; }
+    @media all and (min-width: 40em) {
+      .meta-infos .formfield.extra-infos {
+        width: 100%; } }
+    @media all and (min-width: 50em) {
+      .meta-infos .formfield.extra-infos {
+        width: 100%; } }
+    .meta-infos .formfield.extra-infos textarea {
+      width: 99%; }
 
 label {
   display: block;
@@ -797,13 +808,6 @@ label {
   @media all and (min-width: 40em) {
     label {
       width: auto; } }
-
-.extra-infos {
-  clear: both;
-  float: none;
-  width: 100%; }
-  .extra-infos textarea {
-    width: 99%; }
 
 .meta-infos,
 .songcast,
