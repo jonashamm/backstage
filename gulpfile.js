@@ -10,7 +10,8 @@ var concat = require('gulp-concat'),
 	svgmin = require('gulp-svgmin'),
 	autoprefixer = require('gulp-autoprefixer'),
 	shell = require('gulp-shell'),
-	uglify = require('gulp-uglify')
+	uglify = require('gulp-uglify'),
+	babel = require('gulp-babel'),
 	browserSync = require('browser-sync').create();
 
 // Custom folder variables //////////////////////////////////////
@@ -42,6 +43,9 @@ gulp.task('compileJS',function() {
 		'node_modules/axios/dist/axios.js',
 		folderSrc + 'js/custom.js'
 	])
+		/*.pipe(babel({
+			presets: ['es2015']
+		}))*/
 		.pipe(concat('all-scripts.js'))
 		// .pipe(uglify())
 		.pipe(rename({

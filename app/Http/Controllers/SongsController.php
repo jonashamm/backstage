@@ -42,8 +42,6 @@ class SongsController extends GlobalController
 	                ->with('songcasts.cast.instrument','songcasts.cast.user')
 	                ->find($song_id);
 
-
-
         return view('song', compact('song','users','instruments'));
     }
     public function showAPI($song_id) {
@@ -66,7 +64,7 @@ class SongsController extends GlobalController
 			['name','key','duration','link_to_original','original_performer','extrainfo']);
 		$song->save();
 
-		return back();
+		return $song;
 	}
     public function destroy($song_id) {
         $song = Song::find($song_id);

@@ -16,6 +16,7 @@ body {
 	padding-left:5%;
 	padding-right:5%;
 	overflow: hidden;
+	position: relative;
 }
 .inner {
 	padding:0 5%;
@@ -51,10 +52,14 @@ tr {
 }
 h1,
 h2,
-h3,
-h4 {
+h3 {
 	color:$c-main;
 	margin-top:0;
+}
+h4 {
+	margin-bottom:.5em;
+	font-weight: normal;
+	font-size:.9em;
 }
 a {
 	color:$c-main;
@@ -171,6 +176,7 @@ textarea {
 	box-shadow: 1px 1px 3px rgba($c-darkest,.4) inset;
 	box-sizing:border-box;
 }
+
 .info {
 	display: block;
 	padding:.5em 1em;
@@ -493,4 +499,20 @@ ul.attachments {
 }
 .attachment-type {
 	margin-top:2em;
+}
+
+.static-info {
+	font-size:1.1em;
+	.value {
+		font-weight: bold;
+	}
+}
+.static-info,
+.dynamic-info
+{
+	.toggler {
+		position: absolute;
+		top:0;
+		right:5%;
+	}
 }

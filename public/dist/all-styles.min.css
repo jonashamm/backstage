@@ -456,7 +456,8 @@ body {
   margin-right: auto;
   padding-left: 5%;
   padding-right: 5%;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
 
 .inner {
   padding: 0 5%; }
@@ -487,10 +488,14 @@ tr:first-child td {
 
 h1,
 h2,
-h3,
-h4 {
+h3 {
   color: #009999;
   margin-top: 0; }
+
+h4 {
+  margin-bottom: .5em;
+  font-weight: normal;
+  font-size: .9em; }
 
 a {
   color: #009999; }
@@ -835,3 +840,14 @@ ul.attachments {
 
 .attachment-type {
   margin-top: 2em; }
+
+.static-info {
+  font-size: 1.1em; }
+  .static-info .value {
+    font-weight: bold; }
+
+.static-info .toggler,
+.dynamic-info .toggler {
+  position: absolute;
+  top: 0;
+  right: 5%; }

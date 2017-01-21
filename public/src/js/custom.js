@@ -25,7 +25,9 @@ var app = new Vue({
 		someValue: false,
 		attachmenttypeChosen: false,
 		fileupload: '',
-		songattachments: []
+		songattachments: [],
+		metaEdit: false,
+		justAddingAttachment: false,
 	},
 	mounted: function() {
 		var _this = this;
@@ -45,9 +47,6 @@ var app = new Vue({
 			_this.songattachments = response.data;
 		});
 	},
-	computed: {
-
-	},
 	methods: {
 		contains: function(needle, haystack) {
 			if (haystack) {
@@ -63,8 +62,16 @@ var app = new Vue({
 				return 1;
 			return 0;
 		},
-		test: function(input) {
-			console.log(input);
+		songUpdate: function(song_id) {
+			var _this = this;
+			axios.patch(baseurl + 'songs/' + song_id, _this.song)
+				.then(function(response) {
+					_this.song = response.data
+					_this.metaEdit = false;
+				})
+				.catch(function(error)  {
+					console.log(error)
+				});
 		},
 		instrumentAdd: function() {
 			this.instrumentsInSong.push('asd');
@@ -140,6 +147,7 @@ var app = new Vue({
 			axios.post(baseurl + 'attachments', data)
 				.then(function (response) {
 					_this.songattachments[typeindex].attachments.unshift(response.data);
+					_this.justAddingAttachment = false;
 				})
 				.catch(function (err) {
 					console.log(err.message);
