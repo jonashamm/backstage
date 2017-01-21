@@ -88,6 +88,7 @@
             </div>
         </div>
 
+        {{storage_path()}}
 
         <div class="songfiles">
             <div class="inner">
