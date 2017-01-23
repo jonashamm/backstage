@@ -47,7 +47,15 @@
             <div id="output" class="container"></div>
         </form>
 
-        <button v-on:click="justAddingAttachment = !justAddingAttachment" v-show="justAddingAttachment" class="cancel">Abbrechen</button>
+        <div class="progressbar" v-show="justUploading">
+            <div class="progress" :style="{'width': percentCompleted + '%'}">
+            </div>
+            <div class="text">
+                [[ percentCompleted ]] % hochgeladen
+            </div>
+        </div>
+
+        <button v-on:click="endAddingAttachment" v-show="justAddingAttachment" class="cancel">Abbrechen</button>
         <button v-on:click="justAddingAttachment = !justAddingAttachment" v-show="!justAddingAttachment">Datei hinzufügen</button>
     </div>
 </div>

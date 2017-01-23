@@ -502,9 +502,13 @@ ul.attachments {
 }
 
 .static-info {
-	font-size:1.1em;
+
 	.value {
 		font-weight: bold;
+	}
+
+	.value {
+		font-size:1.1em;
 	}
 }
 .static-info,
@@ -514,5 +518,30 @@ ul.attachments {
 		position: absolute;
 		top:0;
 		right:5%;
+	}
+}
+
+.progressbar {
+	height:1em;
+	width:100%;
+	background-color: lighten($c-darkest,75);
+	padding:.5em;
+	position: relative;
+
+	.progress {
+		transition: width .2s ;
+		background-color: $c-main;
+		position: absolute;
+		top:0;
+		left:0;
+		height:100%;
+	}
+	.text {
+		color: $c-negative;
+		font-weight: bold;
+		position: absolute;
+		width:100%;
+		z-index: 2;
+		text-align: center;
 	}
 }

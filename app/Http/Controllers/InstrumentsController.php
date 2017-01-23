@@ -27,6 +27,7 @@ class InstrumentsController extends GlobalController
     }
     public function destroy($instrument_id) {
         $instrument = Instrument::find($instrument_id);
+	    $instrument->user()->detach();
         $instrument->delete();
         return back();
     }
