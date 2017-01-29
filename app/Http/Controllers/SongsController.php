@@ -51,13 +51,17 @@ class SongsController extends GlobalController
     public function showAPI($song_id) {
         $song = Song::with('attachments')
             ->with('songcasts.cast.instrument', 'songcasts.cast.user')
+	        ->with('attachments')
             ->find($song_id);
 
         return $song;
     }
 
 	public function update(Request $request, $song_id) {
-		$song = Song::find($song_id);
+		$song = Song
+			::with('songcasts.cast.instrument', 'songcasts.cast.user')
+			->with('attachments')
+			->find($song_id);
 
 		$file = $request->file('file');
 		if ($file) {
@@ -70,6 +74,8 @@ class SongsController extends GlobalController
 
 		return $song;
 	}
+
+
     public function destroy($song_id) {
         $song = Song::find($song_id);
         $song_name = (string)$song->name;

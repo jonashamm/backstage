@@ -2,6 +2,8 @@
     <div class="inner">
         <h2>Dateien</h2>
 
+        <div class="empty" v-if="song.attachments < 1 && !justAddingAttachment">Um eine Datei (Mp3, Noten, etc.) hinzuzufügen, aufs Plus klicken</div>
+
         @if($song->attachments != [])
             <div v-for="attachmenttype in songattachments" class="attachment-type">
                 <transition name="list">
@@ -15,6 +17,13 @@
                                             <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
+                                        <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
+                                    </div>
+                                    <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
+                                        <video controls preload="none">
+                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
+                                            Your browser does not support the audio element.
+                                        </video>
                                         <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
                                     </div>
 
@@ -56,6 +65,6 @@
         </div>
 
         <button v-on:click="endAddingAttachment" v-show="justAddingAttachment" class="cancel">Abbrechen</button>
-        <button v-on:click="justAddingAttachment = !justAddingAttachment" v-show="!justAddingAttachment">Datei hinzufügen</button>
+        <button class="add" v-on:click="justAddingAttachment = !justAddingAttachment" v-show="!justAddingAttachment">+</button>
     </div>
 </div>

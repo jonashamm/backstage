@@ -73,10 +73,10 @@ a {
 }
 .logo {
 	border-top:0;
-	padding:.2em 0;
+	padding:.1em 0;
 	position: relative;
 	left:-.5em;
-	width:10em;
+	width:8em;
 	display: block;
 	float: left;
 
@@ -204,6 +204,8 @@ textarea {
 }
 .user-actions {
 	float:right;
+	position: relative;
+	top:.35em;
 
 	a,
 	form,
@@ -329,7 +331,7 @@ header {
 		margin-top:1em;
 	}
 
-	.add {
+/*	.add {
 		margin-top:2em;
 		.instrument {
 			margin:.2em .5em .5em 0;
@@ -338,7 +340,7 @@ header {
 		strong {
 			color:$c-main;
 		}
-	}
+	}*/
 }
 
 .user {
@@ -421,6 +423,29 @@ header {
 	h1 {
 		font-size:3em;
 	}
+	button.add {
+		border-radius: 50%;
+		font-size: 1.6em;
+		text-align: center;
+		padding:0;
+		padding-top:.1em;
+		box-sizing: border-box;
+		font-weight:bold;
+		width:1.75em;
+		height:1.75em;
+		position: absolute;
+		bottom:0;
+		right:5%;
+
+		&.cancel {
+			border-radius: 0;
+		}
+	}
+	.delete {
+		font-size:.7em;
+		margin-left:.5em;
+	}
+
 }
 
 
@@ -428,6 +453,7 @@ header {
 .songcast,
 .songfiles {
 	padding: 2em 0;
+	position: relative;
 }
 .meta-infos {
 	background: $c-main;
@@ -488,9 +514,15 @@ header {
 				width:99%;
 			}
 		}
-
 	}
+}
 
+.empty {
+	font-size:.9em;
+	font-weight: normal;
+	opacity:.5;
+	font-style: italic;
+	margin-bottom:1em;
 }
 
 label {
@@ -507,7 +539,7 @@ label {
 	padding-bottom:5em;
 
 	h3 {
-		margin-bottom:.5em;
+		margin-bottom:0;
 	}
 
 	ul {
@@ -519,6 +551,7 @@ label {
 }
 ul.attachments {
 	clear: both;
+	margin-bottom:1em;
 }
 .meta-infos {
 	button {
@@ -539,6 +572,9 @@ ul.attachments {
 		position: absolute;
 		top:-3em;
 		right:5%;
+		width:2.6em;
+		height:2.6em;
+		text-align: center;
 	}
 }
 

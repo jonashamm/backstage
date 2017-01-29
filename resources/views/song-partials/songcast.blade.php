@@ -9,6 +9,7 @@
             </div>
         </transition-group>
 
+        <div class="empty" v-if="song.songcasts < 1 && !justAddingInstrument">Um jemanden hinzuzufügen, aufs Plus klicken</div>
 
         <div class="add">
             <div v-for="(instrumentInSong,index) in instrumentsInSong">
@@ -38,7 +39,7 @@
                 <div v-if="info" class="info info-warn">Bereits hinzugefügt</div>
             </transition>
             <button v-on:click="instrumentAddCancel" v-show="justAddingInstrument" class="cancel">Abbrechen</button>
-            <button v-on:click="instrumentAdd" v-show="!justAddingInstrument">Intrument hinzufügen</button>
+            <button class="add" v-on:click="instrumentAdd" v-show="!justAddingInstrument">+</button>
         </div>
     </div>
 </div>
