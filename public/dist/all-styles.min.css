@@ -502,15 +502,19 @@ a {
   color: #009999; }
 
 .logo {
-  border: 3px solid #000;
   border-top: 0;
-  padding: 0 .5em 0 .2em;
-  border-bottom-right-radius: 1.2em;
-  opacity: .3; }
+  padding: .2em 0;
+  position: relative;
+  left: -.5em;
+  width: 10em;
+  display: block;
+  float: left; }
   .logo svg {
-    max-width: 2em;
+    width: 100%;
     position: relative;
     top: .3em; }
+    .logo svg path {
+      fill: #686868; }
   .logo .text {
     font-weight: bold;
     font-size: 1.2em;

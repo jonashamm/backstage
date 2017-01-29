@@ -66,16 +66,22 @@ a {
 	color:$c-main;
 }
 .logo {
-	border:3px solid $c-darkest;
 	border-top:0;
-	padding:0 .5em 0 .2em;
-	border-bottom-right-radius:1.2em;
-	opacity:.3;
+	padding:.2em 0;
+	position: relative;
+	left:-.5em;
+	width:10em;
+	display: block;
+	float: left;
 
 	svg {
-		max-width:2em;
+		width:100%;
 		position: relative;
 		top:.3em;
+
+		path {
+			fill:lighten($c-copy,25);
+		}
 	}
 	.text {
 		font-weight: bold;

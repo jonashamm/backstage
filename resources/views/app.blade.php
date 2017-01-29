@@ -12,10 +12,7 @@
     <header>
         <div class="inner">
             <a href="{{url('/')}}" class="logo">
-                @include('icon-files.backstagepass')
-                <span class="text">
-            backstage
-        </span>
+                @include('icon-files.backstage')
             </a>
             <div class="user-actions">
                 @if(!empty($currentUser))

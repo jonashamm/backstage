@@ -65,7 +65,7 @@ gulp.task('svgmin', function () {
 		.pipe(rename(function(path) {
 			path.extname = ".blade.php"
 		}))
-		.pipe(gulp.dest('resources/views/icons/'))
+		.pipe(gulp.dest('resources/views/icon-files/'))
 });
 
 gulp.task('renameSVGs', function () {
