@@ -490,7 +490,7 @@ tr:first-child td {
 h1,
 h2,
 h3 {
-  color: #009999;
+  color: #993900;
   margin-top: 0; }
 
 h4 {
@@ -499,7 +499,7 @@ h4 {
   font-size: .9em; }
 
 a {
-  color: #009999; }
+  color: #993900; }
 
 .logo {
   border-top: 0;
@@ -523,7 +523,7 @@ a {
     color: #000; }
 
 button {
-  background: #009999;
+  background: #993900;
   border-radius: .3em;
   transition: background-color .2s, color .2s;
   outline: none;
@@ -535,15 +535,15 @@ button {
   cursor: pointer;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
   button:hover, button:focus {
-    background: #00e6e6; }
+    background: #e65600; }
   .user-actions button, button.cancel {
     background: transparent;
-    color: #009999;
+    color: #993900;
     box-shadow: none;
     padding: .1em; }
     .user-actions button:hover, .user-actions button:focus, button.cancel:hover, button.cancel:focus {
       background: transparent;
-      color: #006666; }
+      color: #662600; }
   .songs button,
   .instruments button,
   .users button,
@@ -553,7 +553,7 @@ button {
     border-radius: 50%;
     padding: .5em; }
   button:active {
-    background: linear-gradient(#009494, #00a3a3);
+    background: linear-gradient(#943700, #a33d00);
     box-shadow: none; }
   button path {
     fill: #fff; }
@@ -631,19 +631,19 @@ header {
   cursor: pointer;
   display: inline-block;
   padding: .4em .5em .2em .5em;
-  border: 1px solid #009999;
+  border: 1px solid #993900;
   border-radius: .2em; }
   .instrument.selected {
     padding: 0; }
     .instrument.selected .instrument-name {
       padding: .2em .5em;
-      background: #009999;
+      background: #993900;
       border-color: transparent;
       color: #fff; }
   .instrument .instrument-user {
     padding: .2em .5em; }
     .instrument .instrument-user.selected {
-      background: #00c2c2;
+      background: #c24800;
       color: #fff; }
 
 .songcast-save {
@@ -674,7 +674,7 @@ header {
   box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.1); }
   .songcasts .instrument {
     min-width: 7em;
-    background: #009999;
+    background: #993900;
     color: #fff;
     float: left;
     clear: both;
@@ -683,7 +683,7 @@ header {
   .songcasts .user {
     clear: both;
     padding: .2em .5em;
-    background: rgba(0, 153, 153, 0.3); }
+    background: rgba(153, 57, 0, 0.3); }
   .songcasts .delete {
     display: none;
     position: absolute;
@@ -705,10 +705,10 @@ header {
   background: rgba(255, 255, 255, 0.5); }
   .songcast .cancel {
     display: inline-block;
-    color: #009999;
+    color: #993900;
     padding: .5em;
     font-size: .8em;
-    border: 1px solid #009999;
+    border: 1px solid #993900;
     background-color: transparent;
     padding: .2em .5em;
     font-size: .8em;
@@ -719,7 +719,7 @@ header {
       margin: .2em .5em .5em 0;
       min-width: 7em; }
     .songcast .add strong {
-      color: #009999; }
+      color: #993900; }
 
 .user h1 {
   margin-bottom: 0; }
@@ -759,7 +759,7 @@ header {
   width: 1.75em;
   height: 1.75em; }
   .instruments .icon path {
-    fill: #009999; }
+    fill: #993900; }
 
 .songs .sheet a {
   display: inline-block;
@@ -782,7 +782,7 @@ header {
 
 .meta-infos {
   overflow: hidden;
-  background: #009999;
+  background: #993900;
   color: #fff; }
   .meta-infos h2 {
     color: rgba(255, 255, 255, 0.7); }
@@ -868,7 +868,7 @@ ul.attachments {
   position: relative; }
   .progressbar .progress {
     transition: width .2s;
-    background-color: #009999;
+    background-color: #993900;
     position: absolute;
     top: 0;
     left: 0;
