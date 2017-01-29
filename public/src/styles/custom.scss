@@ -15,8 +15,13 @@ body {
 	margin-right:auto;
 	padding-left:5%;
 	padding-right:5%;
-	overflow: hidden;
 	position: relative;
+
+	&:after {
+		display: block;
+		content: '';
+		clear:both;
+	}
 }
 .inner {
 	padding:0 5%;
@@ -61,6 +66,7 @@ h4 {
 	margin-bottom:.5em;
 	font-weight: normal;
 	font-size:.9em;
+	margin-top:0;
 }
 a {
 	color:$c-main;
@@ -92,7 +98,7 @@ a {
 	}
 }
 button {
-	@include buttonColor;
+	@include buttonColor(lighten($c-main,10));
 	border-radius: .3em;
 	transition: background-color .2s, color .2s;
 	outline: none;
@@ -118,20 +124,19 @@ button {
 		}
 	}
 
+	&:active {
+		box-shadow:inset -1px -1px 3px rgba($c-darkest, .25) ;
+	}
+
 	.songs &,
 	.instruments &,
 	.users &,
-	.attachments & {
+	.attachments &,
+	&.toggler {
 		height:2.3em;
 		width:2.3em;
 		border-radius:50%;
 		padding: .5em;
-	}
-
-
-	&:active {
-		background: linear-gradient(darken($c-main,1),lighten($c-main,2));
-		box-shadow:none;
 	}
 
 	path {
@@ -417,16 +422,39 @@ header {
 		font-size:3em;
 	}
 }
+
+
+.meta-infos,
+.songcast,
+.songfiles {
+	padding: 2em 0;
+}
 .meta-infos {
-	overflow: hidden;
 	background: $c-main;
 	color:$c-negative;
+	padding-bottom:.5em;
+
+	&.editmode {
+		padding-bottom:2em;
+	}
 
 	h2 {
 		color:rgba($c-negative,.7);
 	}
-}
-.meta-infos {
+
+	.value {
+		font-weight: bold;
+		margin-bottom:1.3em;
+		font-size:1.1em;
+
+		&.empty {
+			font-size:.9em;
+			font-weight: normal;
+			opacity:.5;
+			font-style: italic;
+		}
+	}
+
 	.formfield {
 		padding-bottom:1em;
 		box-sizing: border-box;
@@ -475,12 +503,6 @@ label {
 	}
 }
 
-
-.meta-infos,
-.songcast,
-.songfiles {
-	padding: 2em 0;
-}
 .songfiles {
 	padding-bottom:5em;
 
@@ -510,22 +532,12 @@ ul.attachments {
 	margin-top:2em;
 }
 
-.static-info {
-
-	.value {
-		font-weight: bold;
-	}
-
-	.value {
-		font-size:1.1em;
-	}
-}
 .static-info,
 .dynamic-info
 {
 	.toggler {
 		position: absolute;
-		top:0;
+		top:-3em;
 		right:5%;
 	}
 }

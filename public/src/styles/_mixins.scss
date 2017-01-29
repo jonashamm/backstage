@@ -1,9 +1,12 @@
 @mixin buttonColor($color:$c-main) {
-	background: $color; //linear-gradient(lighten($c-main,5),darken($c-main,5));
+	background-color: $color; //linear-gradient(lighten($c-main,5),darken($c-main,5));
 
 	&:hover,
 	&:focus {
-		background: lighten($color,15);
+		background-color: lighten($color,5);
+	}
+	&:active {
+		background-color: lighten($color,12);
 	}
 }
 @mixin ghostbutton() {

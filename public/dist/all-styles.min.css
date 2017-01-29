@@ -456,8 +456,11 @@ body {
   margin-right: auto;
   padding-left: 5%;
   padding-right: 5%;
-  overflow: hidden;
   position: relative; }
+  .inner:after {
+    display: block;
+    content: '';
+    clear: both; }
 
 .inner {
   padding: 0 5%; }
@@ -490,16 +493,17 @@ tr:first-child td {
 h1,
 h2,
 h3 {
-  color: #993900;
+  color: #007171;
   margin-top: 0; }
 
 h4 {
   margin-bottom: .5em;
   font-weight: normal;
-  font-size: .9em; }
+  font-size: .9em;
+  margin-top: 0; }
 
 a {
-  color: #993900; }
+  color: #007171; }
 
 .logo {
   border-top: 0;
@@ -523,7 +527,7 @@ a {
     color: #000; }
 
 button {
-  background: #993900;
+  background-color: #00a4a4;
   border-radius: .3em;
   transition: background-color .2s, color .2s;
   outline: none;
@@ -535,26 +539,27 @@ button {
   cursor: pointer;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
   button:hover, button:focus {
-    background: #e65600; }
+    background-color: #00bebe; }
+  button:active {
+    background-color: #00e1e1; }
   .user-actions button, button.cancel {
     background: transparent;
-    color: #993900;
+    color: #007171;
     box-shadow: none;
     padding: .1em; }
     .user-actions button:hover, .user-actions button:focus, button.cancel:hover, button.cancel:focus {
       background: transparent;
-      color: #662600; }
+      color: #003e3e; }
+  button:active {
+    box-shadow: inset -1px -1px 3px rgba(0, 0, 0, 0.25); }
   .songs button,
   .instruments button,
   .users button,
-  .attachments button {
+  .attachments button, button.toggler {
     height: 2.3em;
     width: 2.3em;
     border-radius: 50%;
     padding: .5em; }
-  button:active {
-    background: linear-gradient(#943700, #a33d00);
-    box-shadow: none; }
   button path {
     fill: #fff; }
 
@@ -631,19 +636,19 @@ header {
   cursor: pointer;
   display: inline-block;
   padding: .4em .5em .2em .5em;
-  border: 1px solid #993900;
+  border: 1px solid #007171;
   border-radius: .2em; }
   .instrument.selected {
     padding: 0; }
     .instrument.selected .instrument-name {
       padding: .2em .5em;
-      background: #993900;
+      background: #007171;
       border-color: transparent;
       color: #fff; }
   .instrument .instrument-user {
     padding: .2em .5em; }
     .instrument .instrument-user.selected {
-      background: #c24800;
+      background: #009a9a;
       color: #fff; }
 
 .songcast-save {
@@ -651,9 +656,11 @@ header {
   cursor: pointer;
   display: inline-block;
   color: #fff;
-  background: #4134cb; }
+  background-color: #4134cb; }
   .songcast-save:hover, .songcast-save:focus {
-    background: #7a71db; }
+    background-color: #5448d0; }
+  .songcast-save:active {
+    background-color: #6f65d7; }
 
 .info {
   color: #fff;
@@ -674,7 +681,7 @@ header {
   box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.1); }
   .songcasts .instrument {
     min-width: 7em;
-    background: #993900;
+    background: #007171;
     color: #fff;
     float: left;
     clear: both;
@@ -683,7 +690,7 @@ header {
   .songcasts .user {
     clear: both;
     padding: .2em .5em;
-    background: rgba(153, 57, 0, 0.3); }
+    background: rgba(0, 113, 113, 0.3); }
   .songcasts .delete {
     display: none;
     position: absolute;
@@ -705,10 +712,10 @@ header {
   background: rgba(255, 255, 255, 0.5); }
   .songcast .cancel {
     display: inline-block;
-    color: #993900;
+    color: #007171;
     padding: .5em;
     font-size: .8em;
-    border: 1px solid #993900;
+    border: 1px solid #007171;
     background-color: transparent;
     padding: .2em .5em;
     font-size: .8em;
@@ -719,7 +726,7 @@ header {
       margin: .2em .5em .5em 0;
       min-width: 7em; }
     .songcast .add strong {
-      color: #993900; }
+      color: #007171; }
 
 .user h1 {
   margin-bottom: 0; }
@@ -759,7 +766,7 @@ header {
   width: 1.75em;
   height: 1.75em; }
   .instruments .icon path {
-    fill: #993900; }
+    fill: #007171; }
 
 .songs .sheet a {
   display: inline-block;
@@ -780,38 +787,53 @@ header {
 .song h1 {
   font-size: 3em; }
 
+.meta-infos,
+.songcast,
+.songfiles {
+  padding: 2em 0; }
+
 .meta-infos {
-  overflow: hidden;
-  background: #993900;
-  color: #fff; }
+  background: #007171;
+  color: #fff;
+  padding-bottom: .5em; }
+  .meta-infos.editmode {
+    padding-bottom: 2em; }
   .meta-infos h2 {
     color: rgba(255, 255, 255, 0.7); }
-
-.meta-infos .formfield {
-  padding-bottom: 1em;
-  box-sizing: border-box; }
-  @media all and (min-width: 40em) {
-    .meta-infos .formfield {
-      width: 32.333%;
-      float: left;
-      margin-right: 1%; } }
-  @media all and (min-width: 50em) {
-    .meta-infos .formfield {
-      width: 19%;
-      float: left; } }
-  .meta-infos .formfield input {
-    width: 100%; }
-  .meta-infos .formfield.extra-infos {
-    clear: both;
-    float: none; }
+  .meta-infos .value {
+    font-weight: bold;
+    margin-bottom: 1.3em;
+    font-size: 1.1em; }
+    .meta-infos .value.empty {
+      font-size: .9em;
+      font-weight: normal;
+      opacity: .5;
+      font-style: italic; }
+  .meta-infos .formfield {
+    padding-bottom: 1em;
+    box-sizing: border-box; }
     @media all and (min-width: 40em) {
-      .meta-infos .formfield.extra-infos {
-        width: 100%; } }
+      .meta-infos .formfield {
+        width: 32.333%;
+        float: left;
+        margin-right: 1%; } }
     @media all and (min-width: 50em) {
-      .meta-infos .formfield.extra-infos {
-        width: 100%; } }
-    .meta-infos .formfield.extra-infos textarea {
-      width: 99%; }
+      .meta-infos .formfield {
+        width: 19%;
+        float: left; } }
+    .meta-infos .formfield input {
+      width: 100%; }
+    .meta-infos .formfield.extra-infos {
+      clear: both;
+      float: none; }
+      @media all and (min-width: 40em) {
+        .meta-infos .formfield.extra-infos {
+          width: 100%; } }
+      @media all and (min-width: 50em) {
+        .meta-infos .formfield.extra-infos {
+          width: 100%; } }
+      .meta-infos .formfield.extra-infos textarea {
+        width: 99%; }
 
 label {
   display: block;
@@ -820,11 +842,6 @@ label {
   @media all and (min-width: 40em) {
     label {
       width: auto; } }
-
-.meta-infos,
-.songcast,
-.songfiles {
-  padding: 2em 0; }
 
 .songfiles {
   padding-bottom: 5em; }
@@ -848,16 +865,10 @@ ul.attachments {
 .attachment-type {
   margin-top: 2em; }
 
-.static-info .value {
-  font-weight: bold; }
-
-.static-info .value {
-  font-size: 1.1em; }
-
 .static-info .toggler,
 .dynamic-info .toggler {
   position: absolute;
-  top: 0;
+  top: -3em;
   right: 5%; }
 
 .progressbar {
@@ -868,7 +879,7 @@ ul.attachments {
   position: relative; }
   .progressbar .progress {
     transition: width .2s;
-    background-color: #993900;
+    background-color: #007171;
     position: absolute;
     top: 0;
     left: 0;

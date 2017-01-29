@@ -10,8 +10,10 @@
 				[ 'Dauer', 'duration' ],
 				[ 'Youtube-Vorlage', 'link_to_original' ],
 				[ 'Original-Interpret', 'original_performer' ],
-				[ 'Extra-Info', 'extrainfo' ]
+				[ 'Und außerdem...', 'extrainfo' ]
 			); ?>
+
+            <div class="value empty" v-if="!song.key && !song.duration && !song.link_to_original && !song.original_performer && !song.extrainfo">Um Infos hinzuzufügen, auf den Pfeilbutton rechts in diesem Feld klicken</div>
             @foreach($song_attributes as $attribute)
                 <template v-if="song.{{$attribute[1]}}">
                     <h4>{{$attribute[0]}}</h4>
