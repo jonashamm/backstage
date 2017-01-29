@@ -606,5 +606,9 @@ ul.attachments {
 	font-size:.75em;
 	color:lighten($c-copy,20);
 	display: inline;
-;
+}
+.song-in-list {
+	strong {
+		font-size: 1.1em;
+	}
 }

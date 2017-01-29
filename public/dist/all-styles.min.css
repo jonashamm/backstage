@@ -933,3 +933,6 @@ ul.attachments {
   font-size: .75em;
   color: #5b5b5b;
   display: inline; }
+
+.song-in-list strong {
+  font-size: 1.1em; }

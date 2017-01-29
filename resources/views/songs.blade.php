@@ -3,7 +3,7 @@
 @section('content')
     <div class="songlist">
         <div class="inner">
-            <h2>Unsere songs</h2>
+{{--            <h1>Unsere songs</h1>--}}
 
             @if (Session::get('song_name'))
                 <em class="info success">
@@ -37,7 +37,7 @@
                                 -
                             @endif
                         </td>
-                        <td><strong>
+                        <td class="song-in-list"><strong>
                                 <a href="{{$baseurl}}/songs/{{$song->id}}">{{$song->name}}</a>
                             </strong>
                             @if($song->original_performer)
