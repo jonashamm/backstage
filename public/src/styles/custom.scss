@@ -42,6 +42,7 @@ td {
 }
 td {
 	border-top:1px solid $c-border;
+	padding:.75em 0;
 }
 tr {
 	&:first-child {
@@ -368,9 +369,6 @@ header {
 		font-size:.9em;
 	}
 }
-button[type=submit] {
-	margin-top:1em;
-}
 
 #__bs_notify__ {
 	font-size:.5em !important;
@@ -397,6 +395,11 @@ button[type=submit] {
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
+	}
+	.edit-button,
+	.delete-button {
+		float:right;
+		padding:0 .5em;
 	}
 }
 .song {

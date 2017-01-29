@@ -11,12 +11,12 @@
                 </em>
             @endif
 
+
             <table class="songs">
                 <thead>
                 <tr class="head">
                     <th>Sänger/in</th>
                     <th>Song</th>
-                    <th>Noten</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -24,6 +24,7 @@
 
                 <tbody>
                 @foreach($songs as $song)
+
                     <tr>
                         <td>
                             @if(!empty($song->songcasts))
@@ -43,20 +44,18 @@
                                 ({{$song->original_performer}})
                             @endif
                         </td>
-                        <td class="sheet">
-                            @if($song->attachments)
-                                @foreach($song->attachments as $attachment)
-                                    <a href="{{ url('/uploads/'.$attachment->name) }}" target="_blank">
-                                        {{$attachment->name}}
-                                    </a><br>
-                                @endforeach
+                        <td class="audio">
+                            @if(count($song->most_recent_audiofile) > 0)
+                                <audio controls preload="none">
+                                    <source src="{{url('/')}}/uploads/{{$song->most_recent_audiofile->physical_name}}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             @endif
                         </td>
-                        <td>
+                        <td class="acions">
                             @include('partials.delete-button',['object' => 'song'])
-                        </td>
-                        <td>
-                            <a href="{{$baseurl}}/songs/{{$song->id}}">
+
+                            <a href="{{$baseurl}}/songs/{{$song->id}}" class="edit-button">
                                 <button>
                                     @include('icon-files.mode_edit')
                                 </button>

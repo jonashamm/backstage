@@ -31,9 +31,13 @@ class SongsController extends GlobalController
     }
 
     public function index() {
-        $songs = Song::with('songcasts.cast.user','songcasts.cast.instrument')->get();
+        $songs = Song
+	        ::with('songcasts.cast.user','songcasts.cast.instrument')
+	        ->with('most_recent_audiofile')
+	        ->get();
 	    $this->filehandler = new AttachmentsController();
         return view('songs', compact('songs'));
+
     }
     public function show($song_id) {
         $users = User::all();

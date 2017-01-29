@@ -481,7 +481,8 @@ td {
   padding: 0; }
 
 td {
-  border-top: 1px solid #cccccc; }
+  border-top: 1px solid #cccccc;
+  padding: .75em 0; }
 
 tr:first-child td {
   border-top: 0; }
@@ -744,9 +745,6 @@ header {
   margin-top: .5em;
   font-size: .9em; }
 
-button[type=submit] {
-  margin-top: 1em; }
-
 #__bs_notify__ {
   font-size: .5em !important;
   opacity: .2;
@@ -765,6 +763,11 @@ button[type=submit] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
+
+.songs .edit-button,
+.songs .delete-button {
+  float: right;
+  padding: 0 .5em; }
 
 .song label {
   display: block;
