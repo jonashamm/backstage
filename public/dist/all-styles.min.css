@@ -928,3 +928,8 @@ ul.attachments {
     width: 100%;
     z-index: 2;
     text-align: center; }
+
+.original-performer {
+  font-size: .75em;
+  color: #5b5b5b;
+  display: inline; }

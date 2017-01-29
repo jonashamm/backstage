@@ -41,7 +41,7 @@
                                 <a href="{{$baseurl}}/songs/{{$song->id}}">{{$song->name}}</a>
                             </strong>
                             @if($song->original_performer)
-                                ({{$song->original_performer}})
+                                <div class="original-performer">({{$song->original_performer}})</div>
                             @endif
                         </td>
                         <td class="audio">
