@@ -24,7 +24,7 @@
                                             <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
                                             Your browser does not support the audio element.
                                         </video>
-                                        <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
+                                   {{--     <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>--}}
                                     </div>
 
                                     <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank">xxxx [[ attachment.name ]] </a>
