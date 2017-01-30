@@ -6,6 +6,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>backstage</title>
     <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css') }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="{{url('/')}}/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{url('/')}}/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="{{url('/')}}/manifest.json">
+    <link rel="mask-icon" href="{{url('/')}}/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#00a3ad">
 </head>
 <body>
 <div class="page-wrapper page-{{alphanumeric(Route::getCurrentRoute()->getPath())}}" id="backstage">
