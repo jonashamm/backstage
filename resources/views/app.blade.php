@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#00a3ad">
 </head>
 <body>
-<div class="page-wrapper page-{{alphanumeric(Route::getCurrentRoute()->getPath())}}" id="backstage">
+<div class="page-wrapper" id="backstage">
     <header>
         <div class="inner">
             <a href="{{url('/')}}" class="logo">

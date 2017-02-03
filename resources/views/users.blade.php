@@ -15,6 +15,14 @@
                     </li>
                 @endforeach
             </ul>
+            <div class="invite-user">
+                <h2>User einladen</h2>
+                <form action="{{url('/')}}/invite" method="post">
+                    <input name="name" type="text" placeholder="Name">
+                    <input name="email" type="email" placeholder="E-Mail-Adresse">
+                </form>
+            </div>
+
 
             @include('partials.user-add')
 

@@ -112,4 +112,13 @@ return [
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 
+
+    'markdown' => [
+	    'theme' => 'backstage',
+
+	    'paths' => [
+		    resource_path('views/vendor/mail'),
+	    ],
+    ],
+
 ];
