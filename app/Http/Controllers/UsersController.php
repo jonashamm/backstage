@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Instrument;
+use App\Invitation;
+use App\Mail\Invite;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use Mail;
+use Auth;
 
 class UsersController extends GlobalController
 {
@@ -48,5 +52,25 @@ class UsersController extends GlobalController
         $user->delete();
 
         return back();
+    }
+
+    public function invite(Request $request) {
+	    $active_user = Auth::user();
+
+	    if(!$request->input('user_id')) {
+	    	$invited_user = new User();
+		    $invited_user->email = $request->input('email');
+		    $invited_user->name = $request->input('name');
+		    $invited_user->save();
+	    } else {
+		    $invited_user = User::find($request->input('user_id'));
+	    }
+
+	    $invitationsHandler = new InvitationsController();
+	    $invitation = $invitationsHandler->store( $active_user, $invited_user);
+
+		Mail::to($request->email)->send(new Invite( $active_user, $invited_user, $invitation->code ));
+
+		return back();
     }
 }

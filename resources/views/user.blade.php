@@ -21,7 +21,6 @@
                 @endforeach
             </ul>
 
-
             <h3>Instrument hinzufügen</h3>
 
             <form method="post" action="{{url('/')}}/users/{{$user->id}}">
@@ -36,6 +35,19 @@
                 </select>
                 <button type="submit">Save</button>
             </form>
+
+            @if(!$user->password)
+            <div class="invite-user-box">
+                <p>{{ $user->name }} nimmt noch nicht aktiv teil. Willst du sie/ihn einladen?</p>
+                <form action="{{url('/')}}/invite" method="post">
+                    {{ csrf_field() }}
+                    <input name="user_id" type="hidden" value="{{ $user->id }}">
+                    <input name="name" type="hidden" value="{{ $user->name }}">
+                    <input name="email" type="hidden" value="{{ $user->email }}">
+                    <button type="submit">{{ $user->name }} jetzt einladen</button>
+                </form>
+            </div>
+            @endif
         </div>
     </div>
 @endsection

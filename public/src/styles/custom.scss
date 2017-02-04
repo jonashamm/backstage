@@ -612,3 +612,12 @@ ul.attachments {
 		font-size: 1.1em;
 	}
 }
+.invite-user-box {
+	background-color: rgba($c-main,.2);
+	padding:1em;
+	margin-top:2em;
+
+	p {
+		margin-top:0;
+	}
+}

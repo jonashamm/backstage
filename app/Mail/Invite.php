@@ -11,16 +11,20 @@ class Invite extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $invited_user;
+    public $active_user;
+    public $code;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct( $active_user, $invited_user, $code )
     {
-        $this->user = $user;
+	    $this->active_user = $active_user;
+        $this->invited_user = $invited_user;
+        $this->code = $code;
     }
 
     /**
@@ -30,6 +34,7 @@ class Invite extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.invite');
+	    return $this->from('no-reply@newvoices-hh.de')
+	               ->markdown('emails.invite');
     }
 }

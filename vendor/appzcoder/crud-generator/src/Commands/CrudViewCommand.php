@@ -337,7 +337,7 @@ class CrudViewCommand extends Command
     public function templateFormVars($newFormFile)
     {
         File::put($newFormFile, str_replace('%%formFieldsHtml%%', $this->formFieldsHtml, File::get($newFormFile)));
-
+	    File::put($newFormFile, str_replace('%%crudNameSingular%%', $this->crudNameSingular, File::get($newFormFile)));
     }
 
     /**
@@ -413,7 +413,7 @@ class CrudViewCommand extends Command
     {
         $formGroup = file_get_contents($this->viewDirectoryPath . 'form-fields/wrap-field.blade.stub');
 
-        $labelText = "'" . ucwords(strtolower(str_replace('_', ' ', $item['name']))) . "'";
+	    $labelText = ucwords(strtolower(str_replace('_', ' ', $item['name'])));
 
         if ($this->option('localize') == 'yes') {
             $labelText = 'trans(\'' . $this->crudName . '.' . $item['name'] . '\')';

@@ -1,12 +1,11 @@
 @component('mail::message')
-# Hello {{ $user->name }}
+# Hallo {{ $invited_user->name }}!
 
-The body of your message.
+{{ $active_user->name }} hat dich zu **backstage** eingeladen.
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => url('/') . '/accept-invitation/' . $code . '/' . $invited_user->id ])
+Einladung annehmen
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Danke!<br>
 @endcomponent

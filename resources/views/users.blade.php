@@ -18,8 +18,10 @@
             <div class="invite-user">
                 <h2>User einladen</h2>
                 <form action="{{url('/')}}/invite" method="post">
+                    {{ csrf_field() }}
                     <input name="name" type="text" placeholder="Name">
                     <input name="email" type="email" placeholder="E-Mail-Adresse">
+                    <button type="submit">Einladen</button>
                 </form>
             </div>
 

@@ -24,3 +24,6 @@ Route::get('/artisan/migrate1slug-8490x','DBController@migrate');
 Route::delete('casts/{user_id}/{instrument_id}','CastsController@destroy');
 Route::resource('icons', 'IconsController');
 Route::resource('attachmenttypes', 'AttachmenttypesController');
+
+Route::post('invite','UsersController@invite');
+Route::get('accept-invitation/{code}/{user_id}', 'InvitationsController@acceptPage');

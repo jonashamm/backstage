@@ -936,3 +936,10 @@ ul.attachments {
 
 .song-in-list strong {
   font-size: 1.1em; }
+
+.invite-user-box {
+  background-color: rgba(0, 113, 113, 0.2);
+  padding: 1em;
+  margin-top: 2em; }
+  .invite-user-box p {
+    margin-top: 0; }
