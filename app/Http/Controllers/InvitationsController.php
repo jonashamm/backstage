@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Invitation;
 use Illuminate\Http\Request;
 use Session;
+use App\User;
 
 class InvitationsController extends Controller
 {
@@ -34,6 +35,17 @@ class InvitationsController extends Controller
     	return view('invitations.accept', compact('code','user_id'));
     }
 
+	public function redeemInvitation(Request $request) {
+
+		$user = User::find($request->input('user_id'));
+		$pw = bcrypt($request->input('password'));
+
+		 $this->validate($request, [
+			 'password' => 'required|min:3|confirmed',
+		 ]);
+
+		return "testi";
+	}
 
     /**
      * Remove the specified resource from storage.

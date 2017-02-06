@@ -27,3 +27,4 @@ Route::resource('attachmenttypes', 'AttachmenttypesController');
 
 Route::post('invite','UsersController@invite');
 Route::get('accept-invitation/{code}/{user_id}', 'InvitationsController@acceptPage');
+Route::post('redeem-invitation', 'InvitationsController@redeemInvitation');

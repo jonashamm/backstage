@@ -943,3 +943,17 @@ ul.attachments {
   margin-top: 2em; }
   .invite-user-box p {
     margin-top: 0; }
+
+.badge {
+  display: inline-block;
+  opacity: .6;
+  font-size: .6em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: .3em .4em .2em;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: .2em; }
+  .badge.active {
+    background-color: #53bb31; }
+  .badge.invited {
+    background-color: #f18d13; }

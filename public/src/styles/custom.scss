@@ -621,3 +621,20 @@ ul.attachments {
 		margin-top:0;
 	}
 }
+.badge {
+	display: inline-block;
+	opacity: .6;
+	font-size:.6em;
+	text-transform: uppercase;
+	color: $c-negative;
+	padding:.3em .4em .2em;
+	box-shadow:1px 1px 4px rgba($c-darkest,.1);
+	border-radius:.2em;
+
+	&.active {
+		background-color: $c-go;
+	}
+	&.invited {
+		background-color: $c-progress;
+	}
+}

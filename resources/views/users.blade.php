@@ -9,6 +9,13 @@
                     <li>
                         <div class="name">
                             <a href="{{url('/')}}/users/{{$user->id}}">{{$user->name}}</a>
+                            @if(!empty($user->invitation))
+                                @if(!$user->invitation->redeemed)
+                                    <span class="badge invited">Eingeladen</span>
+                                @else
+                                    <span class="badge active">Aktiv</span>
+                                @endif
+                            @endif
                         </div>
 
                         @include('partials.delete-button',['object' => 'user'])
@@ -24,7 +31,6 @@
                     <button type="submit">Einladen</button>
                 </form>
             </div>
-
 
             @include('partials.user-add')
 

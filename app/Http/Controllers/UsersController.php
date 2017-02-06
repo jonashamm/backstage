@@ -15,7 +15,7 @@ use Auth;
 class UsersController extends GlobalController
 {
     public function index() {
-        $users = User::all();
+        $users = User::with('invitation')->get();
         return view('users',compact('users'));
     }
 
@@ -31,11 +31,11 @@ class UsersController extends GlobalController
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = 'asd';
         $user->save();
 
         return back();
     }
+
     public function update(Request $request, $id) {
         $user = User::find($id);
         $instrument = Instrument::find($request->input('instrument'));
@@ -47,6 +47,7 @@ class UsersController extends GlobalController
 
         return back();
     }
+
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
