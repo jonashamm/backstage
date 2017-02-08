@@ -17,7 +17,7 @@
                                             <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
-                                        <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
+                             {{--           <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>--}}
                                     </div>
                                     <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
                                         <video controls preload="none">
@@ -28,6 +28,7 @@
                                     </div>
 
                                     <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank">xxxx [[ attachment.name ]] </a>
+                                    <span class="attachment-comment">[[ attachment.comment ]]</span>
                                     <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
                                 </li>
                             </transition-group>
@@ -36,7 +37,6 @@
                 </transition>
             </div>
         @endif
-
 
         <form v-if="justAddingAttachment">
             <div class="formfield">
@@ -49,6 +49,7 @@
                     </select>
                 </div>
                 <input type="hidden" v-model="song.id" name="song_id">
+                <input v-show="attachmenttypeChosen" type="text" name="attachment_comment" v-model="attachment_comment">
                 <div v-show="attachmenttypeChosen">
                     <button type="submit" v-on:click.prevent="attachmentAdd($event)">Hinzufügen</button>
                 </div>

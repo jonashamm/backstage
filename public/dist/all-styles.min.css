@@ -448,7 +448,8 @@ body {
   background-color: #E5E5E5;
   color: #282828;
   font-family: Arial;
-  min-width: 320px; }
+  min-width: 320px;
+  overflow-x: hidden; }
 
 .inner {
   max-width: 90em;
@@ -883,8 +884,12 @@ label {
   .songfiles ul {
     padding: 0;
     margin: 0;
-    list-style-type: none;
-    font-size: 1.25em; }
+    list-style-type: none; }
+    .songfiles ul button.delete {
+      position: relative;
+      top: -.25em; }
+    .songfiles ul .attachment-comment {
+      display: inline-block; }
 
 ul.attachments {
   clear: both;

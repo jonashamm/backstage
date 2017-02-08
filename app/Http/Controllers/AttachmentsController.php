@@ -51,6 +51,7 @@ class AttachmentsController extends GlobalController
 		$file_in_db->physical_name = str_replace($path.'/','',$stored_file);
 		$file_in_db->mime = $file->getMimeType();
 		$file_in_db->song_id = $request->input('song_id');
+		$file_in_db->comment = $request->input('comment');
 		$file_in_db->save();
 		return $file_in_db;
 	}

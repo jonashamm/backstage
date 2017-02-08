@@ -8,6 +8,7 @@ body {
 	color:$c-copy;
 	font-family: Arial;
 	min-width:320px;
+	overflow-x: hidden;
 }
 .inner {
 	max-width:90em;
@@ -546,7 +547,14 @@ label {
 		padding:0;
 		margin:0;
 		list-style-type: none;
-		font-size:1.25em;
+
+		button.delete {
+			position: relative;
+			top:-.25em;
+		}
+		.attachment-comment {
+			display: inline-block;
+		}
 	}
 }
 ul.attachments {

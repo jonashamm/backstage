@@ -29,7 +29,8 @@ var app = new Vue({
 		metaEdit: false,
 		justAddingAttachment: false,
 		percentCompleted: 0,
-		justUploading:false
+		justUploading:false,
+		attachment_comment: '',
 	},
 	mounted: function() {
 		var _this = this;
@@ -142,9 +143,9 @@ var app = new Vue({
 			data.append('file', document.getElementById('file').files[0]);
 			data.append('type', _this.attachmenttypeChosen);
 			data.append('song_id', _this.song.id);
+			data.append('comment', _this.attachment_comment);
 
 			var typeindex = _this.songattachments.findIndex(x => x.id == _this.attachmenttypeChosen);
-			console.log(typeindex);
 
 			var config = {
 				onUploadProgress: function(progressEvent) {
@@ -171,10 +172,22 @@ var app = new Vue({
 			this.percentCompleted = 0;
 			this.attachmenttypeChosen = false;
 			this.fileChosen = false;
+			this.attachment_comment = '';
 		},
 
 		attachmentDelete: function(attachment, index, attachmenttype_id) {
 			var _this = this;
+
+			var confirmAnswer;
+			function confirm1() {
+				confirmAnswer =  confirm("Wollen Sie diese Seite wirklich sehen?");
+			}
+			confirm1();
+
+			console.log(confirmAnswer);
+			if (confirmAnswer == false) {
+				return false;
+			}
 
 			var typeindex = _this.songattachments.findIndex(x => x.id == attachmenttype_id);
 

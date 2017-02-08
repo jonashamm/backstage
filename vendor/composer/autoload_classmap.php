@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddCommentToAttachments' => $baseDir . '/database/migrations/2017_02_08_105916_add_comment_To_attachments.php',
     'AttachmentTypes' => $baseDir . '/database/migrations/2016_12_19_151443_attachment_types.php',
     'AttachmentUploadname' => $baseDir . '/database/migrations/2017_01_17_185533_attachment_uploadname.php',
     'Attachments' => $baseDir . '/database/migrations/2016_10_28_175549_attachments.php',
