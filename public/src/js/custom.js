@@ -189,6 +189,6 @@ var app = new Vue({
 
 		fileExistCheck: function(event) {
 			this.fileChosen = event.target.files[0];
-		}
+		},
 	}
 });

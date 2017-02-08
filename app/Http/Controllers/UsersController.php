@@ -20,7 +20,7 @@ class UsersController extends GlobalController
     }
 
     public function show($id) {
-        $user = User::with('instruments')->find($id);
+        $user = User::with('instruments')->with('invitation')->find($id);
         $users_instruments = $user->instruments()->pluck('instruments.id');
 
         $instruments = Instrument::whereNotIn('id',$users_instruments)->get();
@@ -49,7 +49,14 @@ class UsersController extends GlobalController
     }
 
     public function destroy($id) {
-        $user = User::find($id);
+
+        $user = User::where('id',$id)->with('casts','songcasts')->first();
+	    $user->casts()->delete();
+	    if(!empty($user->songcasts)) {
+		    foreach($user->songcasts as $songcast) {
+			    $songcast->delete();
+		    }
+	    }
         $user->delete();
 
         return back();

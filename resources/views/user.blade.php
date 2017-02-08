@@ -3,7 +3,15 @@
 @section('content')
     <div class="user">
         <div class="inner">
-            <h1 class="username">{{$user->name}}</h1>
+            <h1 class="username">{{$user->name}}
+                @if(!empty($user->invitation))
+                    @if(!$user->invitation->redeemed)
+                        <span class="badge invited">Eingeladen</span>
+                    @else
+                        <span class="badge active">Aktiv</span>
+                    @endif
+                @endif
+            </h1>
             <strong>spielt folgende Instrumente:</strong><br>
 
             <ul class="instruments-linked">
@@ -36,17 +44,24 @@
                 <button type="submit">Save</button>
             </form>
 
-            @if(!$user->password)
-            <div class="invite-user-box">
-                <p>{{ $user->name }} nimmt noch nicht aktiv teil. Willst du sie/ihn einladen?</p>
-                <form action="{{url('/')}}/invite" method="post">
-                    {{ csrf_field() }}
-                    <input name="user_id" type="hidden" value="{{ $user->id }}">
-                    <input name="name" type="hidden" value="{{ $user->name }}">
-                    <input name="email" type="hidden" value="{{ $user->email }}">
-                    <button type="submit">{{ $user->name }} jetzt einladen</button>
-                </form>
-            </div>
+         {{--   @if(!$user->password)
+
+                @else
+                    {{ $user->name }} wurde eingeladen, aktiv mitzumachen.
+                @endif
+            @endif--}}
+
+            @if(empty($user->invitation))
+                <div class="invite-user-box">
+                    <p>{{ $user->name }} nimmt noch nicht aktiv teil. Willst du sie/ihn einladen?</p>
+                    <form action="{{url('/')}}/invite" method="post">
+                        {{ csrf_field() }}
+                        <input name="user_id" type="hidden" value="{{ $user->id }}">
+                        <input name="name" type="hidden" value="{{ $user->name }}">
+                        <input name="email" type="hidden" value="{{ $user->email }}">
+                        <button type="submit">{{ $user->name }} jetzt einladen</button>
+                    </form>
+                </div>
             @endif
         </div>
     </div>

@@ -602,6 +602,7 @@ textarea {
 .info {
   display: block;
   padding: .5em 1em;
+  margin-bottom: 2em;
   color: #fff; }
   .info.success {
     background: #53bb31;
@@ -668,7 +669,6 @@ header {
   color: #fff;
   font-weight: bold;
   border-radius: .2em;
-  margin: .5em 0;
   box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.3); }
 
 .info-warn {
@@ -957,3 +957,10 @@ ul.attachments {
     background-color: #53bb31; }
   .badge.invited {
     background-color: #f18d13; }
+  h1 .badge {
+    font-size: .3em;
+    position: relative;
+    top: -1.5em; }
+
+ul.users {
+  margin-bottom: 3em; }

@@ -19,7 +19,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
     public function instruments()
     {
         return $this->belongsToMany('App\Instrument', 'casts');
@@ -27,4 +26,13 @@ class User extends Authenticatable
     public function invitation() {
     	return $this->hasOne('App\Invitation');
     }
+    public function casts() {
+    	return $this->hasMany('App\Cast');
+    }
+	public function songcasts() {
+		return $this->hasManyThrough(
+			'App\Songcast', 'App\Cast',
+			'user_id', 'cast_id', 'id'
+		);
+	}
 }

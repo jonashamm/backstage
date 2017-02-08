@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Instrument;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Cast;
+use App\Songcast;
 
 class InstrumentsController extends GlobalController
 {
@@ -26,8 +28,11 @@ class InstrumentsController extends GlobalController
 
     }
     public function destroy($instrument_id) {
-        $instrument = Instrument::find($instrument_id);
-	    $instrument->user()->detach();
+        $instrument = Instrument::where('id',$instrument_id)->with('songcasts','casts')->first();
+        foreach($instrument->songcasts as $songcast) {
+	        $songcast->delete();
+        }
+	    $instrument->casts()->detach();
         $instrument->delete();
         return back();
     }

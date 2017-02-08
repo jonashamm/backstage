@@ -4,7 +4,7 @@
     <div class="users-list">
         <div class="inner">
             <h2>Mitglieder</h2>
-            <ul class="instruments">
+            <ul class="users">
                 @foreach($users as $user)
                     <li>
                         <div class="name">

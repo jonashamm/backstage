@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cast extends Model
 {
-	protected $table = 'casts';
-
 	public function user()
 	{
 		return $this->belongsTo('App\User');

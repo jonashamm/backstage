@@ -3,7 +3,6 @@
 @section('content')
     <div class="songlist">
         <div class="inner">
-{{--            <h1>Unsere songs</h1>--}}
 
             @if (Session::get('song_name'))
                 <em class="info success">
@@ -11,6 +10,11 @@
                 </em>
             @endif
 
+            @if (Session::get('password_set'))
+                <em class="info success">
+                    Das Passwort wurde erfolgreich gespeichert. Du kannst jetzt loslegen :)
+                </em>
+            @endif
 
             <table class="songs">
                 <thead>

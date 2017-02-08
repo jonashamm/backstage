@@ -192,6 +192,7 @@ textarea {
 .info {
 	display: block;
 	padding:.5em 1em;
+	margin-bottom:2em;
 	color: $c-negative;
 
 	&.success {
@@ -270,7 +271,6 @@ header {
 	color:$c-negative;
 	font-weight: bold;
 	border-radius:.2em;
-	margin:.5em 0;
 	box-shadow:$shadow-material;
 }
 .info-warn {
@@ -637,4 +637,14 @@ ul.attachments {
 	&.invited {
 		background-color: $c-progress;
 	}
+
+	h1 & {
+		font-size:.3em;
+		position: relative;
+		top:-1.5em;
+	}
+}
+
+ul.users {
+	margin-bottom:3em;
 }

@@ -75,9 +75,10 @@ class SongsController extends GlobalController
 		return $song;
 	}
 
-
     public function destroy($song_id) {
-        $song = Song::find($song_id);
+        $song = Song::with('attachments','songcasts')->find($song_id);
+        $song->attachments()->delete();
+        $song->songcasts()->delete();
         $song_name = (string)$song->name;
         $song->delete();
 
