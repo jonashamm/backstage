@@ -27,6 +27,7 @@
                         Hi {{$currentUser->name}}!
                     </div>
                 @endif
+                <a href="{{$baseurl}}/songs">Songs</a>
 
                 <a href="{{$baseurl}}/instruments">Instrumente</a>
 
