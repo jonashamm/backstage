@@ -973,9 +973,11 @@ ul.users {
 
 .accept-invitation label {
   display: inline-block;
-  min-width: 14em;
-  position: relative;
-  top: .75em; }
+  min-width: 14em; }
+  @media all and (min-width: 50em) {
+    .accept-invitation label {
+      position: relative;
+      top: .75em; } }
 
 .accept-invitation input {
   width: 16em; }

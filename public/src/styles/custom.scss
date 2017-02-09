@@ -662,8 +662,11 @@ ul.users {
 	label {
 		display: inline-block;
 		min-width:14em;
-		position: relative;
-		top:.75em;
+
+		@include brp(b3) {
+			position: relative;
+			top:.75em;
+		}
 	}
 	input {
 		width:16em;
