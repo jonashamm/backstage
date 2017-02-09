@@ -819,6 +819,10 @@ header {
   padding: 2em 0;
   position: relative; }
 
+.formfield {
+  padding-bottom: 1em;
+  box-sizing: border-box; }
+
 .meta-infos {
   background: #007171;
   color: #fff;
@@ -836,31 +840,28 @@ header {
       font-weight: normal;
       opacity: .5;
       font-style: italic; }
-  .meta-infos .formfield {
-    padding-bottom: 1em;
-    box-sizing: border-box; }
+  @media all and (min-width: 40em) {
+    .meta-infos .formfield {
+      width: 32.333%;
+      float: left;
+      margin-right: 1%; } }
+  @media all and (min-width: 50em) {
+    .meta-infos .formfield {
+      width: 19%;
+      float: left; } }
+  .meta-infos .formfield input {
+    width: 100%; }
+  .meta-infos .formfield.extra-infos {
+    clear: both;
+    float: none; }
     @media all and (min-width: 40em) {
-      .meta-infos .formfield {
-        width: 32.333%;
-        float: left;
-        margin-right: 1%; } }
+      .meta-infos .formfield.extra-infos {
+        width: 100%; } }
     @media all and (min-width: 50em) {
-      .meta-infos .formfield {
-        width: 19%;
-        float: left; } }
-    .meta-infos .formfield input {
-      width: 100%; }
-    .meta-infos .formfield.extra-infos {
-      clear: both;
-      float: none; }
-      @media all and (min-width: 40em) {
-        .meta-infos .formfield.extra-infos {
-          width: 100%; } }
-      @media all and (min-width: 50em) {
-        .meta-infos .formfield.extra-infos {
-          width: 100%; } }
-      .meta-infos .formfield.extra-infos textarea {
-        width: 99%; }
+      .meta-infos .formfield.extra-infos {
+        width: 100%; } }
+    .meta-infos .formfield.extra-infos textarea {
+      width: 99%; }
 
 .empty {
   font-size: .9em;
@@ -969,3 +970,12 @@ ul.attachments {
 
 ul.users {
   margin-bottom: 3em; }
+
+.accept-invitation label {
+  display: inline-block;
+  min-width: 14em;
+  position: relative;
+  top: .75em; }
+
+.accept-invitation input {
+  width: 16em; }

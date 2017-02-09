@@ -456,6 +456,10 @@ header {
 	padding: 2em 0;
 	position: relative;
 }
+.formfield {
+	padding-bottom:1em;
+	box-sizing: border-box;
+}
 .meta-infos {
 	background: $c-main;
 	color:$c-negative;
@@ -483,9 +487,6 @@ header {
 	}
 
 	.formfield {
-		padding-bottom:1em;
-		box-sizing: border-box;
-
 		@include brp(b2) {
 			width:32.333%;
 			float:left;
@@ -655,4 +656,16 @@ ul.attachments {
 
 ul.users {
 	margin-bottom:3em;
+}
+
+.accept-invitation {
+	label {
+		display: inline-block;
+		min-width:14em;
+		position: relative;
+		top:.75em;
+	}
+	input {
+		width:16em;
+	}
 }
