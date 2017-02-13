@@ -4,7 +4,7 @@
     <div class="login">
         <div class="inner">
             <h1>Login</h1>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+            <form method="post" action="{{ url('/login') }}">
                 {{ csrf_field() }}
 
                 <div class="formfield {{ $errors->has('email') ? ' has-error' : '' }}">

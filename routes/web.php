@@ -10,15 +10,7 @@ Route::resource('instruments','InstrumentsController');
 Route::resource('users','UsersController');
 Route::resource('attachments','AttachmentsController');
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Auth::routes();
 
 Route::get('api/instruments','InstrumentsController@indexAPI');
 Route::get('api/song/{song_id}','SongsController@showAPI');

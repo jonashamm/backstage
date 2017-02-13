@@ -982,20 +982,35 @@ ul.users {
 .accept-invitation input {
   width: 16em; }
 
-.formfield label {
+.login label,
+.register label,
+.reset-password label {
   display: inline-block;
-  min-width: 9em; }
+  min-width: 9em;
+  margin-top: .5em; }
+  @media all and (min-width: 40em) {
+    .login label,
+    .register label,
+    .reset-password label {
+      min-width: 9em; } }
 
-button[type=submit] {
+.login button[type=submit],
+.register button[type=submit],
+.reset-password button[type=submit] {
   clear: both;
-  margin-left: 9em; }
+  margin-left: 9em;
+  margin-top: 1em; }
 
-.stay-logged-in {
+.login .stay-logged-in,
+.register .stay-logged-in,
+.reset-password .stay-logged-in {
   display: block;
   float: none;
   margin-left: 9em; }
 
-.password-forgotten {
+.login .password-forgotten,
+.register .password-forgotten,
+.reset-password .password-forgotten {
   display: inline-block;
   margin-left: 10em;
   padding-top: 1em; }

@@ -4,7 +4,7 @@
     <div class="register">
         <div class="inner">
             <h1>Register</h1>
-            <form method="POST" action="{{ url('/register') }}">
+            <form method="post" action="{{ url('/register') }}">
                 {{ csrf_field() }}
 
                 <div class="{{ $errors->has('name') ? ' has-error' : '' }}">
