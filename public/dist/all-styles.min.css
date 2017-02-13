@@ -1001,16 +1001,12 @@ ul.users {
   margin-left: 9em;
   margin-top: 1em; }
 
-.login .stay-logged-in,
-.register .stay-logged-in,
-.reset-password .stay-logged-in {
+.stay-logged-in {
   display: block;
   float: none;
   margin-left: 9em; }
 
-.login .password-forgotten,
-.register .password-forgotten,
-.reset-password .password-forgotten {
+.password-forgotten {
   display: inline-block;
   margin-left: 10em;
   padding-top: 1em; }
