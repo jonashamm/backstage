@@ -7,8 +7,8 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                 {{ csrf_field() }}
 
-                <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email">E-Mail Address</label>
+                <div class="formfield {{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label for="email">E-Mail-Adresse</label>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
 
                     @if ($errors->has('email'))
@@ -16,8 +16,8 @@
                     @endif
                 </div>
 
-                <div class="{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password">Password</label>
+                <div class="formfield {{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label for="password">Passwort</label>
                     <input id="password" type="password" name="password" required>
 
                     @if ($errors->has('password'))
@@ -25,19 +25,18 @@
                     @endif
                 </div>
 
-                <label>
-                    <input type="checkbox" name="remember"> Remember Me
-                </label>
+                <label class="stay-logged-in">
+                    <input type="checkbox" name="remember"> Eingeloggt bleiben
+                </label><br>
 
                 <button type="submit">
                     Login
                 </button>
 
                 <a class="password-forgotten" href="{{ url('/password/reset') }}">
-                    Forgot Your Password?
+                    Passwort vergessen?
                 </a>
                 <br>
-                <a href="{{ url('/register') }}">Not registered yet?</a>
             </form>
         </div>
     </div>

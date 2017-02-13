@@ -981,3 +981,21 @@ ul.users {
 
 .accept-invitation input {
   width: 16em; }
+
+.formfield label {
+  display: inline-block;
+  min-width: 9em; }
+
+button[type=submit] {
+  clear: both;
+  margin-left: 9em; }
+
+.stay-logged-in {
+  display: block;
+  float: none;
+  margin-left: 9em; }
+
+.password-forgotten {
+  display: inline-block;
+  margin-left: 10em;
+  padding-top: 1em; }
