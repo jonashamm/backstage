@@ -1,11 +1,11 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js self-update
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add gulp-replace
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
 Yarn version: 
-  0.16.1
+  0.19.1
 
 Node version: 
   7.0.0
@@ -38,9 +38,6 @@ npm manifest:
   }
 
 yarn manifest: 
-  No manifest
-
-bower manifest: 
   No manifest
 
 Lockfile: 
@@ -4158,4 +4155,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zlib-browserify/-/zlib-browserify-0.0.1.tgz#4fa6a45d00dbc15f318a4afa1d9afc0258e176cc"
 
 Trace: 
-  Error: EACCES: permission denied, mkdir '/usr/share/yarn/updates'
+  Error: EPERM: operation not permitted, utime '/opt/lampp/htdocs/backstage5.4/node_modules/isarray/README.md'

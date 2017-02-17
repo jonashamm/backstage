@@ -415,6 +415,19 @@ header {
 		float:right;
 		padding:0 .5em;
 	}
+
+	tr, td {
+		@include brp(b2max) {
+			display: block;
+			overflow: hidden;
+			border:0;
+		}
+	}
+	tr {
+		@include brp(b2max) {
+			border-bottom: 1px solid $c-border;
+		}
+	}
 }
 .song {
 	label {
@@ -446,7 +459,9 @@ header {
 		font-size:.7em;
 		margin-left:.5em;
 	}
-
+	audio {
+		max-width:80%;
+	}
 }
 
 
@@ -570,6 +585,7 @@ ul.attachments {
 .audio-container {
 	display: inline-block;
 }
+
 .attachment-type {
 	margin-top:2em;
 }
@@ -685,18 +701,29 @@ ul.users {
 		}
 	}
 	button[type=submit] {
-		clear: both;
-		margin-left:9em;
-		margin-top:1em;
+		@include brp(b2) {
+			clear: both;
+			margin-left:9em;
+			margin-top:1em;
+		}
 	}
 }
 .stay-logged-in {
 	display: block;
 	float: none;
-	margin-left:9em;
+	width:100%;
+	margin-bottom:1em;
+
+	@include brp(b2) {
+		margin-left: 9em;
+		width:auto;
+	}
 }
 .password-forgotten {
 	display: inline-block;
-	margin-left:10em;
 	padding-top:1em;
+
+	@include brp(b2) {
+		margin-left: 10em;
+	}
 }

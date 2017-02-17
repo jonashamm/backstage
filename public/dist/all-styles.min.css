@@ -786,6 +786,16 @@ header {
   float: right;
   padding: 0 .5em; }
 
+@media all and (max-width: 39.937em) {
+  .songs tr, .songs td {
+    display: block;
+    overflow: hidden;
+    border: 0; } }
+
+@media all and (max-width: 39.937em) {
+  .songs tr {
+    border-bottom: 1px solid #cccccc; } }
+
 .song label {
   display: block;
   width: 10em; }
@@ -812,6 +822,9 @@ header {
 .song .delete {
   font-size: .7em;
   margin-left: .5em; }
+
+.song audio {
+  max-width: 80%; }
 
 .meta-infos,
 .songcast,
@@ -994,19 +1007,27 @@ ul.users {
     .reset-password label {
       min-width: 9em; } }
 
-.login button[type=submit],
-.register button[type=submit],
-.reset-password button[type=submit] {
-  clear: both;
-  margin-left: 9em;
-  margin-top: 1em; }
+@media all and (min-width: 40em) {
+  .login button[type=submit],
+  .register button[type=submit],
+  .reset-password button[type=submit] {
+    clear: both;
+    margin-left: 9em;
+    margin-top: 1em; } }
 
 .stay-logged-in {
   display: block;
   float: none;
-  margin-left: 9em; }
+  width: 100%;
+  margin-bottom: 1em; }
+  @media all and (min-width: 40em) {
+    .stay-logged-in {
+      margin-left: 9em;
+      width: auto; } }
 
 .password-forgotten {
   display: inline-block;
-  margin-left: 10em;
   padding-top: 1em; }
+  @media all and (min-width: 40em) {
+    .password-forgotten {
+      margin-left: 10em; } }

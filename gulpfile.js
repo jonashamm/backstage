@@ -12,11 +12,13 @@ var concat = require('gulp-concat'),
 	shell = require('gulp-shell'),
 	uglify = require('gulp-uglify'),
 	babel = require('gulp-babel'),
+	replace = require('gulp-replace'),
 	browserSync = require('browser-sync').create();
 
 // Custom folder variables //////////////////////////////////////
 var folderSrc = 'public/src/',
-	folderDist = 'public/dist/';
+	folderDist = 'public/dist/',
+ 	antiCacheString;
 
 gulp.task('sass', function() {
 	return gulp.src([
@@ -36,6 +38,32 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('public/dist/'))
 		.pipe(browserSync.stream());
 });
+
+gulp.task('compileVendorJS',function() {
+	return gulp.src( [
+		'node_modules/vue/dist/vue.js',
+		'node_modules/axios/dist/axios.js',
+	])
+		.pipe(concat('all-vendor-scripts.js'))
+		.pipe(gulp.dest(folderDist))
+		.pipe(browserSync.stream());
+});
+
+gulp.task('compileCustomJS',function() {
+	return gulp.src(folderSrc + 'js/custom.js')
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(gulp.dest(folderDist))
+		.pipe(browserSync.stream());
+});
+
+gulp.task('antiCache', function () {
+	return gulp.src('resources/views/src/app.blade.php')
+		.pipe(replace('antiCacheString', Date.now()))
+		.pipe(gulp.dest('resources/views'));
+});
+
 
 gulp.task('compileJS',function() {
 	return gulp.src( [
@@ -85,11 +113,11 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('public/src/js/**', ['compileJS']);
-	gulp.watch('public/src/styles/**', ['sass']);
+	gulp.watch( folderSrc + 'js/custom.js', ['compileCustomJS','antiCache']);
+	gulp.watch('public/src/styles/**', ['sass','antiCache']);
 	gulp.watch('public/src/img/ui/**', ['svgmin']);
 	gulp.watch("*.html").on('change', browserSync.reload);
 });
 
 // Default Task
-gulp.task('default', ['startArtisanServer', 'browser-sync', 'compileJS', 'sass', 'svgmin', 'watch']);
+gulp.task('default', ['startArtisanServer', 'browser-sync','compileVendorJS','compileCustomJS', 'antiCache', 'sass', 'svgmin', 'watch']);
