@@ -1,7 +1,7 @@
-pathArray = location.href.split( '/' );
-protocol = pathArray[0];
-host = pathArray[2];
-baseurl = protocol + '//' + host + '/';
+var pathArray = location.href.split( '/' );
+var protocol = pathArray[0];
+var host = pathArray[2];
+var baseurl = protocol + '//' + host + '/';
 
 plyr.setup({
 	controls: ['current-time','play','progress'],
