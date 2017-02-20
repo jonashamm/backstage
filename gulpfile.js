@@ -42,7 +42,6 @@ gulp.task('compileJS',function() {
 	return gulp.src( [
 		'node_modules/vue/dist/vue.js',
 		'node_modules/axios/dist/axios.js',
-		'node_modules/plyr/dist/plyr.js',
 		folderSrc + 'js/custom.js'
 	])
 		/*.pipe(babel({

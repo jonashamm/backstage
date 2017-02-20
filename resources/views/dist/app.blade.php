@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>backstage</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/2.0.11/plyr.css">
-    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css?v=1487595532197') }}">
+    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css?v=1487596305980') }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="{{url('/')}}/favicon-32x32.png" sizes="32x32">
@@ -48,6 +48,6 @@
     @yield('content')
 </div>
 
-<script src="{{ asset('dist/all-scripts.min.js?v=1487595532197') }}"></script>
+<script src="{{ asset('dist/all-scripts.min.js?v=1487596305980') }}"></script>
 </body>
 </html>

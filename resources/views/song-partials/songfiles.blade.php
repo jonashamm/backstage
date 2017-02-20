@@ -31,7 +31,7 @@
                                     </div>
 
                                     <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank">xxxx [[ attachment.name ]] </a>
-                                    <div class="attachment-comment"><span class="comment">Kommentar: </span>[[ attachment.comment ]]</div>
+                                    <div class="attachment-comment" v-if="attachment.comment"><span class="comment">Info: </span>[[ attachment.comment ]]</div>
                                     <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
                                 </li>
                             </transition-group>
