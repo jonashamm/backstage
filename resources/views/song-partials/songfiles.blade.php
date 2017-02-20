@@ -23,10 +23,9 @@
                                             <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
                                             Your browser does not support the audio element.
                                         </video>
-                                    <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
                                     </div>
 
-                                    <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank"> [[ attachment.name ]] </a>
+                                    [[ attachment.name ]]
                                     <form :action="'{{$baseurl}}/download-file/' + attachment.id" method="post">
                                         {{ csrf_field() }}
                                         <button type="submit" class="text-button">Download</button>
