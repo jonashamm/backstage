@@ -38,19 +38,21 @@ gulp.task('sass', function() {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('compileJS',function() {
+gulp.task('compileVendorJS',function() {
 	return gulp.src( [
 		'node_modules/vue/dist/vue.js',
 		'node_modules/axios/dist/axios.js',
-		folderSrc + 'js/custom.js'
+		'node_modules/plyr/dist/plyr.js',
 	])
-		/*.pipe(babel({
+		.pipe(concat('all-vendor-scripts.js'))
+		.pipe(gulp.dest(folderDist))
+		.pipe(browserSync.stream());
+});
+
+gulp.task('compileCustomJS',function() {
+	return gulp.src(folderSrc + 'js/custom.js')
+		.pipe(babel({
 			presets: ['es2015']
-		}))*/
-		.pipe(concat('all-scripts.js'))
-		// .pipe(uglify())
-		.pipe(rename({
-			suffix: '.min'
 		}))
 		.pipe(gulp.dest(folderDist))
 		.pipe(browserSync.stream());
@@ -92,11 +94,11 @@ gulp.task('antiCache', function () {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('public/src/js/**', ['compileJS', 'antiCache']);
+	gulp.watch('public/src/js/**', ['compileCustomJS', 'antiCache']);
 	gulp.watch('public/src/styles/**', ['sass', 'antiCache']);
 	gulp.watch('public/src/img/ui/**', ['svgmin']);
 	gulp.watch("*.html").on('change', browserSync.reload, ['antiCache']);
 });
 
 // Default Task
-gulp.task('default', ['startArtisanServer', 'browser-sync', 'compileJS', 'antiCache', 'sass', 'svgmin', 'watch']);
+gulp.task('default', ['startArtisanServer', 'browser-sync', 'compileCustomJS', 'compileVendorJS', 'antiCache', 'sass', 'svgmin', 'watch']);
