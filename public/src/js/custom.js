@@ -3,6 +3,10 @@ protocol = pathArray[0];
 host = pathArray[2];
 baseurl = protocol + '//' + host + '/';
 
+plyr.setup({
+	controls: ['current-time','play','progress'],
+});
+
 var app = new Vue({
 	el: '#backstage',
 	delimiters: ['[[', ']]'],

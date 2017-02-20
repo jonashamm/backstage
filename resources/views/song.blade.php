@@ -14,5 +14,13 @@
         @include('song-partials.songcast')
 
         @include('song-partials.songfiles')
+
+        <div class="inner">
+            <form action="{{$baseurl}}/songs/{{$song->id}}" method="post" class="delete">
+                {{csrf_field()}}
+                {{ method_field('delete') }}
+                <button type="submit" onclick="return confirm('Wirklich löschen?')" >Song löschen @include('icon-files.delete')</button>
+            </form>
+        </div>
     </div>
 @endsection

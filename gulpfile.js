@@ -12,6 +12,7 @@ var concat = require('gulp-concat'),
 	shell = require('gulp-shell'),
 	uglify = require('gulp-uglify'),
 	babel = require('gulp-babel'),
+	replace = require('gulp-replace'),
 	browserSync = require('browser-sync').create();
 
 // Custom folder variables //////////////////////////////////////
@@ -41,6 +42,7 @@ gulp.task('compileJS',function() {
 	return gulp.src( [
 		'node_modules/vue/dist/vue.js',
 		'node_modules/axios/dist/axios.js',
+		'node_modules/plyr/dist/plyr.js',
 		folderSrc + 'js/custom.js'
 	])
 		/*.pipe(babel({
@@ -84,12 +86,18 @@ gulp.task('browser-sync', function() {
 	});
 });
 
+gulp.task('antiCache', function () {
+	return gulp.src('resources/views/src/app.blade.php')
+		.pipe(replace('antiCacheString', Date.now()))
+		.pipe(gulp.dest('resources/views/dist'));
+});
+
 gulp.task('watch', function() {
-	gulp.watch('public/src/js/**', ['compileJS']);
-	gulp.watch('public/src/styles/**', ['sass']);
+	gulp.watch('public/src/js/**', ['compileJS', 'antiCache']);
+	gulp.watch('public/src/styles/**', ['sass', 'antiCache']);
 	gulp.watch('public/src/img/ui/**', ['svgmin']);
-	gulp.watch("*.html").on('change', browserSync.reload);
+	gulp.watch("*.html").on('change', browserSync.reload, ['antiCache']);
 });
 
 // Default Task
-gulp.task('default', ['startArtisanServer', 'browser-sync', 'compileJS', 'sass', 'svgmin', 'watch']);
+gulp.task('default', ['startArtisanServer', 'browser-sync', 'compileJS', 'antiCache', 'sass', 'svgmin', 'watch']);

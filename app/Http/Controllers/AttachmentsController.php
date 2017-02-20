@@ -61,4 +61,9 @@ class AttachmentsController extends GlobalController
 		    $query->where('song_id',$song_id)->get();
 	    }))->get();
 	}
+
+	public function download($attachemnt_id) {
+    	$attachemnt = Attachment::find($attachemnt_id);
+		return response()->download(storage_path().'/uploads/'. $attachemnt->physical_name, $attachemnt->name);
+	}
 }

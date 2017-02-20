@@ -17,18 +17,21 @@
                                             <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
-                             {{--           <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>--}}
+                                        <form :action="'{{$baseurl}}/download-file/' + attachment.id" method="post">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="text-button">Download</button>
+                                        </form>
                                     </div>
                                     <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
                                         <video controls preload="none">
                                             <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
                                             Your browser does not support the audio element.
                                         </video>
-                                   {{--     <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>--}}
+                                    <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>
                                     </div>
 
                                     <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank">xxxx [[ attachment.name ]] </a>
-                                    <span class="attachment-comment">[[ attachment.comment ]]</span>
+                                    <div class="attachment-comment"><span class="comment">Kommentar: </span>[[ attachment.comment ]]</div>
                                     <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
                                 </li>
                             </transition-group>

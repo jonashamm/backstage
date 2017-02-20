@@ -98,7 +98,8 @@ a {
 		color:$c-darkest;
 	}
 }
-button {
+button,
+.button {
 	@include buttonColor(lighten($c-main,10));
 	border-radius: .3em;
 	transition: background-color .2s, color .2s;
@@ -125,6 +126,10 @@ button {
 		}
 	}
 
+	&[type=submit] {
+		font-size:1.25em;
+	}
+
 	&:active {
 		box-shadow:inset -1px -1px 3px rgba($c-darkest, .25) ;
 	}
@@ -144,6 +149,17 @@ button {
 		fill:$c-negative;
 	}
 }
+.songs {
+	.text-button {
+		border-radius:.2em;
+		width:auto;
+		font-weight:bold;
+		padding-top:.5em;
+		display: inline-block;
+		text-decoration: underline;
+	}
+}
+
 ul {
 	&.instruments,
 	&.users,
@@ -410,10 +426,8 @@ header {
 			text-overflow: ellipsis;
 		}
 	}
-	.edit-button,
-	.delete-button {
+	.edit-button {
 		float:right;
-		padding:0 .5em;
 	}
 }
 .song {
@@ -446,7 +460,25 @@ header {
 		font-size:.7em;
 		margin-left:.5em;
 	}
+	form.delete {
+		float: right;
 
+		button {
+			font-size:1em;
+			background-color: $c-warn;
+			font-weight:bold;
+			padding-right:2em;
+			position: relative;
+
+			svg {
+				position: absolute;
+				top: .375em;
+				right: .35em;
+				height:1.5em;
+				width:1.5em;
+			}
+		}
+	}
 }
 
 
@@ -552,9 +584,43 @@ label {
 		button.delete {
 			position: relative;
 			top:-.25em;
+			background-color: $c-warn;
+			margin-top:.5em;
 		}
 		.attachment-comment {
-			display: inline-block;
+			display: block;
+			clear: both;
+			float:left;
+			margin-top:.3em;
+
+			.comment {
+				font-style:italic;
+				opacity:.7;
+			}
+		}
+	}
+	form  {
+		float:left;
+		font-size:.7em;
+		padding:0 1em;
+
+		button {
+			padding:.2em 1em;
+			line-height: 1em;
+		}
+	}
+	.text-button {
+		width:auto;
+		border-radius:.2em;
+	}
+
+	li {
+		border-bottom:1px solid $c-border;
+		overflow: hidden;
+		padding:.5em 0;
+
+		&:last-child {
+			border:0;
 		}
 	}
 }
@@ -568,7 +634,14 @@ ul.attachments {
 	}
 }
 .audio-container {
-	display: inline-block;
+	display: block;
+
+	a {
+
+	}
+	.plyr__controls {
+		float:left;
+	}
 }
 .attachment-type {
 	margin-top:2em;
@@ -686,7 +759,7 @@ ul.users {
 	}
 	button[type=submit] {
 		clear: both;
-		margin-left:9em;
+		margin-left:7.2em;
 		margin-top:1em;
 	}
 }
@@ -699,4 +772,13 @@ ul.users {
 	display: inline-block;
 	margin-left:10em;
 	padding-top:1em;
+}
+.plyr {
+	float:left;
+}
+.plyr--audio .plyr__controls {
+	padding:0;
+	padding-right:1em;
+	border-radius:1em;
+	font-size:.75em;
 }

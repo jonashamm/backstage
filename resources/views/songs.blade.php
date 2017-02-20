@@ -50,19 +50,15 @@
                         </td>
                         <td class="audio">
                             @if(count($song->most_recent_audiofile) > 0)
-                                <audio controls preload="none">
+                                <audio preload="none" controls="false">
                                     <source src="{{url('/')}}/uploads/{{$song->most_recent_audiofile->physical_name}}" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
                             @endif
                         </td>
-                        <td class="acions">
-                            @include('partials.delete-button',['object' => 'song'])
-
-                            <a href="{{$baseurl}}/songs/{{$song->id}}" class="edit-button">
-                                <button>
-                                    @include('icon-files.mode_edit')
-                                </button>
+                        <td class="actions">
+                            <a href="{{$baseurl}}/songs/{{$song->id}}" class="edit-button text-button button">
+                               Details
                             </a>
                         </td>
                     </tr>
