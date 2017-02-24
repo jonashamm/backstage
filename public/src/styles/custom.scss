@@ -600,8 +600,10 @@ label {
 		button.delete {
 			position: relative;
 			top:-.25em;
-			background-color: $c-warn;
+			background-color: transparent;
+			box-shadow: none;
 			margin-top:.5em;
+			float:right;
 		}
 		.attachment-comment {
 			display: block;
@@ -614,6 +616,12 @@ label {
 				opacity:.7;
 			}
 		}
+	}
+	.name {
+		line-height:1em;
+		display: inline-block;
+		position: relative;
+		top:.5em;
 	}
 	form  {
 		float:left;
@@ -639,6 +647,19 @@ label {
 			border:0;
 		}
 	}
+	.attachment-inner {
+		background-color: rgba($c-main,1);
+		border:1px solid rgba($c-negative,.75);
+		box-shadow:1px 1px 15px rgba($c-darkest,.2);
+		padding:.5em;
+		display: inline-block;
+		color:$c-negative;
+		border-radius:.3em;
+		min-width:33%;
+	}
+	audio {
+		width:100%;
+	}
 }
 ul.attachments {
 	clear: both;
@@ -659,15 +680,7 @@ ul.attachments {
 		float:left;
 	}
 }
-.attachment-inner {
-	background-color: rgba($c-main,1);
-	border:1px solid rgba($c-negative,.75);
-	box-shadow:1px 1px 15px rgba($c-darkest,.2);
-	padding:.5em;
-	display: inline-block;
-	color:$c-negative;
-	border-radius:.3em;
-}
+
 
 .attachment-type {
 	margin-top:2em;

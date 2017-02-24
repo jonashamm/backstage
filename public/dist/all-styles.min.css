@@ -974,8 +974,10 @@ label {
     .songfiles ul button.delete {
       position: relative;
       top: -.25em;
-      background-color: #e63a33;
-      margin-top: .5em; }
+      background-color: transparent;
+      box-shadow: none;
+      margin-top: .5em;
+      float: right; }
     .songfiles ul .attachment-comment {
       display: block;
       clear: both;
@@ -984,6 +986,11 @@ label {
       .songfiles ul .attachment-comment .comment {
         font-style: italic;
         opacity: .7; }
+  .songfiles .name {
+    line-height: 1em;
+    display: inline-block;
+    position: relative;
+    top: .5em; }
   .songfiles form {
     float: left;
     font-size: .7em;
@@ -1000,6 +1007,17 @@ label {
     padding: .5em 0; }
     .songfiles li:last-child {
       border: 0; }
+  .songfiles .attachment-inner {
+    background-color: #007171;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+    padding: .5em;
+    display: inline-block;
+    color: #fff;
+    border-radius: .3em;
+    min-width: 33%; }
+  .songfiles audio {
+    width: 100%; }
 
 ul.attachments {
   clear: both;
@@ -1012,15 +1030,6 @@ ul.attachments {
   display: block; }
   .audio-container .plyr__controls {
     float: left; }
-
-.attachment-inner {
-  background-color: #007171;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
-  padding: .5em;
-  display: inline-block;
-  color: #fff;
-  border-radius: .3em; }
 
 .attachment-type {
   margin-top: 2em; }

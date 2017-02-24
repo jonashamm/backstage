@@ -26,7 +26,7 @@
                                             </video>
                                         </div>
 
-                                        [[ attachment.name ]]
+                                        <span class="name">[[ attachment.name ]]</span>
                                         <form :action="'{{$baseurl}}/download-file/' + attachment.id" method="post">
                                             {{ csrf_field() }}
                                             <button type="submit" class="text-button">Download</button>
