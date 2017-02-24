@@ -643,9 +643,8 @@ ul.instruments, ul.users, ul.instruments-linked {
 .song-add-toggler {
   border-radius: 50%;
   font-size: 1.3em;
-  position: fixed;
-  bottom: 5%;
-  left: 5%; }
+  position: relative;
+  margin-top: 2em; }
 
 input[type=text],
 input[type=password],
