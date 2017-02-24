@@ -14,7 +14,7 @@
                                 <li v-for="(attachment, index) in attachmenttype.attachments" v-bind:key="attachment">
                                     <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
                                         <audio controls preload="none">
-                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mpeg">
+                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mp3">
                                             Your browser does not support the audio element.
                                         </audio>
                                     </div>
