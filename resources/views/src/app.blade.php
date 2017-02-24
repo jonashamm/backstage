@@ -17,7 +17,7 @@
     <meta name="theme-color" content="#00a3ad">
 </head>
 <body>
-<div class="page-wrapper" id="backstage">
+<div class="page-wrapper" id="backstage" :class="{'js-loaded': vueLoaded}">
     <header>
         <div class="inner">
             <a href="{{url('/')}}" class="logo">

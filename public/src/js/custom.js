@@ -3,16 +3,15 @@ var protocol = pathArray[0];
 var host = pathArray[2];
 var baseurl = protocol + '//' + host + '/';
 
-/*
 plyr.setup({
 	controls: ['current-time','play','progress'],
 });
-*/
 
 var app = new Vue({
 	el: '#backstage',
 	delimiters: ['[[', ']]'],
 	data: {
+		vueLoaded: true,
 		songForm: false,
 		userForm: false,
 		instrumentForm: false,

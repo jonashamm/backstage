@@ -49,6 +49,7 @@ class InvitationsController extends Controller {
 			$user->password = $pw;
 			$user->save();
 			$invitation->redeemed = 1;
+			$invitation->save();
 
 			Auth::login($user);
 

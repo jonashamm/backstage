@@ -810,3 +810,21 @@ ul.users {
 	border-radius:1em;
 	font-size:.75em;
 }
+
+[v-show], [v-text], [v-for], .hide-initially {
+	opacity: 0;
+	height:0;
+	overflow: hidden;
+
+	.js-loaded & {
+		opacity: 1;
+		height:auto;
+		overflow: visible;
+	}
+}
+
+.show-initially {
+	.js-loaded & {
+		display: none;
+	}
+}

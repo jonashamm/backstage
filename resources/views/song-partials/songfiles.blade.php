@@ -1,4 +1,4 @@
-<div class="songfiles">
+<div class="songfiles hide-initially">
     <div class="inner">
         <h2>Dateien</h2>
 

@@ -1,4 +1,4 @@
-<div class="meta-infos" :class="{'editmode': metaEdit}">
+<div class="meta-infos hide-initially" :class="{'editmode': metaEdit}">
     <div class="static-info" v-show="!metaEdit">
         <div class="inner">
             <button v-on:click="metaEdit = !metaEdit" class="toggler">
