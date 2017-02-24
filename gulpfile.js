@@ -41,8 +41,7 @@ gulp.task('sass', function() {
 gulp.task('compileVendorJS',function() {
 	return gulp.src( [
 		'node_modules/vue/dist/vue.js',
-		'node_modules/axios/dist/axios.js',
-		'node_modules/plyr/dist/plyr.js',
+		'node_modules/axios/dist/axios.js'
 	])
 		.pipe(concat('all-vendor-scripts.js'))
 		.pipe(gulp.dest(folderDist))

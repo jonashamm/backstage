@@ -493,7 +493,7 @@ header {
 		}
 	}
 	audio {
-		max-width:80%;
+		max-width:100%;
 	}
 }
 
@@ -618,7 +618,7 @@ label {
 	form  {
 		float:left;
 		font-size:.7em;
-		padding:0 1em;
+		padding-right: 1em;
 
 		button {
 			padding:.2em 1em;
@@ -658,6 +658,15 @@ ul.attachments {
 	.plyr__controls {
 		float:left;
 	}
+}
+.attachment-inner {
+	background-color: rgba($c-main,1);
+	border:1px solid rgba($c-negative,.75);
+	box-shadow:1px 1px 15px rgba($c-darkest,.2);
+	padding:.5em;
+	display: inline-block;
+	color:$c-negative;
+	border-radius:.3em;
 }
 
 .attachment-type {

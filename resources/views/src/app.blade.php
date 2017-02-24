@@ -47,7 +47,6 @@
     </header>
     @yield('content')
 </div>
-
 <script src="{{ asset('dist/all-vendor-scripts.js?v=antiCacheString') }}"></script>
 <script src="{{ asset('dist/custom.js?v=antiCacheString') }}"></script>
 </body>

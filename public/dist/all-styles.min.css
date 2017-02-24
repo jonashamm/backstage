@@ -896,7 +896,7 @@ header {
       width: 1.5em; }
 
 .song audio {
-  max-width: 80%; }
+  max-width: 100%; }
 
 .meta-infos,
 .songcast,
@@ -987,7 +987,7 @@ label {
   .songfiles form {
     float: left;
     font-size: .7em;
-    padding: 0 1em; }
+    padding-right: 1em; }
     .songfiles form button {
       padding: .2em 1em;
       line-height: 1em; }
@@ -1012,6 +1012,15 @@ ul.attachments {
   display: block; }
   .audio-container .plyr__controls {
     float: left; }
+
+.attachment-inner {
+  background-color: #007171;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+  padding: .5em;
+  display: inline-block;
+  color: #fff;
+  border-radius: .3em; }
 
 .attachment-type {
   margin-top: 2em; }

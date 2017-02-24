@@ -5,10 +5,6 @@ var protocol = pathArray[0];
 var host = pathArray[2];
 var baseurl = protocol + '//' + host + '/';
 
-plyr.setup({
-	controls: ['current-time', 'play', 'progress']
-});
-
 var app = new Vue({
 	el: '#backstage',
 	delimiters: ['[[', ']]'],
@@ -40,6 +36,7 @@ var app = new Vue({
 		attachment_comment: ''
 	},
 	mounted: function mounted() {
+
 		var _this = this;
 		axios.get(baseurl + 'api/instruments').then(function (response) {
 			_this.instruments = response.data;

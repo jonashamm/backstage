@@ -12,27 +12,30 @@
                         <ul class="attachments">
                             <transition-group name="list">
                                 <li v-for="(attachment, index) in attachmenttype.attachments" v-bind:key="attachment">
-                                    <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
-                                        <audio controls preload="none">
-                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mp3">
-                                            Your browser does not support the audio element.
-                                        </audio>
-                                    </div>
-                                    <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
-                                        <video controls preload="none">
-                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
-                                            Your browser does not support the audio element.
-                                        </video>
-                                    </div>
+                                    <div class="attachment-inner">
+                                        <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
+                                            <audio controls preload="none">
+                                                <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mp3">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </div>
+                                        <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
+                                            <video controls preload="none">
+                                                <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
+                                                Your browser does not support the audio element.
+                                            </video>
+                                        </div>
 
-                                    [[ attachment.name ]]
-                                    <form :action="'{{$baseurl}}/download-file/' + attachment.id" method="post">
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="text-button">Download</button>
-                                    </form>
-                                    <div class="attachment-comment" v-if="attachment.comment"><span class="comment">Info: </span>[[ attachment.comment ]]</div>
-                                    <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
-                                </li>
+                                        [[ attachment.name ]]
+                                        <form :action="'{{$baseurl}}/download-file/' + attachment.id" method="post">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="text-button">Download</button>
+                                        </form>
+                                        <div class="attachment-comment" v-if="attachment.comment"><span class="comment">Info: </span>[[ attachment.comment ]]</div>
+                                        <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
+
+                                    </div>
+                                   </li>
                             </transition-group>
                         </ul>
                     </div>

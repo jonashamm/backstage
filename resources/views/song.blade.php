@@ -20,8 +20,6 @@
 
         @include('song-partials.songfiles')
 
-
-
         <div class="inner">
             <form action="{{$baseurl}}/songs/{{$song->id}}" method="post" class="delete">
                 {{csrf_field()}}
