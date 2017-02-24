@@ -91,6 +91,7 @@ return array(
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'InstrumentUser' => $baseDir . '/database/migrations/2016_10_24_184520_instrument_user.php',
     'InstrumentUserTableEnhancements' => $baseDir . '/database/migrations/2016_12_02_132456_instrument_user_table_enhancements.php',
+    'InstrumentalToSong' => $baseDir . '/database/migrations/2017_02_24_110813_instrumental_to_song.php',
     'Instruments' => $baseDir . '/database/migrations/2016_10_24_183211_instruments.php',
     'InvitationcodeUsed' => $baseDir . '/database/migrations/2017_02_04_163020_invitationcode_used.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
