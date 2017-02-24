@@ -58,7 +58,7 @@ class AttachmentsController extends GlobalController
 
 	public function indexByTypeAPI($song_id) {
     	return Attachmenttype::with(array('attachments' => function($query) use ($song_id) {
-		    $query->where('song_id',$song_id)->get();
+		    $query->where('song_id',$song_id)->orderBy('created_at','desc')->get();
 	    }))->get();
 	}
 
