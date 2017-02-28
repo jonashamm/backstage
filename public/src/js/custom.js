@@ -239,8 +239,10 @@ var app = new Vue({
 		fileExistCheck: function(event) {
 			this.fileChosen = event.target.files[0];
 		},
-		youTubeEmbed: function(str) {
-			str.substring(str.indexOf("=") + 1);
+		youTubeEmbed: function(url) {
+				var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+				var match = url.match(regExp);
+				return (match&&match[7].length==11)? match[7] : false;
 		},
 		removeClass: function(elements, myClass) {
 		// if there are no elements, we're done

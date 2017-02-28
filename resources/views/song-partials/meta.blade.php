@@ -17,7 +17,6 @@
             @foreach($song_attributes as $attribute)
                 <template v-if="song.{{$attribute[1]}}">
 
-
                     <template v-if="'{{$attribute[1]}}' != 'link_to_original'">
                         <h4>{{$attribute[0]}}</h4>
                         <div class="value" v-text="song.{{$attribute[1]}}">
@@ -26,7 +25,7 @@
                     <template v-else>
                         <h4>{{$attribute[0]}}</h4>
                         <div class="value">
-                            <a :href="song.{{$attribute[1]}}" target="_blank" style="color:#fff"> [[ song.{{$attribute[1]}} ]]</a>
+                            <iframe width="266" height="150" :src="'https://www.youtube.com/embed/' + youTubeEmbed(song.{{$attribute[1]}}) + '?rel=0?ecver=1'" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </template>
 
