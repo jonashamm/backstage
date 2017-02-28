@@ -16,10 +16,6 @@
                 </em>
             @endif
 
-                <draggable :list="list" class="dragArea">
-                    <div v-for="element in list"> [[ element.name ]]</div>
-                </draggable>
-
             <ul class="songs-list">
                 <li>
                     <div class="singer">
