@@ -415,6 +415,30 @@ header {
 		}
 	}
 }
+.songs-list {
+	padding:0;
+	margin:0;
+
+	li {
+		display: flex;
+		border-bottom: 1px solid $c-border;
+		align-items: center;
+
+		> div {
+			flex:2;
+			padding: .75em 0;
+		}
+		.singer {
+			flex:1;
+		}
+		.actions {
+			flex:1;
+			text-align: right;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	}
+}
 .songs {
 	.sheet {
 
@@ -849,4 +873,14 @@ ul.users {
 	.js-loaded & {
 		display: none;
 	}
+}
+.errors {
+	padding:0;
+	margin:0;
+}
+.warn {
+	background-color: $c-warn;
+}
+.has-error {
+	color:$c-warn;
 }

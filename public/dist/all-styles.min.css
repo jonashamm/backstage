@@ -833,6 +833,29 @@ header {
   .instruments .icon path {
     fill: #007171; }
 
+.songs-list {
+  padding: 0;
+  margin: 0; }
+  .songs-list li {
+    display: -ms-flexbox;
+    display: flex;
+    border-bottom: 1px solid #cccccc;
+    -ms-flex-align: center;
+    align-items: center; }
+    .songs-list li > div {
+      -ms-flex: 2;
+      flex: 2;
+      padding: .75em 0; }
+    .songs-list li .singer {
+      -ms-flex: 1;
+      flex: 1; }
+    .songs-list li .actions {
+      -ms-flex: 1;
+      flex: 1;
+      text-align: right;
+      font-weight: bold;
+      text-decoration: underline; }
+
 .songs .sheet a {
   display: inline-block;
   width: 220px;
@@ -1168,3 +1191,13 @@ ul.users {
 
 .js-loaded .show-initially {
   display: none; }
+
+.errors {
+  padding: 0;
+  margin: 0; }
+
+.warn {
+  background-color: #e63a33; }
+
+.has-error {
+  color: #e63a33; }

@@ -472,6 +472,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'PositionSongs' => $baseDir . '/database/migrations/2017_02_27_182318_position_songs.php',
     'RenamePivotIntrumentUser' => $baseDir . '/database/migrations/2016_12_12_181957_rename_pivot_intrument_user.php',
     'RenamePivotIntrumentUserInSongcasts' => $baseDir . '/database/migrations/2016_12_12_183421_rename_pivot_intrument_user_in_songcasts.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',

@@ -81,7 +81,7 @@ gulp.task('renameSVGs', function () {
 // Static server
 gulp.task('browser-sync', function() {
 	browserSync.init({
-		browser: "google-chrome", // doesn't start chromium so far on my machine, but prevents firefox from starting :)
+		open: false,
 		proxy: "0.0.0.0:8000"
 	});
 });

@@ -47,7 +47,11 @@
     </header>
     @yield('content')
 </div>
+
 <script src="{{ asset('dist/all-vendor-scripts.js?v=antiCacheString') }}"></script>
 <script src="{{ asset('dist/custom.js?v=antiCacheString') }}"></script>
+<script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+<script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Draggable/master/dist/vuedraggable.min.js"></script>
 </body>
 </html>

@@ -30,7 +30,23 @@ class InvitationsController extends Controller {
 		return $invitation;
 	}
 
+	public function inviteUser(Request $request) {
+		if(!$request->input('user_id')) {
+			$invited_user = new User();
+			$invited_user->email = $request->input('email');
+			$invited_user->name = $request->input('name');
+			$invited_user->save();
+		} else {
+			$invited_user = User::find($request->input('user_id'));
+		}
+		return $invited_user;
+	}
+
 	public function acceptPage( $code, $user_id ) {
+		$user = User::find($user_id);
+		if($user->password) {
+			return redirect(url('/') . '/login');
+		}
 		return view( 'invitations.accept', compact( 'code', 'user_id' ) );
 	}
 

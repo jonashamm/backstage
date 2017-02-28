@@ -22,15 +22,19 @@
                     </li>
                 @endforeach
             </ul>
+
+            @include('_errors.errors-general')
+
             <div class="invite-user">
                 <h2>User einladen</h2>
                 <form action="{{url('/')}}/invite" method="post">
                     {{ csrf_field() }}
-                    <input name="name" type="text" placeholder="Name">
-                    <input name="email" type="email" placeholder="E-Mail-Adresse">
+                    <input name="name" type="text" placeholder="Name" value="{{ old('name') }}" class="{{ $errors->has('name') ? ' has-error' : ''}}" >
+                    <input name="email" type="email" placeholder="E-Mail-Adresse" value="{{ old('email') }}"  class="{{ $errors->has('email') ? ' has-error' : ''}}" v-on:keyup="removeErrorClass">
                     <button type="submit">Einladen</button>
                 </form>
             </div>
+
 
             @include('partials.user-add')
 
