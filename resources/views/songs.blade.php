@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="songlist">
+        <span></span>
         <div class="inner">
 
             @if (Session::get('song_name'))
