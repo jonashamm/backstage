@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="songlist">
-        <span></span>
         <div class="inner">
 
             @if (Session::get('song_name'))
@@ -20,10 +19,10 @@
             <ul class="songs-list">
                 <li>
                     <div class="singer">
-                        Sänger/in
+                        </strong>Sänger/in</strong>
                     </div>
                     <div class="songtitle">
-                        Song
+                        </strong>Song</strong>
                     </div>
                     <div class="audio">
                     </div>
