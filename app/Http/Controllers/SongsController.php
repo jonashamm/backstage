@@ -98,6 +98,6 @@ class SongsController extends GlobalController
         $song->delete();
 
         Session::flash('song_name', $song_name);
-        return back();
+        return redirect(url('/'));
     }
 }
