@@ -35,7 +35,7 @@ var app = new Vue({
 		percentCompleted: 0,
 		justUploading: false,
 		attachment_comment: '',
-		newSongName: 'asdasd',
+		newSongName: '',
 		list: [{ name: "John" }, { name: "Joao" }, { name: "Jean" }]
 	},
 	mounted: function mounted() {
@@ -222,6 +222,9 @@ var app = new Vue({
 
 		fileExistCheck: function fileExistCheck(event) {
 			this.fileChosen = event.target.files[0];
+		},
+		youTubeEmbed: function youTubeEmbed(str) {
+			str.substring(str.indexOf("=") + 1);
 		},
 		removeClass: function removeClass(elements, myClass) {
 			// if there are no elements, we're done
