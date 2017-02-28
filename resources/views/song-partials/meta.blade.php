@@ -15,19 +15,22 @@
 
             <div class="value empty" v-if="!song.key && !song.duration && !song.link_to_original && !song.original_performer && !song.extrainfo">Um Infos hinzuzufügen, auf den Pfeilbutton rechts in diesem Feld klicken</div>
             @foreach($song_attributes as $attribute)
+                <template v-if="song.{{$attribute[1]}}">
 
-                <template v-elseif="song.{{$attribute[1]}} && ('{{$attribute[1]}}' != 'link_to_original'})">
-                    <h4>{{$attribute[0]}}</h4>
-                  {{--  <template v-if="'{{$attribute[1]}}' != 'link_to_original'">--}}
+
+                    <template v-if="'{{$attribute[1]}}' != 'link_to_original'">
+                        <h4>{{$attribute[0]}}</h4>
                         <div class="value" v-text="song.{{$attribute[1]}}">
                         </div>
-       {{--             </template>
+                    </template>
                     <template v-else>
-                        [[ youTubeEmbed(song.{{$attribute[1]}}) ]]
-                    </template>--}}
+                        <h4>{{$attribute[0]}}</h4>
+                        <div class="value">
+                            <a :href="song.{{$attribute[1]}}" target="_blank" style="color:#fff"> [[ song.{{$attribute[1]}} ]]</a>
+                        </div>
+                    </template>
+
                 </template>
-
-
             @endforeach
         </div>
 
