@@ -14,8 +14,6 @@ Route::resource('instruments','InstrumentsController');
 Route::resource('users','UsersController');
 Route::resource('attachments','AttachmentsController');
 
-
-
 Auth::routes();
 
 Route::get('api/instruments','InstrumentsController@indexAPI');
