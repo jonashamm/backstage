@@ -42,7 +42,7 @@
                             @endif
                         </td>
                         <td class="song-in-list"><strong>
-                                <a href="{{$baseurl}}/songs/{{$song->id}}">{{$song->name}}</a>
+                                <a href="{{ $baseurl }}/songs/{{$song->id}}">{{$song->name}}</a>
                             </strong>
                             @if($song->original_performer)
                                 <div class="original-performer">({{$song->original_performer}})</div>

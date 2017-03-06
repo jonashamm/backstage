@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>backstage</title>
-    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css?v=1487333027482') }}">
+    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css?v=1488804124051') }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="{{url('/')}}/favicon-32x32.png" sizes="32x32">
@@ -45,7 +45,7 @@
     @yield('content')
 </div>
 
-<script src="{{ asset('dist/all-vendor-scripts.js?v=1487333027482') }}"></script>
-<script src="{{ asset('dist/custom.js?v=1487333027482') }}"></script>
+<script src="{{ asset('dist/all-vendor-scripts.js?v=1488804124051') }}"></script>
+<script src="{{ asset('dist/custom.js?v=1488804124051') }}"></script>
 </body>
 </html>

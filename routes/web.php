@@ -1,6 +1,6 @@
 <?php
 
-View::share('baseurl',URL::to('/'));
+View::share('baseurl',str_replace('/index.php','',URL::to('/')));
 View::share('active_user', Auth::user());
 
 Route::get('/', 'SongsController@index');
