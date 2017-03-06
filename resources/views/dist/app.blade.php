@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>backstage</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/2.0.11/plyr.css">
-    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css?v=antiCacheString') }}">
+    <link rel="stylesheet" href="{{ asset('dist/all-styles.min.css?v=1488314468161') }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="{{url('/')}}/favicon-32x32.png" sizes="32x32">
@@ -48,8 +48,8 @@
     @yield('content')
 </div>
 
-<script src="{{ asset('dist/all-vendor-scripts.js?v=antiCacheString') }}"></script>
-<script src="{{ asset('dist/custom.js?v=antiCacheString') }}"></script>
+<script src="{{ asset('dist/all-vendor-scripts.js?v=1488314468161') }}"></script>
+<script src="{{ asset('dist/custom.js?v=1488314468161') }}"></script>
 <script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
 <script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Draggable/master/dist/vuedraggable.min.js"></script>

@@ -1,4 +1,4 @@
-<div class="songcast">
+<div class="songcast hide-initially">
     <div class="inner">
         <h2>Besetzung</h2>
         <transition-group name="list">

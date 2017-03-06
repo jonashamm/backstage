@@ -3,10 +3,14 @@ var protocol = pathArray[0];
 var host = pathArray[2];
 var baseurl = protocol + '//' + host + '/';
 
+
+
 var app = new Vue({
 	el: '#backstage',
 	delimiters: ['[[', ']]'],
 	data: {
+		songs: [],
+		vueLoaded: true,
 		songForm: false,
 		userForm: false,
 		instrumentForm: false,
@@ -31,8 +35,15 @@ var app = new Vue({
 		percentCompleted: 0,
 		justUploading:false,
 		attachment_comment: '',
+		newSongName:'',
+		list:[
+			{name:"John"},
+			{name:"Joao"},
+			{name:"Jean"}
+		]
 	},
 	mounted: function() {
+
 		var _this = this;
 		axios.get(baseurl + 'api/instruments').then(function (response) {
 			_this.instruments = response.data;
@@ -41,6 +52,13 @@ var app = new Vue({
 		axios.get(baseurl + 'api/song/' + pathArray[4]).then(function (response) {
 			_this.song = response.data;
 		});
+
+		if(pathArray[3] == 'songs') {
+			axios.get(baseurl + 'api/songs').then(function (response) {
+				_this.songs = response.data;
+			});
+		}
+
 
 		axios.get(baseurl + 'api/attachmenttypes').then(function (response) {
 			_this.attachmenttypes = response.data;
@@ -51,6 +69,11 @@ var app = new Vue({
 		});
 	},
 	methods: {
+		removeErrorClass: function($event) {
+			console.log($event.target)
+			this.removeClass($event.target, 'has-error')
+
+		},
 		contains: function(needle, haystack) {
 			if (haystack) {
 				if (haystack.includes(needle)) {
@@ -64,6 +87,19 @@ var app = new Vue({
 			if (a.cast.instrument.name > b.cast.instrument.name)
 				return 1;
 			return 0;
+		},
+		songAdd: function() {
+			var _this = this;
+			var data = new FormData();
+			data.append('name', _this.newSongName);
+
+			axios.post(baseurl + 'api/song/add', data).
+				then(function(response) {
+					_this.songs.push(response.data);
+				})
+				.catch(function(error)  {
+				console.log(error)
+			});
 		},
 		songUpdate: function(song_id) {
 			var _this = this;
@@ -203,5 +239,30 @@ var app = new Vue({
 		fileExistCheck: function(event) {
 			this.fileChosen = event.target.files[0];
 		},
+		youTubeEmbed: function(url) {
+				var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+				var match = url.match(regExp);
+				return (match&&match[7].length==11)? match[7] : false;
+		},
+		removeClass: function(elements, myClass) {
+		// if there are no elements, we're done
+			if (!elements) { return; }
+
+			// if we have a selector, get the chosen elements
+			if (typeof(elements) === 'string') {
+				elements = document.querySelectorAll(elements);
+			}
+
+			// if we have a single DOM element, make it an array to simplify behavior
+			else if (elements.tagName) { elements=[elements]; }
+
+			// create pattern to find class name
+			var reg = new RegExp('(^| )'+myClass+'($| )','g');
+
+			// remove class from all chosen elements
+			for (var i=0; i<elements.length; i++) {
+				elements[i].className = elements[i].className.replace(reg,' ');
+			}
+		}
 	}
 });

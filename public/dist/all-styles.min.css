@@ -444,6 +444,34 @@ template {
   opacity: 0;
   transform: translateY(30px) rotate(5deg) scale(2); }
 
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 100px auto; }
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #007171;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: sk-bounce 2.0s infinite ease-in-out; }
+
+.double-bounce2 {
+  animation-delay: -1.0s; }
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0); }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1); } }
+
 body {
   background-color: #E5E5E5;
   color: #282828;
@@ -527,7 +555,8 @@ a {
     top: .1em;
     color: #000; }
 
-button {
+button,
+.button {
   background-color: #00a4a4;
   border-radius: .3em;
   transition: background-color .2s, color .2s;
@@ -539,30 +568,60 @@ button {
   line-height: 1.45em;
   cursor: pointer;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-  button:hover, button:focus {
+  button:hover, button:focus,
+  .button:hover,
+  .button:focus {
     background-color: #00bebe; }
-  button:active {
+  button:active,
+  .button:active {
     background-color: #00e1e1; }
-  .user-actions button, button.cancel {
+  .user-actions button, button.cancel, .user-actions
+  .button,
+  .button.cancel {
     background: transparent;
     color: #007171;
     box-shadow: none;
     padding: .1em; }
-    .user-actions button:hover, .user-actions button:focus, button.cancel:hover, button.cancel:focus {
+    .user-actions button:hover, .user-actions button:focus, button.cancel:hover, button.cancel:focus, .user-actions
+    .button:hover, .user-actions
+    .button:focus,
+    .button.cancel:hover,
+    .button.cancel:focus {
       background: transparent;
       color: #003e3e; }
-  button:active {
+  button[type=submit],
+  .button[type=submit] {
+    font-size: 1.25em; }
+  button:active,
+  .button:active {
     box-shadow: inset -1px -1px 3px rgba(0, 0, 0, 0.25); }
   .songs button,
   .instruments button,
   .users button,
-  .attachments button, button.toggler {
+  .attachments button, button.toggler, .songs
+  .button,
+  .instruments
+  .button,
+  .users
+  .button,
+  .attachments
+  .button,
+  .button.toggler {
     height: 2.3em;
     width: 2.3em;
     border-radius: 50%;
     padding: .5em; }
-  button path {
+  button path,
+  .button path {
     fill: #fff; }
+
+.songs .text-button {
+  border-radius: .2em;
+  width: auto;
+  font-weight: bold;
+  padding-top: .5em;
+  display: inline-block;
+  text-decoration: underline; }
 
 ul.instruments, ul.users, ul.instruments-linked {
   list-style-type: none;
@@ -584,9 +643,9 @@ ul.instruments, ul.users, ul.instruments-linked {
 .song-add-toggler {
   border-radius: 50%;
   font-size: 1.3em;
-  position: fixed;
-  bottom: 5%;
-  left: 5%; }
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 3em; }
 
 input[type=text],
 input[type=password],
@@ -774,6 +833,29 @@ header {
   .instruments .icon path {
     fill: #007171; }
 
+.songs-list {
+  padding: 0;
+  margin: 0; }
+  .songs-list li {
+    display: -ms-flexbox;
+    display: flex;
+    border-bottom: 1px solid #cccccc;
+    -ms-flex-align: center;
+    align-items: center; }
+    .songs-list li > div {
+      -ms-flex: 2;
+      flex: 2;
+      padding: .75em 0; }
+    .songs-list li .singer {
+      -ms-flex: 1;
+      flex: 1; }
+    .songs-list li .actions {
+      -ms-flex: 1;
+      flex: 1;
+      text-align: right;
+      font-weight: bold;
+      text-decoration: underline; }
+
 .songs .sheet a {
   display: inline-block;
   width: 220px;
@@ -781,10 +863,8 @@ header {
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.songs .edit-button,
-.songs .delete-button {
-  float: right;
-  padding: 0 .5em; }
+.songs .edit-button {
+  float: right; }
 
 @media all and (max-width: 39.937em) {
   .songs tr, .songs td {
@@ -823,8 +903,23 @@ header {
   font-size: .7em;
   margin-left: .5em; }
 
+.song form.delete {
+  float: right; }
+  .song form.delete button {
+    font-size: 1em;
+    background-color: #e63a33;
+    font-weight: bold;
+    padding-right: 2em;
+    position: relative; }
+    .song form.delete button svg {
+      position: absolute;
+      top: .375em;
+      right: .35em;
+      height: 1.5em;
+      width: 1.5em; }
+
 .song audio {
-  max-width: 80%; }
+  max-width: 100%; }
 
 .meta-infos,
 .songcast,
@@ -901,9 +996,51 @@ label {
     list-style-type: none; }
     .songfiles ul button.delete {
       position: relative;
-      top: -.25em; }
+      top: -.25em;
+      background-color: transparent;
+      box-shadow: none;
+      margin-top: .5em;
+      float: right; }
     .songfiles ul .attachment-comment {
-      display: inline-block; }
+      display: block;
+      clear: both;
+      float: left;
+      margin-top: .3em; }
+      .songfiles ul .attachment-comment .comment {
+        font-style: italic;
+        opacity: .7; }
+  .songfiles .name {
+    line-height: 1em;
+    display: inline-block;
+    position: relative;
+    top: .5em; }
+  .songfiles form {
+    float: left;
+    font-size: .7em;
+    padding-right: 1em; }
+    .songfiles form button {
+      padding: .2em 1em;
+      line-height: 1em; }
+  .songfiles .text-button {
+    width: auto;
+    border-radius: .2em; }
+  .songfiles li {
+    border-bottom: 1px solid #cccccc;
+    overflow: hidden;
+    padding: .5em 0; }
+    .songfiles li:last-child {
+      border: 0; }
+  .songfiles .attachment-inner {
+    background-color: #007171;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+    padding: .5em;
+    display: inline-block;
+    color: #fff;
+    border-radius: .3em;
+    min-width: 33%; }
+  .songfiles audio {
+    width: 100%; }
 
 ul.attachments {
   clear: both;
@@ -913,7 +1050,9 @@ ul.attachments {
   clear: both; }
 
 .audio-container {
-  display: inline-block; }
+  display: block; }
+  .audio-container .plyr__controls {
+    float: left; }
 
 .attachment-type {
   margin-top: 2em; }
@@ -1012,7 +1151,7 @@ ul.users {
   .register button[type=submit],
   .reset-password button[type=submit] {
     clear: both;
-    margin-left: 9em;
+    margin-left: 7.2em;
     margin-top: 1em; } }
 
 .stay-logged-in {
@@ -1031,3 +1170,34 @@ ul.users {
   @media all and (min-width: 40em) {
     .password-forgotten {
       margin-left: 10em; } }
+
+.plyr {
+  float: left; }
+
+.plyr--audio .plyr__controls {
+  padding: 0;
+  padding-right: 1em;
+  border-radius: 1em;
+  font-size: .75em; }
+
+[v-show], [v-text], [v-for], .hide-initially {
+  opacity: 0;
+  height: 0;
+  overflow: hidden; }
+  .js-loaded [v-show], .js-loaded [v-text], .js-loaded [v-for], .js-loaded .hide-initially {
+    opacity: 1;
+    height: auto;
+    overflow: visible; }
+
+.js-loaded .show-initially {
+  display: none; }
+
+.errors {
+  padding: 0;
+  margin: 0; }
+
+.warn {
+  background-color: #e63a33; }
+
+.has-error {
+  color: #e63a33; }

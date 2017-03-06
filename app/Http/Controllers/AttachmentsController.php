@@ -43,7 +43,7 @@ class AttachmentsController extends GlobalController
 
 	public function store(Request $request, $path = "uploads") {
 		$file = $request->file('file');
-		$stored_file = $request->file('file')->store($path);
+		$stored_file = $request->file('file')->storeAs($path,str_random(36).'.mp3');
 
 		$file_in_db = new Attachment();
 		$file_in_db->type = $request->input('type');
@@ -58,7 +58,12 @@ class AttachmentsController extends GlobalController
 
 	public function indexByTypeAPI($song_id) {
     	return Attachmenttype::with(array('attachments' => function($query) use ($song_id) {
-		    $query->where('song_id',$song_id)->get();
+		    $query->where('song_id',$song_id)->orderBy('created_at','desc')->get();
 	    }))->get();
+	}
+
+	public function download($attachemnt_id) {
+    	$attachemnt = Attachment::find($attachemnt_id);
+		return response()->download(storage_path().'/uploads/'. $attachemnt->physical_name, $attachemnt->name);
 	}
 }

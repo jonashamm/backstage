@@ -16,59 +16,53 @@
                 </em>
             @endif
 
-            <table class="songs">
-                <thead>
-                <tr class="head">
-                    <th>Sänger/in</th>
-                    <th>Song</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
+            <ul class="songs-list">
+                <li>
+                    <div class="singer">
+                        </strong>Sänger/in</strong>
+                    </div>
+                    <div class="songtitle">
+                        </strong>Song</strong>
+                    </div>
+                    <div class="audio">
+                    </div>
+                    <div class="actions">
+                    </div>
+                </li>
 
-                <tbody>
-                @foreach($songs as $song)
+                <li v-for="song in songs" >
+                    <div v-show="song.songcasts" class="singer">
+                        <template v-for="songcast in song.songcasts">
+                            <template v-if="songcast.cast.instrument.name == 'Gesang'">
+                                [[ songcast.cast.user.name ]]
+                            </template>
+                        </template>
+                    </div>
+                    <div class="song-in-list" class="songtitle">
+                        <strong>
+                            <a :href="'{{$baseurl}}/songs/' + song.id">[[ song.name ]]</a>
+                        </strong>
+                        <template v-if="song.original_performer">
+                            <div class="original-performer">([[ song.original_performer ]])</div>
+                        </template>
+                    </div>
+                    <div class="audio">
 
-                    <tr>
-                        <td>
-                            @if(!empty($song->songcasts))
-                                @foreach($song->songcasts as $songcast)
-                                    @if($songcast->cast->instrument->name == "Gesang")
-                                        {{$songcast->cast->user->name}}
-                                    @endif
-                                @endforeach
-                            @else
-                                -
-                            @endif
-                        </td>
-                        <td class="song-in-list"><strong>
-                                <a href="{{ $baseurl }}/songs/{{$song->id}}">{{$song->name}}</a>
-                            </strong>
-                            @if($song->original_performer)
-                                <div class="original-performer">({{$song->original_performer}})</div>
-                            @endif
-                        </td>
-                        <td class="audio">
-                            @if(count($song->most_recent_audiofile) > 0)
-                                <audio controls preload="none">
-                                    <source src="{{url('/')}}/uploads/{{$song->most_recent_audiofile->physical_name}}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            @endif
-                        </td>
-                        <td class="acions">
-                            @include('partials.delete-button',['object' => 'song'])
+                        <template v-if="song.most_recent_audiofile">
+                            <audio preload="none" controls="false">
+                                <source :src="'{{$baseurl}}/uploads/' + song.most_recent_audiofile.physical_name" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </template>
+                    </div>
+                    <div class="actions">
+                        <a :href="'{{$baseurl}}/songs/' + song.id" class="edit-button text-button button">
+                            Details
+                        </a>
+                    </div>
 
-                            <a href="{{$baseurl}}/songs/{{$song->id}}" class="edit-button">
-                                <button>
-                                    @include('icon-files.mode_edit')
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+                </li>
+            </ul>
 
             @include('partials.song-add')
 

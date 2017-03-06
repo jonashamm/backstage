@@ -30,6 +30,14 @@ class SongsController extends GlobalController
         return back();
     }
 
+	public function storeAPI(Request $request) {
+		$song = new Song();
+		$song->name = $request->input('name');
+		$song->save();
+
+		return $song;
+	}
+
     public function index() {
         $songs = Song
 	        ::with('songcasts.cast.user','songcasts.cast.instrument')
@@ -37,8 +45,15 @@ class SongsController extends GlobalController
 	        ->get();
 	    $this->filehandler = new AttachmentsController();
         return view('songs', compact('songs'));
-
     }
+	public function indexAPI() {
+		$songs = Song
+			::with('songcasts.cast.user','songcasts.cast.instrument')
+			->with('most_recent_audiofile')
+			->get();
+		return $songs;
+	}
+
     public function show($song_id) {
         $users = User::all();
         $instruments = Instrument::with('users')->get();
@@ -83,6 +98,6 @@ class SongsController extends GlobalController
         $song->delete();
 
         Session::flash('song_name', $song_name);
-        return back();
+        return redirect(url('/'));
     }
 }

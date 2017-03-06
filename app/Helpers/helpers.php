@@ -30,3 +30,7 @@ function generateRandomString($length = 15) {
 function alphanumeric($input) {
 	return preg_replace("/[^a-zA-Z0-9]+/", "", $input);
 }
+
+function youtubeEmbed($input, $removeAllBefore) {
+	return substr($input, 0, strpos($input, $removeAllBefore));
+}

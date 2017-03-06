@@ -17,8 +17,7 @@ var concat = require('gulp-concat'),
 
 // Custom folder variables //////////////////////////////////////
 var folderSrc = 'public/src/',
-	folderDist = 'public/dist/',
- 	antiCacheString;
+	folderDist = 'public/dist/';
 
 gulp.task('sass', function() {
 	return gulp.src([
@@ -42,7 +41,7 @@ gulp.task('sass', function() {
 gulp.task('compileVendorJS',function() {
 	return gulp.src( [
 		'node_modules/vue/dist/vue.js',
-		'node_modules/axios/dist/axios.js',
+		'node_modules/axios/dist/axios.js'
 	])
 		.pipe(concat('all-vendor-scripts.js'))
 		.pipe(gulp.dest(folderDist))
@@ -53,31 +52,6 @@ gulp.task('compileCustomJS',function() {
 	return gulp.src(folderSrc + 'js/custom.js')
 		.pipe(babel({
 			presets: ['es2015']
-		}))
-		.pipe(gulp.dest(folderDist))
-		.pipe(browserSync.stream());
-});
-
-gulp.task('antiCache', function () {
-	return gulp.src('resources/views/src/app.blade.php')
-		.pipe(replace('antiCacheString', Date.now()))
-		.pipe(gulp.dest('resources/views'));
-});
-
-
-gulp.task('compileJS',function() {
-	return gulp.src( [
-		'node_modules/vue/dist/vue.js',
-		'node_modules/axios/dist/axios.js',
-		folderSrc + 'js/custom.js'
-	])
-		/*.pipe(babel({
-			presets: ['es2015']
-		}))*/
-		.pipe(concat('all-scripts.js'))
-		// .pipe(uglify())
-		.pipe(rename({
-			suffix: '.min'
 		}))
 		.pipe(gulp.dest(folderDist))
 		.pipe(browserSync.stream());
@@ -107,17 +81,23 @@ gulp.task('renameSVGs', function () {
 // Static server
 gulp.task('browser-sync', function() {
 	browserSync.init({
-		browser: "google-chrome", // doesn't start chromium so far on my machine, but prevents firefox from starting :)
+		open: false,
 		proxy: "0.0.0.0:8000"
 	});
 });
 
+gulp.task('antiCache', function () {
+	return gulp.src('resources/views/src/app.blade.php')
+		.pipe(replace('antiCacheString', Date.now()))
+		.pipe(gulp.dest('resources/views/dist'));
+});
+
 gulp.task('watch', function() {
-	gulp.watch( folderSrc + 'js/custom.js', ['compileCustomJS','antiCache']);
-	gulp.watch('public/src/styles/**', ['sass','antiCache']);
+	gulp.watch('public/src/js/**', ['compileCustomJS', 'antiCache']);
+	gulp.watch('public/src/styles/**', ['sass', 'antiCache']);
 	gulp.watch('public/src/img/ui/**', ['svgmin']);
-	gulp.watch("*.html").on('change', browserSync.reload);
+	gulp.watch("*.html").on('change', browserSync.reload, ['antiCache']);
 });
 
 // Default Task
-gulp.task('default', ['startArtisanServer', 'browser-sync','compileVendorJS','compileCustomJS', 'antiCache', 'sass', 'svgmin', 'watch']);
+gulp.task('default', ['startArtisanServer', 'browser-sync', 'compileCustomJS', 'compileVendorJS', 'antiCache', 'sass', 'svgmin', 'watch']);

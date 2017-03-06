@@ -1,4 +1,4 @@
-<div class="songfiles">
+<div class="songfiles hide-initially">
     <div class="inner">
         <h2>Dateien</h2>
 
@@ -12,25 +12,30 @@
                         <ul class="attachments">
                             <transition-group name="list">
                                 <li v-for="(attachment, index) in attachmenttype.attachments" v-bind:key="attachment">
-                                    <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
-                                        <audio controls preload="none">
-                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mpeg">
-                                            Your browser does not support the audio element.
-                                        </audio>
-                             {{--           <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>--}}
-                                    </div>
-                                    <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
-                                        <video controls preload="none">
-                                            <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
-                                            Your browser does not support the audio element.
-                                        </video>
-                                   {{--     <a :href="'{{url('/')}}/uploads/' + attachment.physical_name" download>Download</a>--}}
-                                    </div>
+                                    <div class="attachment-inner">
+                                        <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
+                                            <audio controls preload="none">
+                                                <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="audio/mp3">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </div>
+                                        <div class="audio-container" v-else-if="attachmenttype.typical_extension == 'mp4'">
+                                            <video controls preload="none">
+                                                <source :src="'{{url('/')}}/uploads/' + attachment.physical_name" type="video/mp4">
+                                                Your browser does not support the audio element.
+                                            </video>
+                                        </div>
 
-                                    <a v-else :href="'{{url('/')}}/uploads/' + attachment.physical_name" target="_blank">xxxx [[ attachment.name ]] </a>
-                                    <span class="attachment-comment">[[ attachment.comment ]]</span>
-                                    <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
-                                </li>
+                                        <span class="name">[[ attachment.name ]]</span>
+                                        <form :action="'{{$baseurl}}/download-file/' + attachment.id" method="post">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="text-button">Download</button>
+                                        </form>
+                                        <div class="attachment-comment" v-if="attachment.comment"><span class="comment">Info: </span>[[ attachment.comment ]]</div>
+                                        <button v-on:click="attachmentDelete(attachment, index, attachmenttype.id)" class="delete">@include('icon-files.bin')</button>
+
+                                    </div>
+                                   </li>
                             </transition-group>
                         </ul>
                     </div>

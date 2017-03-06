@@ -65,16 +65,12 @@ class UsersController extends GlobalController
     public function invite(Request $request) {
 	    $active_user = Auth::user();
 
-	    if(!$request->input('user_id')) {
-	    	$invited_user = new User();
-		    $invited_user->email = $request->input('email');
-		    $invited_user->name = $request->input('name');
-		    $invited_user->save();
-	    } else {
-		    $invited_user = User::find($request->input('user_id'));
-	    }
+	    $this->validate( $request, [
+		    'email' => 'unique:users',
+	    ] );
 
 	    $invitationsHandler = new InvitationsController();
+	    $invited_user = $invitationsHandler->inviteUser($request);
 	    $invitation = $invitationsHandler->store( $active_user, $invited_user);
 
 		Mail::to($request->email)->send(new Invite( $active_user, $invited_user, $invitation->code ));

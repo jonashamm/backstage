@@ -1,4 +1,4 @@
-<div class="meta-infos" :class="{'editmode': metaEdit}">
+<div class="meta-infos hide-initially" :class="{'editmode': metaEdit}">
     <div class="static-info" v-show="!metaEdit">
         <div class="inner">
             <button v-on:click="metaEdit = !metaEdit" class="toggler">
@@ -16,9 +16,19 @@
             <div class="value empty" v-if="!song.key && !song.duration && !song.link_to_original && !song.original_performer && !song.extrainfo">Um Infos hinzuzufügen, auf den Pfeilbutton rechts in diesem Feld klicken</div>
             @foreach($song_attributes as $attribute)
                 <template v-if="song.{{$attribute[1]}}">
-                    <h4>{{$attribute[0]}}</h4>
-                    <div class="value" v-text="song.{{$attribute[1]}}">
-                    </div>
+
+                    <template v-if="'{{$attribute[1]}}' != 'link_to_original'">
+                        <h4>{{$attribute[0]}}</h4>
+                        <div class="value" v-text="song.{{$attribute[1]}}">
+                        </div>
+                    </template>
+                    <template v-else>
+                        <h4>{{$attribute[0]}}</h4>
+                        <div class="value">
+                            <iframe width="266" height="150" :src="'https://www.youtube.com/embed/' + youTubeEmbed(song.{{$attribute[1]}}) + '?rel=0?ecver=1'" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </template>
+
                 </template>
             @endforeach
         </div>
