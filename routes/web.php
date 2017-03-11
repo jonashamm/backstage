@@ -1,6 +1,6 @@
 <?php
 
-View::share('baseurl',URL::to('/'));
+View::share('baseurl',str_replace('/index.php','',URL::to('/')));
 View::share('active_user', Auth::user());
 
 Route::get('/home', function() {
@@ -13,8 +13,6 @@ Route::resource('songs','SongsController');
 Route::resource('instruments','InstrumentsController');
 Route::resource('users','UsersController');
 Route::resource('attachments','AttachmentsController');
-
-
 
 Auth::routes();
 
