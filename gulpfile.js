@@ -64,9 +64,7 @@ gulp.task('startArtisanServer', shell.task([
 gulp.task('svgmin', function () {
 	return gulp.src('public/src/img/ui/*.*')
 		.pipe(svgmin())
-		.pipe(rename(function(path) {
-			path.extname = ".blade.php"
-		}))
+		 
 		.pipe(gulp.dest('resources/views/icon-files/'))
 });
 

@@ -43,7 +43,7 @@ class AttachmentsController extends GlobalController
 
 	public function store(Request $request, $path = "uploads") {
 		$file = $request->file('file');
-		$stored_file = $request->file('file')->storeAs($path,str_random(36).'.mp3');
+		$stored_file = $request->file('file')->storeAs($path,str_random(36));
 
 		$file_in_db = new Attachment();
 		$file_in_db->type = $request->input('type');

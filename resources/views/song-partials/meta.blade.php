@@ -56,7 +56,7 @@
                     <input type="text" v-model="song.duration">
                 </div>
                 <div class="formfield">
-                    <label>Link zur Vorlage</label>
+                    <label>Youtube-Vorlage</label>
                     <input type="text" v-model="song.link_to_original">
                 </div>
                 <div class="formfield">
