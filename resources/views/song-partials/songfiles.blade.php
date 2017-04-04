@@ -5,13 +5,13 @@
         <div class="empty" v-if="song.attachments < 1 && !justAddingAttachment">Um eine Datei (Mp3, Noten, etc.) hinzuzufügen, aufs Plus klicken</div>
 
         @if($song->attachments != [])
-            <div v-for="attachmenttype in songattachments" class="attachment-type">
+            <div v-for="attachmenttype in songattachments" class="attachment-type" :key="attachmenttype">
                 <transition name="list">
                     <div v-if="attachmenttype.attachments != 0">
                         <h3>[[ attachmenttype.name ]]</h3>
                         <ul class="attachments">
                             <transition-group name="list">
-                                <li v-for="(attachment, index) in attachmenttype.attachments" v-bind:key="attachment">
+                                <li v-for="(attachment, index) in attachmenttype.attachments" :key="attachment">
                                     <div class="attachment-inner">
                                         <div class="audio-container" v-if="attachmenttype.typical_extension == 'mp3'">
                                             <audio controls preload="none">
@@ -50,7 +50,7 @@
                     als
                     <select v-model="attachmenttypeChosen" name="type">
                         <option>-</option>
-                        <option v-bind:value="type.id" v-for="type in attachmenttypes"> [[ type.name ]]</option>
+                        <option :value="type.id" v-for="type in attachmenttypes" :key="type"> [[ type.name ]]</option>
                     </select>
                 </div>
                 <input type="hidden" v-model="song.id" name="song_id">

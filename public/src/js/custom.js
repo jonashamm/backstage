@@ -107,6 +107,7 @@ var app = new Vue({
 				.then(function(response) {
 					_this.song = response.data
 					_this.metaEdit = false;
+					location.reload();
 				})
 				.catch(function(error)  {
 					console.log(error)

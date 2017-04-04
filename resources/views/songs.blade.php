@@ -17,7 +17,7 @@
             @endif
 
             <ul class="songs-list">
-                <li>
+                <li class="head">
                     <div class="singer">
                         </strong>Sänger/in</strong>
                     </div>
@@ -30,8 +30,8 @@
                     </div>
                 </li>
 
-                <li v-for="song in songs" >
-                    <div v-show="song.songcasts" class="singer">
+                <li v-for="song in songs" :key="song">
+                    <div v-show="song.songcasts" class="singer"  >
                         <template v-for="songcast in song.songcasts">
                             <template v-if="songcast.cast.instrument.name == 'Gesang'">
                                 [[ songcast.cast.user.name ]]

@@ -96,6 +96,7 @@ var app = new Vue({
 			axios.patch(baseurl + 'songs/' + song_id, _this.song).then(function (response) {
 				_this.song = response.data;
 				_this.metaEdit = false;
+				location.reload();
 			}).catch(function (error) {
 				console.log(error);
 			});

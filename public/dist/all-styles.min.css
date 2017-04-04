@@ -836,25 +836,41 @@ header {
 .songs-list {
   padding: 0;
   margin: 0; }
+  @media all and (max-width: 49.937em) {
+    .songs-list .head {
+      display: none; } }
   .songs-list li {
-    display: -ms-flexbox;
-    display: flex;
-    border-bottom: 1px solid #cccccc;
-    -ms-flex-align: center;
-    align-items: center; }
+    border-bottom: 1px solid #bfbfbf; }
+    @media all and (max-width: 49.937em) {
+      .songs-list li {
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        overflow: hidden; } }
+    @media all and (min-width: 50em) {
+      .songs-list li {
+        display: -ms-flexbox;
+        display: flex;
+        border-bottom: 1px solid #cccccc;
+        -ms-flex-align: center;
+        align-items: center; } }
     .songs-list li > div {
-      -ms-flex: 2;
-      flex: 2;
-      padding: .75em 0; }
-    .songs-list li .singer {
-      -ms-flex: 1;
-      flex: 1; }
-    .songs-list li .actions {
-      -ms-flex: 1;
-      flex: 1;
-      text-align: right;
-      font-weight: bold;
-      text-decoration: underline; }
+      padding: .25em 0; }
+      @media all and (min-width: 50em) {
+        .songs-list li > div {
+          -ms-flex: 2;
+          flex: 2;
+          padding: .75em 0; } }
+    @media all and (min-width: 50em) {
+      .songs-list li .singer {
+        -ms-flex: 1;
+        flex: 1; } }
+    @media all and (min-width: 50em) {
+      .songs-list li .actions {
+        -ms-flex: 1;
+        flex: 1;
+        text-align: right;
+        font-weight: bold;
+        text-decoration: underline; } }
 
 .songs .sheet a {
   display: inline-block;
