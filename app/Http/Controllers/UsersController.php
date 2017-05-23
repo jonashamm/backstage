@@ -65,9 +65,9 @@ class UsersController extends GlobalController
     public function invite(Request $request) {
 	    $active_user = Auth::user();
 
-	    $this->validate( $request, [
+	 /*   $this->validate( $request, [
 		    'email' => 'unique:users',
-	    ] );
+	    ] );*/
 
 	    $invitationsHandler = new InvitationsController();
 	    $invited_user = $invitationsHandler->inviteUser($request);
